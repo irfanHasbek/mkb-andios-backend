@@ -4,9 +4,9 @@ var session = require('express-session');
 var config = require('./config/development');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
-//var CRUDRouter = require('./back-end/Routers/Router');
+var CRUDRouter = require('./back-end/Routers/Router');
 
-/*function createCrudRouter(app, modelPath, url){
+function createCrudRouter(app, modelPath, url){
     var Model = require(modelPath);
     var Router = CRUDRouter(Model);
     app.use(url, Router);
@@ -15,7 +15,7 @@ function assignRouter(app, routerPath, url){
     var router = require(routerPath);
     app.use(url, router());
 }
-*/
+
 
 mongoose.connect(config.dbpath, function(err){
     if(err) {
@@ -49,20 +49,11 @@ mongoose.connect(config.dbpath, function(err){
         next();
     });
 
-    app.use(function(req, res, next){
-        if(sessionIzinler(req)){
-            console.log('sessionCheck is true');
-            next();
-        }else{
-            console.log('sessionCheck is false');
-            res.render('giris');
-        }
-    });
     //Versiyon router
     //assignRouter(app, './back-end/Routers/VersiyonRouter', '/versiyon');
 
     //Kullanici crud operasyon
-    //createCrudRouter(app, './back-end/Modeller/KullaniciModeli', '/kullanici');
+    createCrudRouter(app, './back-end/Modeller/VersiyonModeli', '/versiyon');
 
     if (!module.parent) {
         app.listen(config.port);
