@@ -1,6 +1,6 @@
 module.exports = {
-    dbpath : "mongodb://localhost/gbmaDev",
-    port : 3000,
+    dbpath : "mongodb://localhost/mkbandios",
+    port : 3333,
     loglevel : 'debug',
-    host : "http://gbma.mavikentbilisim.com/"
+    host : "http://andios.mavikentbilisim.com/"
 };
