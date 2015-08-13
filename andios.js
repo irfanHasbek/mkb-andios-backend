@@ -50,7 +50,7 @@ mongoose.connect(config.dbpath, function(err){
     });
 
     //Versiyon router
-    //assignRouter(app, './back-end/Routers/VersiyonRouter', '/versiyon');
+    assignRouter(app, './back-end/Routers/VersiyonRouter', '/versiyon');
 
     //Kullanici crud operasyon
     createCrudRouter(app, './back-end/Modeller/VersiyonModeli', '/versiyon');
