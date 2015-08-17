@@ -9,6 +9,7 @@ var UrunKategorileri = new Schema({
     },
     anaKategori : {
       type : String,
+      unique : true
     },
     altKategori : [
       {

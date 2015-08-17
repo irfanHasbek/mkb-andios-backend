@@ -19,7 +19,7 @@
                             <select id="anaKategoriListesi" class="browser-default">
                               <option value="" disabled selected>Ana Kategori Seç</option>
                               <%for(var i = 0; i < urunKategorileri.length; i++){%>
-                                <option value="<%=urunKategorileri[i].anaKategori%>"><%=urunKategorileri[i].anaKategori%></option>
+                                <option data="<%=urunKategorileri[i]._id%>" value="<%=urunKategorileri[i].anaKategori%>"><%=urunKategorileri[i].anaKategori%></option>
                               <%}%>
                             </select>
                         </div>
