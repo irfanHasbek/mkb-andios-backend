@@ -34,28 +34,21 @@
                 <a href="#"><i class="mdi-editor-attach-money left"></i>Kurumsal <i class="right mdi-hardware-keyboard-arrow-down"></i></a>
                 <ul style="<%if(session.sayfaEtiketi == 'Kurumsal'){%>display:block;<%}else{%>display:none;<%}%>">
                   <li class="<%if(session.solMenuKategori == 'Hakkimizda'){%>active<%}%>"><a href="/sayfalar/hakkimizda">- Hakkımızda <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
-                  <li><a href="#">- Vizyon <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
-                  <li><a href="#">- Misyon <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
-                  <li><a href="#">- K. Politikası <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
-                  <li><a href="#">- Sertifikalar <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
-                  <li><a href="#">- K. Video <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
-                  <li><a href="#">- K. Foto Galeri <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
+                  <li class="<%if(session.solMenuKategori == 'İcerik'){%>active<%}%>"><a href="/sayfalar/icerik">- İçerik <i class="right mdi-hardware-keyboard-arrow-right"></i></a></li>
                 </ul>
             </li>
-            <!--
-            <li><a href="#!"><i class="mdi-social-people left"></i>Ürünler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-device-devices left"></i>Hizmetler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-social-domain left"></i>Projeler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Üretim <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Müşteri Hizmeti <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Satış Noktaları <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Fiyat Listesi <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Kariyer <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Haberler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Etkinlikler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Duyurular <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>İletişim <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            <li><a href="#!"><i class="mdi-action-settings left"></i>Ayarlar <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
-            -->
+            <li class="<%if(session.sayfaEtiketi == 'Urunler'){%>active<%}%>"><a href="/sayfalar/urunler"><i class="mdi-social-people left"></i>Ürünler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Hizmetler'){%>active<%}%>"><a href="/sayfalar/hizmetler"><i class="mdi-device-devices left"></i>Hizmetler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Projeler'){%>active<%}%>"><a href="/sayfalar/projeler"><i class="mdi-social-domain left"></i>Projeler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Uretim'){%>active<%}%>"><a href="/sayfalar/uretim"><i class="mdi-action-settings left"></i>Üretim <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Müsteri_Hizmetleri'){%>active<%}%>"><a href="/sayfalar/musteri_hizmetleri"><i class="mdi-action-settings left"></i>M. Hizmeti <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Satis_Noktalari'){%>active<%}%>"><a href="/sayfalar/satis_noktalari"><i class="mdi-action-settings left"></i>Satış Noktaları <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Fiyat_Listesi'){%>active<%}%>"><a href="/sayfalar/fiyat_listesi"><i class="mdi-action-settings left"></i>Fiyat Listesi <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Kariyer'){%>active<%}%>"><a href="/sayfalar/kariyer"><i class="mdi-action-settings left"></i>Kariyer <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Haberler'){%>active<%}%>"><a href="/sayfalar/haberler"><i class="mdi-action-settings left"></i>Haberler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Etkinlikler'){%>active<%}%>"><a href="/sayfalar/etkinlikler"><i class="mdi-action-settings left"></i>Etkinlikler <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Duyurular'){%>active<%}%>"><a href="/sayfalar/duyurular"><i class="mdi-action-settings left"></i>Duyurular <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Iletisim'){%>active<%}%>"><a href="/sayfalar/iletisim"><i class="mdi-action-settings left"></i>İletişim <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
+            <li class="<%if(session.sayfaEtiketi == 'Ayarlar'){%>active<%}%>"><a href="/sayfalar/ayarlar"><i class="mdi-action-settings left"></i>Ayarlar <i class="right mdi-hardware-keyboard-arrow-down"></i></a></li>
         </ul>
     </header>

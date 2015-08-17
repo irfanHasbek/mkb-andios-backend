@@ -1,0 +1,114 @@
+<% include ../partial-pages/master.ejs %>
+<main>
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel">
+                <div class="row">
+                   <div class="row">
+                        <div class="input-field col m3">
+                            <select class="browser-default">
+                              <option value="" disabled selected>Kategori Seç</option>
+                              <option value="1">Option 1</option>
+                              <option value="2">Option 2</option>
+                              <option value="3">Option 3</option>
+                            </select>
+                        </div>
+                        <div class="input-field col m6">
+                              <input id="" type="text" class="validate">
+                              <label for="">Kategori Adı</label>
+                        </div>
+                        <div class="input-field col m3">
+                            <a class="waves-effect waves-light btn btn-">Kategori Ekle</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <form action="#">
+                                <div class="file-field input-field">
+                                    <input placeholder="üst resim seç" class="file-path validate" type="text"/>
+                                    <div class="btn">
+                                        <span>Dosya Yükle</span>
+                                        <input type="file" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea class="materialize-textarea" ></textarea>
+                            <label for="text">Açıklama</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <form action="#">
+                                <div class="file-field input-field">
+                                    <input placeholder="dosya seç" class="file-path validate" type="text"/>
+                                    <div class="btn">
+                                        <span>Dosya Yükle</span>
+                                        <input type="file" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="right-align">
+                            <a class="waves-effect waves-light btn">Ekle</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel">
+                <div class="row">
+                    <table class="bordered">
+                        <thead>
+                          <tr>
+                              <th data-field="id" style="width:50px;">#</th>
+                              <th data-field="name">Kategori Adı</th>
+                              <th data-field="item_name">Ana Resim</th>
+                              <th data-field="item_name">Açıklama</th>
+                              <th data-field="item_name" style="width:150px;">Foto Galeri</th>
+                              <th data-field="operation" style="width:180px;">İşlemler</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Ana Kategori 1</td>
+                                <td>
+                                    <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                </td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit..</td>
+                                <td>
+                                    <div class="" style="padding:0">
+                                        <div class="col s6" style="padding:0">
+                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                        </div>
+                                        <div class="col s6" style="padding:0">
+                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                        </div>
+                                        
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<% include ../js/lib-js/masterPageScripts.js %>

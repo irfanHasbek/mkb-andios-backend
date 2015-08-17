@@ -1,0 +1,129 @@
+<% include ../partial-pages/master.ejs %>
+<main>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s4"><a href="#adres">Adres ve Telefonlar</a></li>
+                <li class="tab col s4"><a class="" href="#google">Google Map Kroki</a></li>
+                <li class="tab col s4"><a href="#form">İletişim Formu</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="adres" class="col s12" style="padding:0;">
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <form class="col s12">
+                           <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" ></textarea>
+                                    <label for="text">Adres</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" class="validate">
+                                    <label for="text">Telefon-1</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" class="validate">
+                                    <label for="text">Telefon-2</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" class="validate">
+                                    <label for="text">Telefon-3</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="right-align">
+                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                </div>
+                            </div>
+                        </form>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="google" class="col s12" style="padding:0;">
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="text" class="validate">
+                                    <label for="text">Latitude</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" class="validate">
+                                    <label for="text">Longtitude</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="right-align">
+                                    <a class="waves-effect waves-light btn">Getir</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="100%"  height="350" frameborder="0" style="border:0"></iframe>
+                            </div>
+                            <div class="row">
+                                <div class="right-align">
+                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                </div>
+                            </div>
+                        </form>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="form" class="col s12" style="padding:0;">
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <table class="bordered">
+                            <thead>
+                              <tr>
+                                  <th data-field="id" style="width:50px;">#</th>
+                                  <th data-field="item_name">Ad Soyad</th>
+                                  <th data-field="item_name">GSM</th>
+                                  <th data-field="item_name">Mail</th>
+                                  <th data-field="item_name">Konu</th>
+                                  <th data-field="item_name">Detay</th>
+                                  <th data-field="operation" style="width:180px;">İşlemler</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Sinan BORA</td>
+                                    <td>544 444 44 44</td>
+                                    <td>sinanbora@gmail.com</td>
+                                    <td>Konu 1</td>
+                                    <td><span class="truncate">Lorem ipsum dolor sit amet, consectetur adipisicing el..</span></td>
+                                    <td>
+                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<% include ../js/lib-js/masterPageScripts.js %>

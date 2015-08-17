@@ -1,0 +1,214 @@
+<% include ../partial-pages/master.ejs %>
+<main>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s4"><a class="active" href="#belge">Belge ve Sertifikalar</a></li>
+                <li class="tab col s4"><a class="" href="#video">Kurumsal Video</a></li>
+                <li class="tab col s4 "><a href="#foto">Kurumsal Foto Galeri</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="belge" class="col s12" style="padding:0;">
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <form class="col s12">
+                           <div class="row">
+                                <div class="input-field col s12">
+                                      <input id="" type="text" class="validate">
+                                      <label for="">Belge Adı</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <form action="#">
+                                        <div class="file-field input-field">
+                                            <input placeholder="dosya seç" class="file-path validate" type="text"/>
+                                            <div class="btn">
+                                                <span>Dosya Yükle</span>
+                                                <input type="file" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="right-align">
+                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <table class="bordered">
+                            <thead>
+                              <tr>
+                                  <th data-field="id" style="width:50px;">#</th>
+                                  <th data-field="name">Belge Adı</th>
+                                  <th data-field="item_name">Görsel</th>
+                                  <th data-field="operation" style="width:180px;">İşlemler</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Belge 1</td>
+                                    <td>
+                                        <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="video" class="col s12" style="padding:0;">
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <form class="col s12">
+                           <div class="row">
+                                <div class="input-field col s12">
+                                      <input id="" type="text" class="validate">
+                                      <label for="">Video Adı</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                      <input id="" type="text" class="validate">
+                                      <label for="">Youtube Linki</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="right-align">
+                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <table class="bordered">
+                            <thead>
+                              <tr>
+                                  <th data-field="id" style="width:50px;">#</th>
+                                  <th data-field="name">Video Adı</th>
+                                  <th data-field="item_name">Youtube Linki</th>
+                                  <th data-field="operation" style="width:180px;">İşlemler</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Video 1</td>
+                                    <td>https://www.youtube.com/watch?v=miJ783OlheE</td>
+                                    <td>
+                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foto" class="col s12" style="padding:0;">
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <form class="col s12">
+                           <div class="row">
+                                <div class="input-field col s12">
+                                      <input id="" type="text" class="validate">
+                                      <label for="">Foto Adı</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <form action="#">
+                                        <div class="file-field input-field">
+                                            <input placeholder="dosya seç" class="file-path validate" type="text"/>
+                                            <div class="btn">
+                                                <span>Dosya Yükle</span>
+                                                <input type="file" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="right-align">
+                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <table class="bordered">
+                            <thead>
+                              <tr>
+                                  <th data-field="id" style="width:50px;">#</th>
+                                  <th data-field="name">Foto Adı</th>
+                                  <th data-field="item_name">Görsel</th>
+                                  <th data-field="operation" style="width:180px;">İşlemler</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Belge 1</td>
+                                    <td>
+                                        <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<% include ../js/lib-js/masterPageScripts.js %>
