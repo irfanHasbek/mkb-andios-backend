@@ -40,7 +40,7 @@ var SayfalarKurumsalUygulama = new Schema({
     },
 
     hizmetler : {
-        type     : String,
+        type     : Boolean,
         default   : true
     },
 
