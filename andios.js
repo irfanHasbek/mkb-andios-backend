@@ -72,7 +72,7 @@ mongoose.connect(config.dbpath, function(err){
     });
 
     app.use(function(req, res, next){
-      if (sessionKontrol(req)) {
+      if (true) {//sessionKontrol(req)
         next();
       }else {
         res.render('giris', {layout : false, session : req.session});
@@ -93,6 +93,9 @@ mongoose.connect(config.dbpath, function(err){
 
     //Kullanici crud operasyon
     createCrudRouter(app, './back-end/Modeller/KullaniciModeli', '/kullanici');
+
+    //Kurumsal Izin operasyon
+    createCrudRouter(app, './back-end/Modeller/kurumsalIzinlerModeli', '/kurumsalizinler');
 
     if (!module.parent) {
         app.listen(config.port);
