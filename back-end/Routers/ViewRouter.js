@@ -1,6 +1,6 @@
 var express = require('express');
 var kurumsalIzinler = require('../Modeller/kurumsalIzinlerModeli')
-
+var Hakkimizda=require("../Modeller/HakkimizdaModeli");
 function ViewRouter(){
     var router = express.Router();
     router.get('/anasayfa', function(req, res){
@@ -27,8 +27,15 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+          Hakkimizda.findOne({},function(hakkimizdaHatasi,hakkimizda){
+             if(hakkimizdaHatasi || !hakkimizda){
+                console.log("hakkımızda sayfası Hata Olustu !");
+                res.send({kod : 404, mesaj : "hakkımızda Yuklenirken Hata Olustu !"})
+                return
+             }
+            res.render('hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,hakkimizda: hakkimizda});              
+          });
+        });
     });
     router.get('/icerik', function(req, res){
         req.session.guncelSayfa = '/sayfalar/icerik';
