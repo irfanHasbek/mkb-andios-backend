@@ -18,7 +18,7 @@ function CRUD(model){
 
     router.post('/ara', function(req, res) {
         var aramaKriteri = req.body;
-        model.find(aramaKriteri, function(dbHatasi, listelenen) {
+        model.find(aramaKriteri,"", {sort : { _id : 1 }}, function(dbHatasi, listelenen) {
             if(dbHatasi) {
                 res.send({state : false, data : dbHatasi});
                 return;
@@ -112,8 +112,8 @@ function CRUD(model){
         CityModel.update({_id: city._id},{$pushAll : newTown},function(err, town){
     */
     router.post('/arrayekle', function(req, res) {
-        //console.log(JSON.stringify(req.body.arrayItem));
-        model.update({_id : req.body._id}, {$pushAll : JSON.parse(req.body.arrayItem)}, function(dbHatasi, etkilenenSatir) {
+        //console.log(JSON.stringify(req.body));
+        model.update({_id : req.body._id}, {$pushAll : req.body.arrayItem}, function(dbHatasi, etkilenenSatir) {
             if(dbHatasi) {
                 res.send({state : false, data : dbHatasi});
                 return;
