@@ -93,12 +93,15 @@ mongoose.connect(config.dbpath, function(err){
 
     //Kullanici crud operasyon
     createCrudRouter(app, './back-end/Modeller/KullaniciModeli', '/kullanici');
-    
+
     //hakkımızda
     createCrudRouter(app, './back-end/Modeller/HakkimizdaModeli', '/hakkimizda');
 
     //Kurumsal Izin operasyon
     createCrudRouter(app, './back-end/Modeller/kurumsalIzinlerModeli', '/kurumsalizinler');
+
+    //Urunler operasyon
+    createCrudRouter(app, './back-end/Modeller/UrunlerModeli', '/urunler');
 
     if (!module.parent) {
         app.listen(config.port);
