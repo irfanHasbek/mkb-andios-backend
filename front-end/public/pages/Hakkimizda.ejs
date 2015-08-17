@@ -14,16 +14,17 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <form class="col s12" method="post" action="/hakkimizda/ekle">
+                        <form id="hakkimizdaForm" class="col s12" method="post" action="/hakkimizda/guncelle">
+                           <input type="text" style="display:none;"  value="<%=hakkimizda._id%>" name="_id">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" name="vizyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>><%=hakkimizda%></textarea>
+                                    <textarea class="materialize-textarea" name="vizyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>><%=hakkimizda.vizyon%></textarea>
                                     <label for="text">Vizyon</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>>Kaydet</a>
+                                    <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>>Kaydet</button>
                                 </div>
                             </div>
                   </div>
@@ -45,7 +46,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>>Ekle</a>
+                                    <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>>Ekle</button>
                                 </div>
                             </div>
                   </div>
@@ -67,7 +68,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>>Ekle</a>
+                                    <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>>Ekle</button>
                                 </div>
                             </div>
                         </form>
@@ -78,4 +79,6 @@
         </div>
     </div>
 </main>
+
 <% include ../js/lib-js/masterPageScripts.js %>
+<script src="../js/lib-js/hakkimizda.js"></script>
