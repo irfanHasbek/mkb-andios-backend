@@ -1,7 +1,7 @@
 var express = require('express');
 var VersionModeli = require('../Modeller/VersiyonModeli');
 
-function CRUD(model){
+function Versiyon(model){
     var router = express.Router();
     router.post('/kontrolet', function(req, res) {
         var kullaniciKodu = req.body.kullaniciKodu;
@@ -26,4 +26,4 @@ function CRUD(model){
 
     return router;
 }
-module.exports = CRUD;
+module.exports = Versiyon;

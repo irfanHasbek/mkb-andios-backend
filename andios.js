@@ -49,11 +49,50 @@ mongoose.connect(config.dbpath, function(err){
         next();
     });
 
+    function sessionKontrol(req){
+      //console.log("URL : " + req.originalUrl);
+      var izinliUrlListesi = config.izinliUrlListesi;
+      if (!req.session.giris) {
+        for (var i = 0; i < izinliUrlListesi.length; i++) {
+          if (izinliUrlListesi[i] == req.originalUrl) {
+            //console.log("session : true");
+            return true;
+          }
+        }
+        //console.log("session : false");
+        return false;
+      }else {
+        //console.log("session : true");
+        return true;
+      }
+    }
+
+    app.get("/", function(req, res){
+      res.redirect("/sayfalar/giris");
+    });
+
+    app.use(function(req, res, next){
+      if (sessionKontrol(req)) {
+        next();
+      }else {
+        res.render('giris', {layout : false, session : req.session});
+      }
+    });
+
     //Versiyon router
     assignRouter(app, './back-end/Routers/VersiyonRouter', '/versiyon');
 
-    //Kullanici crud operasyon
+    //Hesap router
+    assignRouter(app, './back-end/Routers/HesapRouter', '/hesap');
+
+    //View Router
+    assignRouter(app, './back-end/Routers/ViewRouter', '/sayfalar');
+
+    //Versiyon crud operasyon
     createCrudRouter(app, './back-end/Modeller/VersiyonModeli', '/versiyon');
+
+    //Kullanici crud operasyon
+    createCrudRouter(app, './back-end/Modeller/KullaniciModeli', '/kullanici');
 
     if (!module.parent) {
         app.listen(config.port);

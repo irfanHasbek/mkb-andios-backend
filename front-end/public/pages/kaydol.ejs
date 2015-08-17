@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kaydol</title>
+    <% include ../css/lib-css/masterPageCss.js %>
+    <link rel="stylesheet" href="../css/lib-css/kaydol.css">
+</head>
+<body>
+   <main>
+       <div class="row">
+           <div class="col s12">
+               <div class="box">
+                  <div id="header">
+                  <div id="cont-lock"><i class="lock mdi-action-lock-open"></i></div>
+                      <div id="bottom-head">
+                          <h1 id="logintoregister">Kaydol</h1>
+                      </div>
+                  </div>
+                  <form action="/hesap/kaydol" method="post">
+                      <div class="group">
+                          <input class="inputMaterial" type="text" required name="kullaniciKodu">
+                          <span class="highlight"></span>
+                          <label>Kullanıcı Kodu</label>
+                      </div>
+                      <div class="group">
+                          <input class="inputMaterial" type="email" required name="email">
+                          <span class="highlight"></span>
+                          <label>E-mail</label>
+                      </div>
+                      <div class="group">
+                          <input class="inputMaterial" type="password" required name="sifre">
+                          <span class="highlight"></span>
+                          <label>Şifre</label>
+                      </div>
+                      <button id="buttonlogintoregister" type="submit">Kaydol</button>
+                  </form>
+                  <div id="footer-box">
+                      <p class="footer-text"><%=session.mesaj%></a> </p>
+                  </div>
+              </div>
+           </div>
+       </div>
+   </main>
+    <% include ../js/lib-js/masterPageScripts.js %>
+</body>
+</html>
