@@ -6,15 +6,33 @@ $(document).ready(function(){
       wsPost("/urunkategorileri/ekle", {kullaniciKodu : kullaniciKodu, anaKategori : anaKategori, altKategori : []}, function(hata, kategori){
         if(hata || !kategori || !kategori.state){
           console.log("Hata : " + hata);
-          alert("Hata Olustu !")
+          alertify.error("Hata Olustu !")
           return
         }
         var option = $("<option value='" + kategori.data.anaKategori + "' data='" + kategori.data._id + "'>" + kategori.data.anaKategori + "</option>");
         $("#anaKategoriListesi").append(option)
-        giveMessage("Kategori basariyla eklendi !", "success")
+        alertify.success("Kategori basariyla eklendi !")
+        $("#inpAnaKategori").val("")
       })
     }else {
       alert("Lutfen kategori adi giriniz !")
+    }
+  })
+
+  $("#btnAltKategoriEkle").on("click", function(){
+    var anaKategoriId = $("#anaKategoriListesi option:selected").attr("data");
+    var altKategori = $("#inpAltKategori").val()
+    if (anaKategoriId && altKategori) {
+      wsPost("/urunkategorileri/arrayekle", {}, function(hata, kategori){
+        if(hata || !kategori || !kategori.state){
+          console.log("Hata : " + hata);
+          alertify.error("Hata Olustu !")
+          return
+        }
+        
+      })
+    }else {
+      alertify.error("Lutfen kategori secin veya alt kategori giriniz !")
     }
   })
 })
