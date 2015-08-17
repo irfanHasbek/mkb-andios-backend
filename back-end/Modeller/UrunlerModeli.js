@@ -26,8 +26,10 @@ var Urun = new Schema({
     },
 
     galeri : [
-      resimLinki : {
-        type    : String
+      {
+        resimLinki : {
+          type    : String
+        }
       }
     ]
 });

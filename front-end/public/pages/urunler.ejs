@@ -1,5 +1,6 @@
 <% include ../partial-pages/master.ejs %>
 <main>
+    <input id="kullaniciKodu" style="display:none;" value="<%=session.kullanici.kullaniciKodu%>">
     <div class="row">
         <div class="col s12">
             <div class="card-panel">
@@ -105,7 +106,7 @@
                                         <div class="col s6" style="padding:0">
                                             <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
                                         </div>
-                                        
+
                                     </div>
                                 </td>
                                 <td>
@@ -121,4 +122,5 @@
         </div>
     </div>
 </main>
+<script src="../js/lib-js/urunler-js.js"></script>
 <% include ../js/lib-js/masterPageScripts.js %>

@@ -1,6 +1,9 @@
 var express = require('express');
 var kurumsalIzinler = require('../Modeller/kurumsalIzinlerModeli')
 var Hakkimizda=require("../Modeller/HakkimizdaModeli");
+var Urunler=require("../Modeller/UrunlerModeli");
+var UrunKategori=require("../Modeller/UrunKategoriModeli");
+
 function ViewRouter(){
     var router = express.Router();
     router.get('/anasayfa', function(req, res){
@@ -33,7 +36,7 @@ function ViewRouter(){
                 res.send({kod : 404, mesaj : "hakkımızda Yuklenirken Hata Olustu !"})
                 return
              }
-            res.render('hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,hakkimizda: hakkimizda});              
+            res.render('hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,hakkimizda: hakkimizda});
           });
         });
     });
@@ -61,7 +64,21 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('urunler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+          UrunKategori.find({kullaniciKodu : req.session.kullanici.kullaniciKodu}, function(urunKategoriHata, urunKategorileri){
+            if(urunKategoriHata || !urunKategorileri){
+              console.log("Urun Kategorileri Yuklenirken Hata Olustu !")
+              res.send({kod : 404, mesaj : "Urun Kategorileri Yuklenirken Hata Olustu !"})
+              return
+            }
+            UrunlerModeli.find({kullaniciKodu : req.session.kullanici.kullaniciKodu}, function(hataUrun, urunler){
+              if(hataUrun || !urunler){
+                console.log("Urunler Yuklenirken Hata Olustu !")
+                res.send({kod : 404, mesaj : "Urunler Yuklenirken Hata Olustu !"})
+                return
+              }
+              res.render('urunler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler, urunKategorileri : urunKategorileri, urunler : urunler});
+            })
+          })
         })
     });
     router.get('/hizmetler', function(req, res){

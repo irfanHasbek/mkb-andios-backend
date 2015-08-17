@@ -103,6 +103,9 @@ mongoose.connect(config.dbpath, function(err){
     //Urunler operasyon
     createCrudRouter(app, './back-end/Modeller/UrunlerModeli', '/urunler');
 
+    //Urun Kategorileri operasyon
+    createCrudRouter(app, './back-end/Modeller/UrunKategoriModeli', '/urunkategorileri');
+
     if (!module.parent) {
         app.listen(config.port);
         console.log('Andios-backend is started on port : ' +config.port);
