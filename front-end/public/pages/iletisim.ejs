@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s4"><a href="#adres">Adres ve Telefonlar</a></li>
-                <li class="tab col s4"><a class="" href="#google">Google Map Kroki</a></li>
-                <li class="tab col s4"><a href="#form">İletişim Formu</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.iletisim.adresVeTelefonlar){%>disabled<%}%>"><a href="#adres">Adres ve Telefonlar</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>"><a class="" href="#google">Google Map Kroki</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.iletisim.iletisimFormu){%>disabled<%}%>"><a href="#form">İletişim Formu</a></li>
             </ul>
         </div>
     </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.adresVeTelefonlar){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>
@@ -77,7 +77,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>

@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s4"><a href="#vizyon">Vizyon</a></li>
-                <li class="tab col s4"><a class="" href="#misyon">Misyon</a></li>
-                <li class="tab col s4 "><a href="#kalite">Kalite Politikası</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>"><a href="#vizyon">Vizyon</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>"><a class="" href="#misyon">Misyon</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>"><a href="#kalite">Kalite Politikası</a></li>
             </ul>
         </div>
     </div>
@@ -17,13 +17,13 @@
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" ></textarea>
+                                    <textarea class="materialize-textarea" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>></textarea>
                                     <label for="text">Vizyon</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>
@@ -41,13 +41,13 @@
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" ></textarea>
+                                    <textarea class="materialize-textarea" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>></textarea>
                                     <label for="text">Misyon</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>
@@ -65,13 +65,13 @@
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" ></textarea>
+                                    <textarea class="materialize-textarea" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>></textarea>
                                     <label for="text">Kalite Politikası</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>

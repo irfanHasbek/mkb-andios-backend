@@ -41,7 +41,7 @@ var SayfalarKurumsalUygulama = new Schema({
 
     hizmetler : {
         type     : String,
-        unique   : true
+        default   : true
     },
 
     projeler : {

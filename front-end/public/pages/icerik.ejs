@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s4"><a class="active" href="#belge">Belge ve Sertifikalar</a></li>
-                <li class="tab col s4"><a class="" href="#video">Kurumsal Video</a></li>
-                <li class="tab col s4 "><a href="#foto">Kurumsal Foto Galeri</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>"><a class="active" href="#belge">Belge ve Sertifikalar</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>"><a class="" href="#video">Kurumsal Video</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>"><a href="#foto">Kurumsal Foto Galeri</a></li>
             </ul>
         </div>
     </div>
@@ -17,7 +17,7 @@
                         <form class="col s12">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate">
+                                      <input id="" type="text" class="validate" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>
                                       <label for="">Belge Adı</label>
                                 </div>
                             </div>
@@ -25,10 +25,10 @@
                                 <div class="col s12">
                                     <form action="#">
                                         <div class="file-field input-field">
-                                            <input placeholder="dosya seç" class="file-path validate" type="text"/>
+                                            <input placeholder="dosya seç" class="file-path validate" type="text" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>/>
                                             <div class="btn">
                                                 <span>Dosya Yükle</span>
-                                                <input type="file" />
+                                                <input type="file" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>/>
                                             </div>
                                         </div>
                                     </form>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>
@@ -87,19 +87,19 @@
                         <form class="col s12">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate">
+                                      <input id="" type="text" class="validate" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
                                       <label for="">Video Adı</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate">
+                                      <input id="" type="text" class="validate" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
                                       <label for="">Youtube Linki</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>
@@ -148,7 +148,7 @@
                         <form class="col s12">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate">
+                                      <input id="" type="text" class="validate" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>
                                       <label for="">Foto Adı</label>
                                 </div>
                             </div>
@@ -156,10 +156,10 @@
                                 <div class="col s12">
                                     <form action="#">
                                         <div class="file-field input-field">
-                                            <input placeholder="dosya seç" class="file-path validate" type="text"/>
+                                            <input placeholder="dosya seç" class="file-path validate" type="text" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>/>
                                             <div class="btn">
                                                 <span>Dosya Yükle</span>
-                                                <input type="file" />
+                                                <input type="file" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>/>
                                             </div>
                                         </div>
                                     </form>
@@ -167,7 +167,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn">Ekle</a>
+                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>Ekle</a>
                                 </div>
                             </div>
                         </form>
