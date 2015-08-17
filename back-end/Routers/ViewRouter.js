@@ -3,6 +3,7 @@ var kurumsalIzinler = require('../Modeller/kurumsalIzinlerModeli')
 var Hakkimizda=require("../Modeller/HakkimizdaModeli");
 var Urunler=require("../Modeller/UrunlerModeli");
 var UrunKategori=require("../Modeller/UrunKategoriModeli");
+var Bayiler=require("../Modeller/BayilerModeli");
 
 function ViewRouter(){
     var router = express.Router();
@@ -24,13 +25,14 @@ function ViewRouter(){
         req.session.guncelSayfa = '/sayfalar/hakkimizda';
         req.session.sayfaEtiketi = 'Kurumsal';
         req.session.solMenuKategori = 'Hakkimizda';
+        console.log(req.session.kullanici.kullaniciKodu)
         kurumsalIzinler.findOne({}, function(kurumsalIzinlerHata, kurumsalIzinler){
           if (kurumsalIzinlerHata || !kurumsalIzinler) {
             console.log("Kurumsal Izinler Yuklenirken Hata Olustu !");
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          Hakkimizda.findOne({},function(hakkimizdaHatasi,hakkimizda){
+          Hakkimizda.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(hakkimizdaHatasi,hakkimizda){
              if(hakkimizdaHatasi || !hakkimizda){
                 console.log("hakkımızda sayfası Hata Olustu !");
                 res.send({kod : 404, mesaj : "hakkımızda Yuklenirken Hata Olustu !"})
@@ -143,8 +145,16 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('satis_noktalari', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+            Bayiler.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(bayiHatasi,bayiler){
+                console.log("bayiler : "+bayiler);
+                if(bayiHatasi || !bayiler){
+                    console.log("bayileri yüklenirken hata oluştu.");
+                    res.send({kod:404,mesaj:"bayiler yüklenirken hata oluştu."});
+                    return;
+                }
+              res.render('satis_noktalari', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler, bayiler:bayiler});
+            });
+        });
     });
     router.get('/fiyat_listesi', function(req, res){
         req.session.guncelSayfa = '/sayfalar/fiyat_listesi';

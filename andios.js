@@ -105,6 +105,9 @@ mongoose.connect(config.dbpath, function(err){
 
     //Urun Kategorileri operasyon
     createCrudRouter(app, './back-end/Modeller/UrunKategoriModeli', '/urunkategorileri');
+    
+    //bayiler operasyon
+    createCrudRouter(app, './back-end/Modeller/BayilerModeli', '/bayiler');
 
     if (!module.parent) {
         app.listen(config.port);

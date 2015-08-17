@@ -4,10 +4,11 @@
         <div class="row">
             <div class="col s12">
                 <div class="card-panel">
+                   <form id="frmSatisNoktalari" action="/bayiler/ekle" method="post">
                     <div class="row">
                        <div class="row">
                             <div class="input-field col m6">
-                                <select class="browser-default">
+                                <select class="browser-default" id="slctBayi" name="BayiTuru">
                                   <option value="" disabled selected>Bayi \ Servisler Seç</option>
                                   <option value="1">Bayi</option>
                                   <option value="2">Servisler</option>
@@ -15,7 +16,7 @@
                                 </select>
                             </div>
                             <div class="input-field col m6">
-                                <select class="browser-default">
+                                <select class="browser-default" id="slctUlke" name="ulkeAdi">
                                   <option value="" disabled selected>Ülke Seç</option>
                                   <option value="1">Türkiye</option>
                                 </select>
@@ -23,7 +24,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col m6">
-                                <select class="browser-default">
+                                <select class="browser-default" id="slctSehir" name="sehirAdi">
                                   <option value="" disabled selected>İl Seç</option>
                                   <option value="1">İzmir</option>
                                   <option value="2">İstanbul</option>
@@ -31,7 +32,7 @@
                                 </select>
                             </div>
                             <div class="input-field col m6">
-                                <select class="browser-default">
+                                <select class="browser-default" id="slctİlce" name="ilceAdi">
                                   <option value="" disabled selected>İlçe Seç</option>
                                   <option value="1">Buca</option>
                                 </select>
@@ -39,54 +40,54 @@
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="" type="text" class="validate">
+                                  <input id="" type="text" class="validate" name="Ad">
                                   <label for="">Bayi Adı</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="" type="text" class="validate">
+                                  <input id="" type="text" class="validate" name="adres">
                                   <label for="">Bayi Adresi</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="" type="number" class="validate">
+                                  <input id="" type="number" class="validate" name="tel">
                                   <label for="">Telefon</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="" type="number" class="validate">
+                                  <input id="" type="number" class="validate" name="fax">
                                   <label for="">Fax</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="" type="email" class="validate">
+                                  <input id="" type="email" class="validate" name="email" >
                                   <label for="">E-mail</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="" type="text" class="validate">
+                                  <input id="" type="text" class="validate" name="web">
                                   <label for="">Web</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea class="materialize-textarea" ></textarea>
+                                <textarea class="materialize-textarea" name="aciklama"></textarea>
                                 <label for="text">Açıklama</label>
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="right-align">
-                                <a class="waves-effect waves-light btn">Ekle</a>
+                                <button class="waves-effect waves-light btn" type="submit">Ekle</button>
                             </div>
                         </div>
                     </div>
-
+                  </form>
                 </div>
             </div>
         </div>
