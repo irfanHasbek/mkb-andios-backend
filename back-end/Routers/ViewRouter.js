@@ -70,7 +70,7 @@ function ViewRouter(){
               res.send({kod : 404, mesaj : "Urun Kategorileri Yuklenirken Hata Olustu !"})
               return
             }
-            UrunlerModeli.find({kullaniciKodu : req.session.kullanici.kullaniciKodu}, function(hataUrun, urunler){
+            Urunler.find({kullaniciKodu : req.session.kullanici.kullaniciKodu}, function(hataUrun, urunler){
               if(hataUrun || !urunler){
                 console.log("Urunler Yuklenirken Hata Olustu !")
                 res.send({kod : 404, mesaj : "Urunler Yuklenirken Hata Olustu !"})

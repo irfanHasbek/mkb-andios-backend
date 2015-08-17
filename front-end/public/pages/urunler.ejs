@@ -7,24 +7,24 @@
                 <div class="row">
                    <div class="row">
                         <div class="input-field col m9">
-                              <input id="" type="text" class="validate">
+                              <input id="inpAnaKategori" type="text" class="validate">
                               <label for="">Ana Kategori Adı</label>
                         </div>
                         <div class="input-field col m3">
-                            <a class="waves-effect waves-light btn btn-">Ana Kategori Ekle</a>
+                            <a id="btnAnaKategoriEkle" class="waves-effect waves-light btn">Ana Kategori Ekle</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col m3">
-                            <select class="browser-default">
+                            <select id="anaKategoriListesi" class="browser-default">
                               <option value="" disabled selected>Ana Kategori Seç</option>
-                              <option value="1">Option 1</option>
-                              <option value="2">Option 2</option>
-                              <option value="3">Option 3</option>
+                              <%for(var i = 0; i < urunKategorileri.length; i++){%>
+                                <option value="<%=urunKategorileri[i].anaKategori%>"><%=urunKategorileri[i].anaKategori%></option>
+                              <%}%>
                             </select>
                         </div>
                         <div class="input-field col m6">
-                              <input value="Option 1 > " id="" type="text" class="validate">
+                              <input value="" id="" type="text" class="validate">
                         </div>
                         <div class="input-field col m3">
                             <a class="waves-effect waves-light btn btn-">Alt Kategori Ekle</a>
