@@ -1,5 +1,6 @@
 <% include ../partial-pages/master.ejs %>
 <main>
+    <input id="kurumsalIzinlerId" style:"display:none" value="<%=kurumsalIzinler._id%>">
     <div class="row">
         <div class="col s12">
             <div class="card-panel">
@@ -22,7 +23,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>checked<%}%>>
+                                        <input id="vizyon" type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -31,7 +32,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.misyon){%>checked<%}%>>
+                                        <input id="misyon" type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.misyon){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -40,7 +41,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>checked<%}%>>
+                                        <input id="kalitePolitikasi" type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -49,7 +50,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>checked<%}%>>
+                                        <input id="belgeVeSertifikalar" type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -58,7 +59,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>checked<%}%>>
+                                        <input id="kurumsalVideo" type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -67,7 +68,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>checked<%}%>>
+                                        <input id="kurumsalFotoGaleri" type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -102,7 +103,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.urunler){%>checked<%}%>>
+                                        <input id="urunler" type="checkbox" <%if(kurumsalIzinler.urunler){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -111,7 +112,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.hizmetler){%>checked<%}%>>
+                                        <input id="hizmetler" type="checkbox" <%if(kurumsalIzinler.hizmetler){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -120,7 +121,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.projeler){%>checked<%}%>>
+                                        <input id="projeler" type="checkbox" <%if(kurumsalIzinler.projeler){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -129,7 +130,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.uretim){%>checked<%}%>>
+                                        <input id="uretim" type="checkbox" <%if(kurumsalIzinler.uretim){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -163,7 +164,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.oneriIstekSikayet){%>checked<%}%>>
+                                        <input id="oneriIstekSikayet" type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.oneriIstekSikayet){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -172,7 +173,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.sikSorulanSorular){%>checked<%}%>>
+                                        <input id="sikSorulanSorular" type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.sikSorulanSorular){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -181,7 +182,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.bilgiBankasi){%>checked<%}%>>
+                                        <input id="bilgiBankasi" type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.bilgiBankasi){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -217,7 +218,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.satisNoktalari){%>checked<%}%>>
+                                        <input id="satisNoktalari" type="checkbox" <%if(kurumsalIzinler.satisNoktalari){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -226,7 +227,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.fiyatListesi){%>checked<%}%>>
+                                        <input id="fiyatListesi" type="checkbox" <%if(kurumsalIzinler.fiyatListesi){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -235,7 +236,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.haberler){%>checked<%}%>>
+                                        <input id="haberler" type="checkbox" <%if(kurumsalIzinler.haberler){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -244,7 +245,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.etkinlikler){%>checked<%}%>>
+                                        <input id="etkinlikler" type="checkbox" <%if(kurumsalIzinler.etkinlikler){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -253,7 +254,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.duyurular){%>checked<%}%>>
+                                        <input id="duyurular" type="checkbox" <%if(kurumsalIzinler.duyurular){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -285,7 +286,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kariyer.ikPolitikasi){%>checked<%}%>>
+                                        <input id="ikPolitikasi" type="checkbox" <%if(kurumsalIzinler.kariyer.ikPolitikasi){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -294,7 +295,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.kariyer.isVeStaj){%>checked<%}%>>
+                                        <input id="isVeStaj" type="checkbox" <%if(kurumsalIzinler.kariyer.isVeStaj){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -328,7 +329,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.iletisim.adresVeTelefonlar){%>checked<%}%>>
+                                        <input id="adresVeTelefonlar" type="checkbox" <%if(kurumsalIzinler.iletisim.adresVeTelefonlar){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -337,7 +338,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.iletisim.kroki){%>checked<%}%>>
+                                        <input id="kroki" type="checkbox" <%if(kurumsalIzinler.iletisim.kroki){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -346,7 +347,7 @@
                                 <td class="center-align">
                                     <div class="switch">
                                         <label>Gizle
-                                        <input type="checkbox" <%if(kurumsalIzinler.iletisim.iletisimFormu){%>checked<%}%>>
+                                        <input id="iletisimFormu" type="checkbox" <%if(kurumsalIzinler.iletisim.iletisimFormu){%>checked<%}%>>
                                         <span class="lever"></span>
                                         Göster
                                         </label>
@@ -358,9 +359,14 @@
                         </tbody>
                     </table>
               </div>
-
+              <div class="row">
+                  <div class="center-align">
+                      <a id="izinGuncelle" class="waves-effect waves-light btn">Güncelle</a>
+                  </div>
+              </div>
             </div>
         </div>
     </div>
 </main>
+<script src="../js/lib-js/ayarlar-js.js"></script>
 <% include ../js/lib-js/masterPageScripts.js %>

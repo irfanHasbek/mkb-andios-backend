@@ -1,5 +1,3 @@
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="/js/utility-js/materialize.js"></script>
   <script>
       $(".button-collapse").sideNav();
       $(".dropdown-button").dropdown({
