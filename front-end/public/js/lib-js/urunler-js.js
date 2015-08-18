@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('.modal-trigger').leanModal();
   //Ana kategori dropdown doldurma
   $("#btnAnaKategoriEkle").on("click", function(){
     var anaKategori = $("#inpAnaKategori").val()
