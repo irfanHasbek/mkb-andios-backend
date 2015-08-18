@@ -72,7 +72,7 @@ mongoose.connect(config.dbpath, function(err){
     });
 
     app.use(function(req, res, next){
-      if (true) {//sessionKontrol(req)
+      if (sessionKontrol(req)) {//sessionKontrol(req)
         next();
       }else {
         res.render('giris', {layout : false, session : req.session});
@@ -87,6 +87,9 @@ mongoose.connect(config.dbpath, function(err){
 
     //View Router
     assignRouter(app, './back-end/Routers/ViewRouter', '/sayfalar');
+
+    //Yukleme router
+    assignRouter(app, './back-end/Routers/YuklemeRouter', '/yukle');
 
     //Versiyon crud operasyon
     createCrudRouter(app, './back-end/Modeller/VersiyonModeli', '/versiyon');
@@ -105,7 +108,7 @@ mongoose.connect(config.dbpath, function(err){
 
     //Urun Kategorileri operasyon
     createCrudRouter(app, './back-end/Modeller/UrunKategoriModeli', '/urunkategorileri');
-    
+
     //bayiler operasyon
     createCrudRouter(app, './back-end/Modeller/BayilerModeli', '/bayiler');
 

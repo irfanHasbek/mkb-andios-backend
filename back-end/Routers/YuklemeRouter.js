@@ -7,7 +7,20 @@ function Yukleme(){
     var router = express.Router();
     //pdf yukleme
     router.post('/dosyayukle', multer({
-        dest: './front-end/public/yuklemeler/dosyalar',
+        dest: './front-end/public/yuklemeler/',
+        changeDest: function(dest, req, res) {
+            var newDestination = dest + req.session.kullanici._id + "/medyalar";
+            var stat = null;
+            /*try {
+                stat = fs.statSync(newDestination);
+            } catch (err) {
+                fs.mkdirSync(newDestination);
+            }
+            if (stat && !stat.isDirectory()) {
+                throw new Error('Directory cannot be created because an inode of a different type exists at "' + dest + '"');
+            }*/
+            return newDestination
+        },
         rename: function (fieldname, filename) {
             var hash = crypto.createHash('sha1');
             hash.setEncoding('hex');
@@ -27,8 +40,21 @@ function Yukleme(){
     });
 
     //coklu resim yukleme
-    router.post('/resimyukle', multer({
-        dest: './front-end/public/yuklemeler/medyalar',
+    router.post('/medyayukle', multer({
+        dest: './front-end/public/yuklemeler/',
+        changeDest: function(dest, req, res) {
+            var newDestination = dest + req.session.kullanici._id + "/medyalar";
+            var stat = null;
+            /*try {
+                stat = fs.statSync(newDestination);
+            } catch (err) {
+                fs.mkdirSync(newDestination);
+            }
+            if (stat && !stat.isDirectory()) {
+                throw new Error('Directory cannot be created because an inode of a different type exists at "' + dest + '"');
+            }*/
+            return newDestination
+        },
         rename: function (fieldname, filename) {
             var hash = crypto.createHash('sha1');
             hash.setEncoding('hex');

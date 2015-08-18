@@ -66,7 +66,7 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          UrunKategori.find({kullaniciKodu : req.session.kullanici.kullaniciKodu}, function(urunKategoriHata, urunKategorileri){
+          UrunKategori.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},"", {sort : { _id : 1 }}, function(urunKategoriHata, urunKategorileri){
             if(urunKategoriHata || !urunKategorileri){
               console.log("Urun Kategorileri Yuklenirken Hata Olustu !")
               res.send({kod : 404, mesaj : "Urun Kategorileri Yuklenirken Hata Olustu !"})
