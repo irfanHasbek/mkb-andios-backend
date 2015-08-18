@@ -136,7 +136,14 @@ $(document).ready(function(){
       alertify.error("Resim yuklenirken hata olustu !")
       return
     }
-    alertify.success("Resim basariyla yuklendi !")
+    var ustResimUrl = sonuc.medyaListesi.medyaListesi.path.replace("front-end/public/",sonuc.host)
+    if (ustResimUrl) {
+      $("#imgUstResim").attr("src", ustResimUrl);
+      alertify.success("Resim basariyla yuklendi !")
+    }else {
+      alertify.error("Resim yuklenirken hata olustu !")
+      return
+    }
   })
 
   $("#formMedya").ajaxForm(function(sonuc){
