@@ -1,5 +1,7 @@
 var express = require('express');
+var fs = require('fs')
 var KullaniciModeli = require('../Modeller/KullaniciModeli');
+
 function HesapRouter(){
     var router = express.Router();
     router.post('/giris', function(req, res){
@@ -36,7 +38,16 @@ function HesapRouter(){
             req.session.kullanici = kullanici;
             req.session.giris = true;
             req.session.mesaj = "Giris Basarili !";
-
+            var dir = './front-end/public/yuklemeler/' + kullanici._id;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+                var dirDosya = './front-end/public/yuklemeler/' + kullanici._id + "/dosyalar";
+                var dirMedya = './front-end/public/yuklemeler/' + kullanici._id + "/medyalar";
+                if (!fs.existsSync(dirDosya) && !fs.existsSync(dirMedya)) {
+                  fs.mkdirSync(dirDosya);
+                  fs.mkdirSync(dirMedya);
+                }
+            }
             res.redirect('/sayfalar/anasayfa');
           }else {
             req.session.kullanici = null;

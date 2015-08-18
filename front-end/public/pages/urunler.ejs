@@ -7,22 +7,36 @@
                  <div class="row">
                      <div class="col m6">
                           <h6 style="font-size:20px" class="center-align">Ürün Ekle</h6>
-                          <div class="row">
-                              <div class="input-field ">
-                                  <select id="anaKategoriListesi" class="browser-default">
-                                    <option value="" disabled selected>Ana Kategori Seç</option>
-                                    <%for(var i = 0; i < urunKategorileri.length; i++){%>
-                                      <option data="<%=urunKategorileri[i]._id%>" value="<%=urunKategorileri[i].anaKategori%>"><%=urunKategorileri[i].anaKategori%></option>
-                                    <%}%>
-                                  </select>
+                          <div class="col m11" style="padding:0">
+                              <div class="row">
+                                  <div class="input-field ">
+                                      <select id="anaKategoriListesi" class="browser-default">
+                                        <option value="" disabled selected>Ana Kategori Seç</option>
+                                        <%for(var i = 0; i < urunKategorileri.length; i++){%>
+                                          <option data="<%=urunKategorileri[i]._id%>" value="<%=urunKategorileri[i].anaKategori%>"><%=urunKategorileri[i].anaKategori%></option>
+                                        <%}%>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col m1" style="">
+                              <div class="input-field">
+                                  <button id="btnAnaKategoriSil" class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi sil"><i class="mdi-action-delete"></i></button>
                               </div>
                           </div>
                           <br>
                           <div class="row">
-                              <div class="input-field">
+                              <div class="col m11" style="padding:0">
+                                <div class="input-field">
                                   <select id="altKategoriListesi" class="browser-default">
                                       <option value="" disabled selected>Alt kategori seç</option>
                                   </select>
+                                </div>
+                              </div>
+                              <div class="col m1" style="">
+                                  <div class="input-field">
+                                      <button id="btnAltKategoriSil" class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi sil"><i class="mdi-action-delete"></i></button>
+                                  </div>
                               </div>
                           </div>
                           <div class="row">
@@ -83,7 +97,7 @@
                   <div class="row">
 
                       <div class="row">
-                          <div class="right-align">
+                          <div class="center-align">
                               <a class="waves-effect waves-light btn">Ekle</a>
                           </div>
                       </div>
