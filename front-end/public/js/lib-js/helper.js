@@ -153,7 +153,7 @@ function updateFromTable(tableClass, url, data, callback){
 function orderTable(table){
    var trs=$(table+" tbody tr");
     $.each(trs,function(index,item){
-       $(table+" tbody tr").eq(index+1).find("td").eq(0).html((index+1)+".");
+       $(table+" tbody tr").eq(index).find("td").eq(0).html((index+1)+".");
     });
 }
 function regexMultiKriterOlustur(string) {
@@ -179,7 +179,7 @@ function regexMultiKriterOlustur(string) {
 function clearInputs(divId){
     $("#"+divId+" input[type='text']").val("");
     $("#"+divId+" input[type='password']").val("");
-    $("#"+divId+" input[type='number']").val(0);
+    $("#"+divId+" input[type='number']").val("");
     $("#"+divId+" input[type='email']").val("");
     $("#"+divId+" input[type='url']").val("");
     $("#"+divId+" input[type='checkbox']").prop('checked', false);

@@ -25,7 +25,6 @@ function ViewRouter(){
         req.session.guncelSayfa = '/sayfalar/hakkimizda';
         req.session.sayfaEtiketi = 'Kurumsal';
         req.session.solMenuKategori = 'Hakkimizda';
-        console.log(req.session.kullanici.kullaniciKodu)
         kurumsalIzinler.findOne({}, function(kurumsalIzinlerHata, kurumsalIzinler){
           if (kurumsalIzinlerHata || !kurumsalIzinler) {
             console.log("Kurumsal Izinler Yuklenirken Hata Olustu !");
@@ -38,6 +37,7 @@ function ViewRouter(){
                 res.send({kod : 404, mesaj : "hakkımızda Yuklenirken Hata Olustu !"})
                 return
              }
+              console.log(hakkimizda)
             res.render('hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,hakkimizda: hakkimizda});
           });
         });

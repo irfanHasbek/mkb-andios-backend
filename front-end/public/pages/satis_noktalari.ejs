@@ -1,46 +1,47 @@
 <% include ../partial-pages/master.ejs %>
 <main>
     <div>
-        <div class="row">
+        <div class="row" id="divBayiler">
             <div class="col s12">
                 <div class="card-panel">
-                   <form id="frmSatisNoktalari" action="/bayiler/ekle" method="post">
+                   <form id="frmBayiler" action="/bayiler/ekle" method="post">
+                   <input style="display:none;" value="<%=session.kullanici.kullaniciKodu%>" name="kullaniciKodu" >
                     <div class="row">
                        <div class="row">
                             <div class="input-field col m6">
-                                <select class="browser-default" id="slctBayi" name="BayiTuru">
-                                  <option value="" disabled selected>Bayi \ Servisler Seç</option>
-                                  <option value="1">Bayi</option>
-                                  <option value="2">Servisler</option>
-                                  <option value="3">Bayi ve Servisler</option>
+                                <select class="browser-default" id="slctBayi" name="bayiTuru">
+                                  <option value="Seçiniz" disabled selected>Bayi \ Servisler Seç</option>
+                                  <option value="Bayi">Bayi</option>
+                                  <option value="Servisler">Servisler</option>
+                                  <option value="Bayi ve Servisler">Bayi ve Servisler</option>
                                 </select>
                             </div>
                             <div class="input-field col m6">
                                 <select class="browser-default" id="slctUlke" name="ulkeAdi">
-                                  <option value="" disabled selected>Ülke Seç</option>
-                                  <option value="1">Türkiye</option>
+                                  <option value="Seçiniz" disabled selected>Ülke Seç</option>
+                                  <option value="Türkiye">Türkiye</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m6">
-                                <select class="browser-default" id="slctSehir" name="sehirAdi">
-                                  <option value="" disabled selected>İl Seç</option>
-                                  <option value="1">İzmir</option>
-                                  <option value="2">İstanbul</option>
-                                  <option value="3">Ankara</option>
+                                <select class="browser-default" id="slctSehir" name="ilAdi">
+                                  <option value="Seçiniz" disabled selected>İl Seç</option>
+                                  <option value="İzmir">İzmir</option>
+                                  <option value="İstanbul">İstanbul</option>
+                                  <option value="Ankara">Ankara</option>
                                 </select>
                             </div>
                             <div class="input-field col m6">
                                 <select class="browser-default" id="slctİlce" name="ilceAdi">
-                                  <option value="" disabled selected>İlçe Seç</option>
-                                  <option value="1">Buca</option>
+                                  <option value="Seçiniz" disabled selected>İlçe Seç</option>
+                                  <option value="Buca">Buca</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="" type="text" class="validate" name="Ad">
+                                  <input id="" type="text" class="validate" name="ad">
                                   <label for="">Bayi Adı</label>
                             </div>
                         </div>
@@ -95,7 +96,7 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <table class="bordered">
+                        <table class="bordered bayilerTable">
                             <thead>
                               <tr>
                                   <th data-field="id" style="width:50px;">#</th>
@@ -113,22 +114,24 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Bayi</td>
-                                    <td>İzmir</td>
-                                    <td>Buca</td>
-                                    <td>Bayi 1</td>
-                                    <td>Adressssss 1</td>
-                                    <td>544 444 44 44</td>
-                                    <td>544 444 44 44</td>
-                                    <td>sinanbora@gmail.com</td>
-                                    <td>https://www.mavikentbilisim.com</td>
-                                    <td>
-                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                        <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
-                                    </td>
-                                </tr>
+                               <%for(var i=0;i<bayiler.length;i++){%>
+                                   <tr id='<%=bayiler[i]._id%>'>
+                                       <td><%=i+1%>.</td>
+                                       <td><%=bayiler[i].bayiTuru%></td>
+                                       <td><%=bayiler[i].ilAdi%></td>
+                                       <td><%=bayiler[i].ilceAdi%></td>
+                                       <td><%=bayiler[i].ad%></td>
+                                       <td><%=bayiler[i].adres%></td>
+                                       <td><%=bayiler[i].tel%></td>
+                                       <td><%=bayiler[i].fax%></td>
+                                       <td><%=bayiler[i].email%></td>
+                                       <td><%=bayiler[i].web%></td>
+                                       <td id="<%=bayiler[i]._id%>" >
+                                         <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                       </td>
+                                    </tr>
+                               <%}%>
                             </tbody>
                         </table>
                   </div>
@@ -141,3 +144,4 @@
 </main>
 <% include ../js/lib-js/masterPageScripts.js %>
 
+<script src="../js/lib-js/bayiler.js"></script>
