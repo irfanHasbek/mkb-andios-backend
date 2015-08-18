@@ -1,5 +1,11 @@
 $(document).ready(function(){
-    $('.modal-trigger').leanModal();
+  var urun = urunOlustur()
+  //modal-trigger
+  $('.modal-trigger').leanModal();
+  //Sayfayi refreshden onleme
+  window.onbeforeunload = function() {
+    return "Hey, you're leaving the site. Bye!";
+  };
   //Ana kategori dropdown doldurma
   $("#btnAnaKategoriEkle").on("click", function(){
     var anaKategori = $("#inpAnaKategori").val()
@@ -17,7 +23,7 @@ $(document).ready(function(){
         $("#inpAnaKategori").val("")
       })
     }else {
-      alert("Lutfen kategori adi giriniz !")
+      Materialize.toast('Lutfen kategori adi giriniz !', 4000)
     }
   })
 
@@ -132,15 +138,29 @@ $(document).ready(function(){
     }
   })
 
+  $("#btnUrunKaydet").on("click", function(){
+    console.log(urun);
+  })
+
+  $("#inpMedya").change(function(){
+    var numFiles = $("#inpMedya")[0].files.length;
+    if (numFiles > 4) {
+      $("#inpMedya").val("")
+      alertify.error("Max medya adedi 4 tur !")
+    }
+  })
+
   $("#formUstResim").ajaxForm(function(sonuc){
     if(!sonuc.state) {
       alertify.error("Resim yuklenirken hata olustu !")
       return
     }
-    var ustResimUrl = sonuc.medyaListesi.medyaListesi.path.replace("front-end/public/",sonuc.host)
+    var ustResimUrl = resimLinkOlustur(sonuc.medyaListesi.medyaListesi.path, sonuc.host)
     if (ustResimUrl) {
       $("#imgUstResim").attr("src", ustResimUrl);
+      urun.ustResim = ustResimUrl
       alertify.success("Resim basariyla yuklendi !")
+      $("#inpUstResim").val("")
     }else {
       alertify.error("Resim yuklenirken hata olustu !")
       return
@@ -152,9 +172,43 @@ $(document).ready(function(){
       alertify.error("Resim yuklenirken hata olustu !")
       return
     }
-    alertify.success("Resim basariyla yuklendi !")
+    var galeri = sonuc.medyaListesi.medyaListesi
+    if (galeri.length > 0) {
+      for (var i = 0; i < galeri.length; i++) {
+        if (urun.galeri.length < 4) {
+          urun.galeri.push({ resimLinki : resimLinkOlustur(galeri[i].path, sonuc.host)})
+        }else {
+          alertify.success("Max resim sayisina ulasildi !")
+          return
+        }
+        $("#resim" + i).attr("src", resimLinkOlustur(galeri[i].path, sonuc.host))
+      }
+    }else {
+      urun.galeri.push({ resimLinki : resimLinkOlustur(galeri.path, sonuc.host)})
+      $("#resim0").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
+    }
+    $("#inpMedya").val("")
+    alertify.success("Resimler basariyla yuklendi !")
   })
 
+})
+
+$(".resimSil").on("click", function(){
+  var sira = $(this).attr("id").replace("sil","")
+  var resimLinki = $("#resim" + sira).attr("src")
+
+  if (resimLinki && resimLinki != "/images/default.png") {
+    wsPost("/dosya/sil", { path : resimLinki}, function(hata, sonuc){
+      if (hata || !sonuc.state) {
+        alertify.error("Dosya silinirken hata olustu !")
+        return
+      }
+      alertify.success("Dosya basariyla silindi !")
+      var resimLinki = $("#resim" + sira).attr("src", "/images/default.png")
+    })
+  }else {
+    alertify.warning("Resim yuklemeden silme islemi gerceklestiremezsiniz !")
+  }
 })
 
 //dropdown bosalt
@@ -162,4 +216,23 @@ function selectBosalt(selectId){
   $(selectId).empty()
   var temp = $("<option value='' selected disabled>Alt kategori seciniz</option>");
   $(selectId).append(temp)
+}
+
+function resimLinkOlustur(link, sunucu){
+  var ustResimUrl = link.replace("front-end/public/",sunucu)
+  return ustResimUrl
+}
+
+function urunOlustur(){
+  var urun = {
+    kullaniciKodu : "",
+    anaKategori : "",
+    altKategori : "",
+    ustResim : "",
+    galeri : [],// {resimLinki : ""}
+    aciklama : ""
+  }
+  urun.kullaniciKodu = $("#kullaniciKodu").val()
+
+  return urun
 }

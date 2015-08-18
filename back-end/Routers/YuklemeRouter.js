@@ -44,7 +44,7 @@ function Yukleme(){
         dest: './front-end/public/yuklemeler/',
         changeDest: function(dest, req, res) {
             var newDestination = dest + req.session.kullanici._id + "/medyalar";
-            console.log(newDestination);
+            //console.log(newDestination);
             /*var stat = null;
             try {
                 stat = fs.statSync(newDestination);

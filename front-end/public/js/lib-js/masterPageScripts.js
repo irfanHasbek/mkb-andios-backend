@@ -9,6 +9,7 @@
   </script>
   <script>
       $(document ).ready(function(){
+          alertify.set('notifier','position', 'top-right');
           $('.upsize').on("click",function(){
             $('.upsize ul').slideToggle(400)
           });
@@ -16,7 +17,6 @@
           $('ul .altMenu').each(function(){
             $(this).attr("style","display:none;")
           });
-
       })
   </script>
   </body>

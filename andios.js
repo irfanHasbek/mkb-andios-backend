@@ -91,6 +91,9 @@ mongoose.connect(config.dbpath, function(err){
     //Yukleme router
     assignRouter(app, './back-end/Routers/YuklemeRouter', '/yukle');
 
+    //DosyaSistemleri router
+    assignRouter(app, './back-end/Routers/DosyaSistemleriRouter', '/dosya');
+
     //Versiyon crud operasyon
     createCrudRouter(app, './back-end/Modeller/VersiyonModeli', '/versiyon');
 
