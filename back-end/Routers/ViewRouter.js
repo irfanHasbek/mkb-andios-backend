@@ -146,7 +146,6 @@ function ViewRouter(){
             return
           }
             Bayiler.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(bayiHatasi,bayiler){
-                console.log("bayiler : "+bayiler);
                 if(bayiHatasi || !bayiler){
                     console.log("bayileri yüklenirken hata oluştu.");
                     res.send({kod:404,mesaj:"bayiler yüklenirken hata oluştu."});
