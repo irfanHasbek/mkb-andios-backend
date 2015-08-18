@@ -9,9 +9,9 @@ function Yukleme(){
     router.post('/dosyayukle', multer({
         dest: './front-end/public/yuklemeler/',
         changeDest: function(dest, req, res) {
-            var newDestination = dest + req.session.kullanici._id + "/medyalar";
-            var stat = null;
-            /*try {
+            var newDestination = dest + req.session.kullanici._id + "/dosyalar";
+            /*var stat = null;
+            try {
                 stat = fs.statSync(newDestination);
             } catch (err) {
                 fs.mkdirSync(newDestination);
@@ -32,11 +32,11 @@ function Yukleme(){
             //console.log(file.fieldname + ' uploaded to  ' + file.path);
         },
         onError: function(error, next) {
-            console.log("Error occurred while uploading the file!!");
+            console.log("Yukleme esnasinda hata olustu ! : " + error);
         }
     }),function(req, res){
         //req.protocol
-        res.send({state : true, dosyaAdi : req['files'], host : config.host});
+        res.send({state : true, dosyaListesi : req['files'], host : config.host});
     });
 
     //coklu resim yukleme
@@ -44,8 +44,9 @@ function Yukleme(){
         dest: './front-end/public/yuklemeler/',
         changeDest: function(dest, req, res) {
             var newDestination = dest + req.session.kullanici._id + "/medyalar";
-            var stat = null;
-            /*try {
+            console.log(newDestination);
+            /*var stat = null;
+            try {
                 stat = fs.statSync(newDestination);
             } catch (err) {
                 fs.mkdirSync(newDestination);
@@ -66,11 +67,11 @@ function Yukleme(){
             //console.log(file.fieldname + ' uploaded to  ' + file.path);
         },
         onError: function(error, next) {
-            console.log("Error occurred while uploading the file!!");
+            console.log("Yukleme esnasinda hata olustu ! : " + error);
         }
     }),function(req, res){
         //req.protocol
-        res.send({state : true, fotografListesi : req['files'], host : config.host});
+        res.send({state : true, medyaListesi : req['files'], host : config.host});
     });
 
     return router;

@@ -114,6 +114,39 @@ $(document).ready(function(){
       $("#altKategoriListesi option[data='" + altKategoriId + "']").remove()
     })
   })
+
+  $("#btnUstResimYukle").on("click", function(e){
+    if (!$("#inpUstResim").val()) {
+      e.preventDefault();
+      alertify.error("Lutfen yuklemek istediginiz resmi seciniz !")
+      return
+    }
+  })
+
+  $("#btnUrunResimYukle").on("click", function(e){
+    if (!$("#inpMedya").val()) {
+      e.preventDefault();
+      alertify.error("Lutfen yuklemek istediginiz resmi seciniz !")
+      return
+    }
+  })
+
+  $("#formUstResim").ajaxForm(function(sonuc){
+    if(!sonuc.state) {
+      alertify.error("Resim yuklenirken hata olustu !")
+      return
+    }
+    alertify.success("Resim basariyla yuklendi !")
+  })
+
+  $("#formMedya").ajaxForm(function(sonuc){
+    if(!sonuc.state) {
+      alertify.error("Resim yuklenirken hata olustu !")
+      return
+    }
+    alertify.success("Resim basariyla yuklendi !")
+  })
+
 })
 
 //dropdown bosalt

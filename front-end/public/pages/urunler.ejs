@@ -40,35 +40,54 @@
                               </div>
                           </div>
                           <div class="row">
-                              <div class="col s12">
-                                  <form action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
-                                      <div class="file-field input-field">
-                                          <input placeholder="ürün üst resmi seç" class="file-path validate" type="text"/>
-                                          <div class="btn">
-                                              <span>Dosya Yükle</span>
-                                              <input type="file" multiple/>
-                                          </div>
+                              <div class="">
+                                  <div class="col s12">
+                                      <div class="card">
+                                        <div class="card-image">
+                                          <img height:150px src="http://placehold.it/250x250" class="responsive-img materialboxed">
+                                          <span class="card-title">Card Title</span>
+                                        </div>
+                                        <div class="card-action">
+                                          <a href="#">This is a link</a>
+                                        </div>
                                       </div>
-                                  </form>
+                                    </div>
                               </div>
+                          </div>
+                          <div class="row">
+                          <form id="formUstResim" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
+                            <div class="col s11">
+                                <div class="file-field input-field">
+                                    <input placeholder="ürün ust resim sec" class="file-path validate" type="text"/>
+                                    <input id="inpUstResim" type="file" name="medyaListesi"/>
+                                </div>
+                            </div>
+                            <div class="col s1">
+                                <div class="input-field">
+                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                </div>
+                            </div>
+                          </form>
+                          </div>
+                          <div class="row">
+                              <form id="formMedya" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
+                                <div class="col s11">
+                                    <div class="file-field input-field">
+                                        <input placeholder="ürün resimleri secin" class="file-path validate" type="text"/>
+                                        <input id="inpMedya" type="file" name="medyaListesi" multiple/>
+                                    </div>
+                                </div>
+                                <div class="col s1">
+                                    <div class="input-field">
+                                        <button type="submit" id="btnUrunResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                    </div>
+                                </div>
+                              </form>
                           </div>
                           <div class="row">
                               <div class="input-field col s12">
                                   <textarea class="materialize-textarea" ></textarea>
                                   <label for="text">Açıklama</label>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col s12">
-                                  <form action="#">
-                                      <div class="file-field input-field">
-                                          <input placeholder="dosya seç" class="file-path validate" type="text"/>
-                                          <div class="btn">
-                                              <span>Dosya Yükle</span>
-                                              <input type="file" />
-                                          </div>
-                                      </div>
-                                  </form>
                               </div>
                           </div>
                      </div>
