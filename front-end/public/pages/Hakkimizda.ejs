@@ -18,8 +18,7 @@
                            <input type="text" style="display:none;"  value="<%=hakkimizda._id%>" name="_id">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" name="vizyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>><%=hakkimizda%></textarea>
-                                    <label for="text">Vizyon</label>
+                                    <textarea class="materialize-textarea" name="vizyon" placeholder="Vizyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>><%=hakkimizda%></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -38,17 +37,16 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" name="misyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>><%=hakkimizda.misyon%></textarea>
-                                    <label for="text">Misyon</label>
-                                </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" name="misyon" placeholder="misyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>><%=hakkimizda.misyon%></textarea>
                             </div>
-                            <div class="row">
-                                <div class="right-align">
-                                    <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>>Kaydet</button>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="right-align">
+                                <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>>Kaydet</button>
                             </div>
+                        </div>
                   </div>
 
                 </div>
@@ -62,8 +60,7 @@
                     <div class="row">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" name="kalitePolitikasi" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>><%=hakkimizda.kalitePolitikasi%></textarea>
-                                    <label for="text">Kalite Politikası</label>
+                                    <textarea class="materialize-textarea" name="kalitePolitikasi" placeholder="Kalite politikası" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>><%=hakkimizda.kalitePolitikasi%></textarea>
                                 </div>
                             </div>
                             <div class="row">

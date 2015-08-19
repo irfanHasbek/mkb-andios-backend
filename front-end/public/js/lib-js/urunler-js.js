@@ -1,7 +1,6 @@
 $(document).ready(function(){
   var urun = urunOlustur()
-  //modal-trigger
-  $('.modal-trigger').leanModal();
+  
   //Sayfayi refreshden onleme
   window.onbeforeunload = function() {
     //tumFormDatalariniSil()
