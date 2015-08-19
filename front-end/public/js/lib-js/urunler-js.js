@@ -4,7 +4,8 @@ $(document).ready(function(){
   $('.modal-trigger').leanModal();
   //Sayfayi refreshden onleme
   window.onbeforeunload = function() {
-    return "Hey, you're leaving the site. Bye!";
+    //tumFormDatalariniSil()
+    return "Bu sayfa form icermektedir. Sayfadan cikarsaniz form verileriniz silinecektir !";
   };
   //Ana kategori dropdown doldurma
   $("#btnAnaKategoriEkle").on("click", function(){
@@ -139,7 +140,29 @@ $(document).ready(function(){
   })
 
   $("#btnUrunKaydet").on("click", function(){
+    var anaKategori = $("#anaKategoriListesi option:selected").val()
+    var altKategori = $("#altKategoriListesi option:selected").val()
+    var aciklama = $("#txtUrunAciklama").val()
+    if (anaKategori != "" && altKategori != "") {
+      urun.anaKategori = anaKategori
+      urun.altKategori = altKategori
+      urun.aciklama = aciklama
+    }else {
+      alertify.error("Kategori secimlerini dogru yapiniz !")
+      return
+    }
     console.log(urun);
+    if (urun.ustResim != "") {
+      wsPost("/urunler/ekle", urun, function(hata, sonuc){
+        if (hata || !sonuc.state) {
+          console.log(hata + "-" + JSON.stringify(sonuc));
+          alertify.error("Urun eklenirken hata olsutu !")
+          return
+        }
+        alertify.success("Urun basariyla eklendi !")
+        location.reload()
+      })
+    }
   })
 
   $("#inpMedya").change(function(){
@@ -211,6 +234,23 @@ $(".resimSil").on("click", function(){
   }
 })
 
+$(".ustResimSil").on("click", function(){
+  var resimLinki = $("#imgUstResim").attr("src")
+
+  if (resimLinki && resimLinki != "/images/default.png") {
+    wsPost("/dosya/sil", { path : resimLinki}, function(hata, sonuc){
+      if (hata || !sonuc.state) {
+        alertify.error("Dosya silinirken hata olustu !")
+        return
+      }
+      alertify.success("Dosya basariyla silindi !")
+      var resimLinki = $("#imgUstResim").attr("src", "/images/default.png")
+    })
+  }else {
+    alertify.warning("Resim yuklemeden silme islemi gerceklestiremezsiniz !")
+  }
+})
+
 //dropdown bosalt
 function selectBosalt(selectId){
   $(selectId).empty()
@@ -235,4 +275,27 @@ function urunOlustur(){
   urun.kullaniciKodu = $("#kullaniciKodu").val()
 
   return urun
+}
+
+function tumFormDatalariniSil(){
+  var medyaPathListesi = [];
+  for (var i = 0; i < 4; i++) {
+    var resimLinki = $("#resim" + i).attr("src")
+    if (resimLinki != "/images/default.png") {
+      medyaPathListesi.push(resimLinki);
+    }
+  }
+  if ($("#imgUstResim").attr("src") != "/images/default.png") {
+    medyaPathListesi.push($("#imgUstResim").attr("src"))
+  }
+  if (medyaPathListesi.length > 0) {
+    console.log(medyaPathListesi);
+    wsPost("/dosya/coklusil", {pathListesi : medyaPathListesi}, function(hata, sonuc){
+      if(hata || !sonuc.state){
+        console.error("Form temizlenirken hata olustu !")
+        return
+      }
+      console.log("Form Basariyla Temizlendi !");
+    })
+  }
 }

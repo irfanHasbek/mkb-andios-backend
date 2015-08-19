@@ -30,6 +30,7 @@ function CRUD(model){
     });
 
     router.post('/ekle', function(req, res){
+        console.log(JSON.stringify(req.body));
         var modelObject = new model(req.body);
         modelObject.save(function(dbHatasi, eklenen) {
             if(dbHatasi) {
