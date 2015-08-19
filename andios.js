@@ -104,7 +104,7 @@ mongoose.connect(config.dbpath, function(err){
     createCrudRouter(app, './back-end/Modeller/HakkimizdaModeli', '/hakkimizda');
 
     //Kurumsal Izin operasyon
-    createCrudRouter(app, './back-end/Modeller/kurumsalIzinlerModeli', '/kurumsalizinler');
+    createCrudRouter(app, './back-end/Modeller/KurumsalIzinlerModeli', '/kurumsalizinler');
 
     //Urunler operasyon
     createCrudRouter(app, './back-end/Modeller/UrunlerModeli', '/urunler');

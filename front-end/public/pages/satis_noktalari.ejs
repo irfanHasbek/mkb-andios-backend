@@ -6,10 +6,10 @@
                 <div class="card-panel">
                    <form id="frmBayiler" action="/bayiler/ekle" method="post">
                    <input style="display:none;" value="<%=session.kullanici.kullaniciKodu%>" name="kullaniciKodu" >
-                    <div class="row">
+                    <div class="row" id="divBayi">
                        <div class="row">
                             <div class="input-field col m6">
-                                <select class="browser-default" id="slctBayi" name="bayiTuru">
+                                <select class="browser-default" id="slctBayiTuru" name="bayiTuru">
                                   <option value="" disabled selected>Bayi \ Servisler Seç</option>
                                   <option value="Bayi">Bayi</option>
                                   <option value="Servisler">Servisler</option>
@@ -41,8 +41,8 @@
                         </div>
                         <div class="row">
                             <div class="input-field col m12">
-                                  <input id="inpAd" type="text" class="validate" name="ad">
-                                  <label for="">Bayi Adı</label>
+                                  <input id="inpAd" type="text" class="validate" name="ad" placeholder="bayi Adı">
+                                  
                             </div>
                         </div>
                         <div class="row">
