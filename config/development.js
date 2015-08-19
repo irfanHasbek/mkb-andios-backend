@@ -3,5 +3,5 @@ module.exports = {
     port : 3333,
     loglevel : 'debug',
     host : "http://localhost:3333/",
-    izinliUrlListesi : ["/", "/sayfalar/giris", "/hesap/giris", "/hesap/cikis", "/hesap/kaydol", "/sayfalar/kaydol", "/kurumsalizinler/ekle"]
+    izinliUrlListesi : ["/", "/sayfalar/giris", "/hesap/giris", "/hesap/cikis", "/hesap/kaydol", "/sayfalar/kaydol", "/kurumsalizinler/ekle","/versiyon/kontrolet"]
 };
