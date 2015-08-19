@@ -1,5 +1,5 @@
 var express = require('express');
-var kurumsalIzinler = require('../Modeller/kurumsalIzinlerModeli')
+var kurumsalIzinler = require('../Modeller/KurumsalIzinlerModeli')
 var Hakkimizda=require("../Modeller/HakkimizdaModeli");
 var Urunler=require("../Modeller/UrunlerModeli");
 var UrunKategori=require("../Modeller/UrunKategoriModeli");
