@@ -14,33 +14,32 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <form class="col s12">
+                        <form id="frmIletisim" class="col s12" method="post" action="/iletisim/guncelle">
                            <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" placeholder="Adres"></textarea>
+                                    <textarea class="materialize-textarea" placeholder="Adres" name="adres"><%=iletisim.adres%></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" class="validate" placeholder="Telefon-1">
+                                    <input type="text" class="validate" placeholder="Telefon-1" name="tel1" value="<%=iletisim.tel1%>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" class="validate" placeholder="Telefon-2">
+                                    <input type="text" class="validate" placeholder="Telefon-2" name="tel2" value="<%=iletisim.tel2%>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="text" class="validate" placeholder="Telefon-3">
+                                    <input type="text" class="validate" placeholder="Telefon-3" name="tel3" value="<%=iletisim.tel3%>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.adresVeTelefonlar){%>disabled<%}%>>Ekle</a>
+                                    <button type="submit" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.adresVeTelefonlar){%>disabled<%}%>>Kaydet</button>
                                 </div>
                             </div>
-                        </form>
                   </div>
 
                 </div>
@@ -52,13 +51,12 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input type="text" class="validate" placeholder="Latitude">
+                                    <input type="text" class="validate" placeholder="Latitude" value="<%=iletisim.latitude%>">
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="text" class="validate" placeholder="Longtitude">
+                                    <input type="text" class="validate" placeholder="Longtitude" value="<%=iletisim.longtitude%>">
                                 </div>
                             </div>
                             <div class="row">
@@ -67,11 +65,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="100%"  height="350" frameborder="0" style="border:0"></iframe>
+                                <iframe id="ifrmMap" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="100%"  height="350" frameborder="0" style="border:0"></iframe>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>>Ekle</a>
+                                    <button type="submit" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>>Ekle</button>
                                 </div>
                             </div>
                         </form>
@@ -86,7 +84,7 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <table class="bordered">
+                        <table class="bordered iletisimFormlariTable">
                             <thead>
                               <tr>
                                   <th data-field="id" style="width:50px;">#</th>
@@ -100,17 +98,17 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Sinan BORA</td>
-                                    <td>544 444 44 44</td>
-                                    <td>sinanbora@gmail.com</td>
-                                    <td>Konu 1</td>
-                                    <td><span class="truncate">Lorem ipsum dolor sit amet, consectetur adipisicing el..</span></td>
-                                    <td>
-                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                    </td>
-                                </tr>
+                               <%for(var i=0;i<iletisimFormlari.length;i++){%>
+                                   <tr id="<%=iletisimFormlari[i]._id%>">
+                                       <td><%=i+1%></td>
+                                       <td><%=iletisimFormlari[i].adSoyad%></td>
+                                       <td><%=iletisimFormlari[i].gsm%></td>
+                                       <td><%=iletisimFormlari[i].email%></td>
+                                       <td><%=iletisimFormlari[i].konu%></td>
+                                       <td><span class="truncate"><%=iletisimFormlari[i].detay%></span></td>
+                                       <td><button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button></td>
+                                   </tr>
+                               <%}%>
                             </tbody>
                         </table>
                   </div>

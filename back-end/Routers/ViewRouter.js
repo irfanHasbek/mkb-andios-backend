@@ -4,6 +4,8 @@ var Hakkimizda=require("../Modeller/HakkimizdaModeli");
 var Urunler=require("../Modeller/UrunlerModeli");
 var UrunKategori=require("../Modeller/UrunKategoriModeli");
 var Bayiler=require("../Modeller/BayilerModeli");
+var Iletisim=require("../Modeller/IletisimModeli");
+var IletisimFormu=require("../Modeller/IletisimFormuModeli");
 
 function ViewRouter(){
     var router = express.Router();
@@ -217,8 +219,24 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('iletisim', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+        Iletisim.findOne({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(iletisimHatasi,iletisim){
+            if(iletisimHatasi || !iletisim){
+                console.log("iletisim bilgileri getirilemedi.");
+                res.send({kod:404,mesaj:"iletisim bilgileri getirilemedi"});
+                return;
+            }
+            IletisimFormu.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(iletisimFormuHatasi,iletisimFormlari){
+                if(iletisimFormuHatasi || !iletisimFormlari){
+                    console.log("iletisim bilgileri getirilemedi.");
+                    res.send({kod:404,mesaj:"iletisim bilgileri getirilemedi"});
+                    return;
+                 }
+                
+                res.render('iletisim', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,iletisim:iletisim,iletisimFormlari:iletisimFormlari});
+            });
+        });
+          
+        });
     });
     router.get('/kariyer', function(req, res){
         req.session.guncelSayfa = '/sayfalar/kariyer';

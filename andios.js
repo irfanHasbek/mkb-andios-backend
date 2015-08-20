@@ -114,6 +114,48 @@ mongoose.connect(config.dbpath, function(err){
 
     //bayiler operasyon
     createCrudRouter(app, './back-end/Modeller/BayilerModeli', '/bayiler');
+    
+    //iletisim operasyon
+    createCrudRouter(app, './back-end/Modeller/IletisimModeli', '/iletisim');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/IletisimFormuModeli', '/iletisimformu');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/HizmetlerModeli', '/hizmetler');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/HizmetlerKategorileriModeli', '/hizmetlerkategorileri');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/ProjelerModeli', '/projeler');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/UretimModeli', '/uretim');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/IstekSikayetModeli', '/isteksikayet');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/SikSorulanSorularModeli', '/siksorular');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/FiyatListesiModeli', '/fiyatlistesi');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/IKPolitikasiModeli', '/ikpolitikasi');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/IsStajModeli', '/isstaj');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/HaberlerModeli', '/haberler');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/EtkinliklerModeli', '/etkinlikler');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/DuyurularModeli', '/duyurular');
 
     if (!module.parent) {
         app.listen(config.port);
