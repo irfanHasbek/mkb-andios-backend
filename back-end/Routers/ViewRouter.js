@@ -55,7 +55,7 @@ function ViewRouter(){
                 res.send({kod : 404, mesaj : "hakkımızda Yuklenirken Hata Olustu !"})
                 return
              }
-            res.render('hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,hakkimizda: hakkimizda});
+            res.render('Hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,hakkimizda: hakkimizda});
           });
         });
     });
