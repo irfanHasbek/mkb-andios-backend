@@ -90,11 +90,12 @@ $(document).ready(function(){
         hizmetler.kategori=$("#slctHKategori option:selected").val();
         hizmetler.aciklama=$("#txtAciklama").val();
         hizmetler.kullaniciKodu=$("#inpKullaniciKodu").val();
-        hizmetler.ustResim=$("#imgUstResim").attr("src");
+        if($("#imgUstResim").attr("src")!="/images/default.png"){
+            hizmetler.ustResim=$("#imgUstResim").attr("src");
+          }
         for(var i=0;i<4;i++){
             if($("#resim"+i).attr("src")!="/images/default.png"){
-            console.log(i);
-                hizmetler.galeri[i].resimLinki=$("#resim"+i).attr("src");
+                hizmetler.galeri.push({resimLinki:$("#resim"+i).attr("src")});
             }
             
         }
@@ -105,7 +106,7 @@ $(document).ready(function(){
                 return;
             }
             alertify.success("işleminiz başarı ile gerçekleştirildi.");
-          //  location.reload();
+            location.reload();
         });
     });
 });
