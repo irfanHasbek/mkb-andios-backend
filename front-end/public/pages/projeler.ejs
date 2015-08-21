@@ -5,11 +5,12 @@
             <div class="card-panel">
                 <div class="row">
                    <div class="row">
+                       <input id="inpKullaniciKodu" style="display:none;" value="<%=session.kullanici.kullaniciKodu%>">
                         <div class="input-field col m12 no-padding">
-                            <select class="browser-default">
+                            <select class="browser-default" id="slctProjeler">
                               <option value="" disabled selected>Proje Durumu Seç</option>
-                              <option value="1">Devam eden projeler</option>
-                              <option value="2">Tamamlanan Projeler</option>
+                              <option value="Devam eden">Devam eden projeler</option>
+                              <option value="Tamamlanan">Tamamlanan Projeler</option>
                             </select>
                         </div>
                     </div>
@@ -127,12 +128,13 @@
                       </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea class="materialize-textarea" placeholder="Açıklama"></textarea>
+                            <textarea id="txtAciklama" class="materialize-textarea" placeholder="Açıklama"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="right-align">
-                            <a class="waves-effect waves-light btn">Ekle</a>
+                            <a id="btnEkle" class="waves-effect waves-light btn">Ekle</a>
+                            <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +146,7 @@
         <div class="col s12">
             <div class="card-panel">
                 <div class="row">
-                    <table class="bordered">
+                    <table class="bordered projelerTable" >
                         <thead>
                           <tr>
                               <th data-field="id" style="width:50px;">#</th>
@@ -157,29 +159,29 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Ana Kategori 1</td>
+                             <%for(var i=0;i<projeler.length;i++){%>
+                               <tr id="<%=projeler[i]._id%>">
+                                <td><%=i+1%></td>
+                                <td><%=projeler[i].kategori%></td>
                                 <td>
-                                    <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                    <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=projeler[i].ustResim%>" style="height:50px; width:50px;">
                                 </td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit..</td>
+                                <td><%=projeler[i].aciklama%></td>
                                 <td>
                                     <div class="" style="padding:0">
-                                        <div class="col s6" style="padding:0">
-                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                       <%for(var j=0;j<projeler[i].galeri.length;j++){%>
+                                           <div class="col s3" style="padding:0">
+                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=projeler[i].galeri[j].resimLinki%>" style="height:50px; width:50px;">
                                         </div>
-                                        <div class="col s6" style="padding:0">
-                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
-                                        </div>
-                                        
+                                       <%}%>
                                     </div>
                                 </td>
-                                <td>
-                                    <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                    <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                <td id="<%=projeler[i]._id%>">
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
                                 </td>
                             </tr>
+                           <%}%>
                         </tbody>
                     </table>
               </div>
@@ -189,3 +191,4 @@
     </div>
 </main>
 <% include ../js/lib-js/masterPageScripts.js %>
+<script src="../js/lib-js/projeler.js"></script>
