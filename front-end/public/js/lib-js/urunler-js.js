@@ -194,6 +194,7 @@ $(document).ready(function(){
       alertify.error("Resim yuklenirken hata olustu !")
       return
     }
+      console.log(sonuc);
     var galeri = sonuc.medyaListesi.medyaListesi
     if (galeri.length > 0) {
       for (var i = 0; i < galeri.length; i++) {

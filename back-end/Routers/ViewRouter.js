@@ -6,6 +6,22 @@ var UrunKategori=require("../Modeller/UrunKategoriModeli");
 var Bayiler=require("../Modeller/BayilerModeli");
 var Iletisim=require("../Modeller/IletisimModeli");
 var IletisimFormu=require("../Modeller/IletisimFormuModeli");
+var HizmetlerKategorileri=require("../Modeller/HizmetlerKategorileriModeli");
+var Hizmetler=require("../Modeller/HizmetlerModeli");
+var Projeler=require("../Modeller/ProjelerModeli");
+var UretimFormu=require("../Modeller/UretimModeli");
+var IstekSikayet=require("../Modeller/IstekSikayetModeli");
+var SikSorulanSorular=require("../Modeller/SikSorulanSorularModeli");
+var BilgiBankasi=require("../Modeller/BilgiBankasiModeli");
+var FiyatListesi=require("../Modeller/FiyatListesiModeli");
+var IkPolitikasi=require("../Modeller/IKPolitikasiModeli");
+var IsStaj=require("../Modeller/IsStajModeli");
+var Haberler=require("../Modeller/HaberlerModeli");
+var Etkinlikler=require("../Modeller/EtkinliklerModeli");
+var Duyurular=require("../Modeller/DuyurularModeli");
+var BelgeVeSertifikalar=require("../Modeller/BelgeVeSertifikalarModeli");
+var KurumsalVideo=require("../Modeller/KurumsalVideoModeli");
+var KurumsalFotoGaleri=require("../Modeller/KurumsalFotoGaleriModeli");
 
 function ViewRouter(){
     var router = express.Router();
@@ -33,13 +49,12 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          Hakkimizda.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(hakkimizdaHatasi,hakkimizda){
+          Hakkimizda.findOne({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(hakkimizdaHatasi,hakkimizda){
              if(hakkimizdaHatasi || !hakkimizda){
                 console.log("hakkımızda sayfası Hata Olustu !");
                 res.send({kod : 404, mesaj : "hakkımızda Yuklenirken Hata Olustu !"})
                 return
              }
-              console.log(hakkimizda)
             res.render('hakkimizda', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,hakkimizda: hakkimizda});
           });
         });
@@ -54,8 +69,29 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('icerik', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+          BelgeVeSertifikalar.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(errBelgeVS,resBelgeVS){
+             if(errBelgeVS || !resBelgeVS){
+                console.log("belge ve sertifikalar listelenemedi!");
+                res.send({kod : 404, mesaj : "belge ve sertifikalar listelenemedi !"})
+                return
+             }
+             KurumsalVideo.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(errkurumsalVideo,resKurumsalVideo){
+                 if(errkurumsalVideo || !resKurumsalVideo){
+                     console.log("kurumsal videolar listelenemedi!");
+                     res.send({kod : 404, mesaj : "kurumsal videolar listelenemedi !"})
+                     return
+                 }
+                 KurumsalFotoGaleri.find({kullaniciKodu : req.session.kullanici.kullaniciKodu},function(errFotoGaleri,resFotoGaleri){
+                     if(errFotoGaleri || !resFotoGaleri){
+                         console.log("kurumsal fotograflar listelenemedi!");
+                         res.send({kod : 404, mesaj : "kurumsal fotograflar listelenemedi !"})
+                         return
+                     }
+              res.render('icerik', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,belgeVeSertifikalar:resBelgeVS,kurumsalVideo:resKurumsalVideo,kurumsalFotoGaleri:resFotoGaleri});
+             })
+           })
+         })
+       })
     });
 
     router.get('/urunler', function(req, res){
@@ -95,8 +131,22 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('hizmetler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+          HizmetlerKategorileri.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errHKategorileri,resHKategorileri){
+            if(errHKategorileri || !resHKategorileri){
+                console.log("hizmet kategorileri listenemedi");
+                res.send({kod : 404, mesaj : " hizmet kategorileri listenemedi !"})
+                return
+            }
+            Hizmetler.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errHizmetler,resHizmetler){
+            if(errHKategorileri || !resHKategorileri){
+                console.log("hizmetler listenemedi");
+                res.send({kod : 404, mesaj : " hizmetler listenemedi !"})
+                return
+            }
+            res.render('hizmetler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler, hizmetKategorileri:resHKategorileri,hizmetler:resHizmetler});
+           });
+          });
+        });
     });
     router.get('/projeler', function(req, res){
         req.session.guncelSayfa = '/sayfalar/projeler';
@@ -108,8 +158,15 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('projeler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+          Projeler.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errProjeler,resProjeler){
+            if(errProjeler || !resProjeler){
+                console.log("projeler listenemedi");
+                res.send({kod : 404, mesaj : "projeler listenemedi !"})
+                return
+            }
+          res.render('projeler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,projeler:resProjeler});
+          });
+        });
     });
     router.get('/uretim', function(req, res){
         req.session.guncelSayfa = '/sayfalar/uretim';
@@ -121,7 +178,14 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('uretim', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+        Uretim.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errUretim,resUretim){
+            if(errUretim || !resUretim){
+                console.log("uretimler listenemedi");
+                res.send({kod : 404, mesaj : "uretimler listenemedi !"})
+                return
+            }
+          res.render('uretim', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,uretim:resUretim});
+          });
         })
     });
     router.get('/musteri_hizmetleri', function(req, res){
@@ -134,7 +198,28 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('musteri_hizmetleri', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+          IstekSikayet.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errIstekSikayet,resIstekSikayet){
+            if(errIstekSikayet || !resIstekSikayet){
+                console.log("istek ve sikayetler listenemedi");
+                res.send({kod : 404, mesaj : "istek ve sikayetler listenemedi !"})
+                return
+            }
+            SikSorulanSorular.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errSikSorulan,resSiksorulan){
+              if(errSikSorulan || !resSiksorulan){
+                console.log("sık sorulan sorular listenemedi");
+                res.send({kod : 404, mesaj : "sık sorulan sorular listenemedi !"})
+                return
+              }
+              BilgiBankasi.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errBilgiBankasi,resBilgiBankasi){
+                if(errBilgiBankasi || !resBilgiBankasi){
+                    console.log("bilgi bankası listenemedi");
+                    res.send({kod : 404, mesaj : "bilgi bankası listenemedi !"})
+                    return
+                }
+          res.render('musteri_hizmetleri', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,istekSikayet:resIstekSikayet,sikSorulanSorular:resSiksorulan,bilgiBankasi:resBilgiBankasi});
+              });
+            });
+          });
         })
     });
     router.get('/satis_noktalari', function(req, res){
@@ -167,8 +252,15 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('fiyat_listesi', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+          FiyatListesi.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errFiyatListesi,resFiyatListesi){
+            if(errFiyatListesi || !resFiyatListesi){
+                console.log("fiyatlar listenemedi");
+                res.send({kod : 404, mesaj : "fiyatlar listenemedi !"})
+                return
+            }
+           res.render('fiyat_listesi', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,fiyatListesi:resFiyatListesi});
+          });
+        });
     });
     router.get('/haberler', function(req, res){
         req.session.guncelSayfa = '/sayfalar/haberler';
@@ -180,7 +272,14 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('haberler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+          Haberler.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errHaberler,resHaberler){
+            if(errHaberler || !resHaberler){
+                console.log("haberler listenemedi");
+                res.send({kod : 404, mesaj : "haberler listenemedi !"})
+                return
+            }
+          res.render('haberler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,haberler:resHaberler});
+          });
         })
     });
     router.get('/etkinlikler', function(req, res){
@@ -193,7 +292,14 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('etkinlikler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+          Etkinlikler.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errEtkinlikler,resEtkinlikler){
+            if(errEtkinlikler || !resEtkinlikler){
+                console.log("etkinlikler listenemedi");
+                res.send({kod : 404, mesaj : "etkinlikler listenemedi !"})
+                return
+            }
+          res.render('etkinlikler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,etkinlikler:resEtkinlikler});
+         });
         })
     });
     router.get('/duyurular', function(req, res){
@@ -206,7 +312,14 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('duyurular', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+          Duyurular.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errDuyurular,resDuyurular){
+            if(errDuyurular || !resDuyurular){
+                console.log("duyurular listenemedi");
+                res.send({kod : 404, mesaj : "duyurular listenemedi !"})
+                return
+            }
+          res.render('duyurular', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler ,duyurular:resDuyurular});
+         });
         })
     });
     router.get('/iletisim', function(req, res){
@@ -248,8 +361,22 @@ function ViewRouter(){
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
             return
           }
-          res.render('kariyer', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
-        })
+         IkPolitikasi.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errIkPolitikasi,resIkPolitikasi){
+            if(errIkPolitikasi || !resIkPolitikasi){
+                console.log("ik politikaları listenemedi");
+                res.send({kod : 404, mesaj : "ik politikaları listenemedi !"})
+                return
+            }
+            IsStaj.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errIsStaj,resIsStaj){
+              if(errIsStaj || !resIsStaj){
+                 console.log("is staj bilgileri listenemedi");
+                 res.send({kod : 404, mesaj : "iş staj bilgileri listenemedi !"})
+                 return
+             }
+          res.render('kariyer', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler, ikPolitikasi:resIkPolitikasi,isStaj : resIsStaj});
+           });
+         });
+        });
     });
     router.get('/ayarlar', function(req, res){
         req.session.guncelSayfa = '/sayfalar/ayarlar';

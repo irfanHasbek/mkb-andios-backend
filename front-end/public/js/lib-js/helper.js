@@ -219,3 +219,115 @@ function getTodayDate(){
 function isNumber(o) {
   return ! isNaN (o-0) && o !== null && o !== "" && o !== false;
 }
+
+function resimLinkOlustur(link, sunucu){
+  var ustResimUrl = link.replace("front-end/public/",sunucu)
+  return ustResimUrl
+}
+
+function ustResimEkle(obj , sonuc){
+        if(!sonuc.state) {
+          alertify.error("Resim yuklenirken hata olustu !")
+          return
+        }
+        var ustResimUrl = resimLinkOlustur(sonuc.medyaListesi.medyaListesi.path, sonuc.host)
+        if (ustResimUrl) {
+          $("#imgUstResim").attr("src", ustResimUrl);
+          obj.ustResim = ustResimUrl;
+          alertify.success("Resim basariyla yuklendi !");
+          $("#inpUstResim").val("");
+          $(".ustResim").val("");
+        }else {
+          alertify.error("Resim yuklenirken hata olustu !")
+          return
+        }
+
+}
+
+
+function ustResimSil(){
+    $(".ustResimSil").on("click", function(){
+      var resimLinki = $("#imgUstResim").attr("src")
+
+      if (resimLinki && resimLinki != "/images/default.png") {
+        wsPost("/dosya/sil", { path : resimLinki}, function(hata, sonuc){
+          if (hata || !sonuc.state) {
+            alertify.error("Dosya silinirken hata olustu !")
+            return
+          }
+          alertify.success("Dosya basariyla silindi !")
+          var resimLinki = $("#imgUstResim").attr("src", "/images/default.png")
+        })
+      }else {
+        alertify.warning("Resim yuklemeden silme islemi gerceklestiremezsiniz !")
+      }
+    })
+}
+function resimSil(){
+    $(".resimSil").on("click", function(){
+      var sira = $(this).attr("id").replace("sil","")
+      var resimLinki = $("#resim" + sira).attr("src")
+
+      if (resimLinki && resimLinki != "/images/default.png") {
+        wsPost("/dosya/sil", { path : resimLinki}, function(hata, sonuc){
+          if (hata || !sonuc.state) {
+            alertify.error("Dosya silinirken hata olustu !")
+            return
+          }
+          alertify.success("Dosya basariyla silindi !")
+          var resimLinki = $("#resim" + sira).attr("src", "/images/default.png")
+        })
+      }else {
+        alertify.warning("Resim yuklemeden silme islemi gerceklestiremezsiniz !")
+      }
+    })
+
+}
+
+function galeriyeEkle(obj,sonuc){
+   if(!sonuc.state) {
+      alertify.error("Resim yuklenirken hata olustu !")
+      return
+    }
+    var galeri = sonuc.medyaListesi.medyaListesi
+    if (galeri.length > 0) {
+      for (var i = 0; i < galeri.length; i++) {
+        if (obj.galeri.length < 4) {
+          obj.galeri.push({ resimLinki : resimLinkOlustur(galeri[i].path, sonuc.host)})
+        }else {
+          alertify.success("Max resim sayisina ulasildi !")
+          return
+        }
+        $("#resim" + i).attr("src", resimLinkOlustur(galeri[i].path, sonuc.host))
+      }
+    }else {
+      obj.galeri.push({ resimLinki : resimLinkOlustur(galeri.path, sonuc.host)})
+      $("#resim0").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
+    }
+    $("#inpMedya").val("")
+    $(".resim").val("")
+    alertify.success("Resimler basariyla yuklendi !")
+
+}
+function tumFormDatalariniSil(){
+  var medyaPathListesi = [];
+  for (var i = 0; i < 4; i++) {
+    var resimLinki = $("#resim" + i).attr("src")
+    if (resimLinki != "/images/default.png") {
+      medyaPathListesi.push(resimLinki);
+    }
+  }
+  if ($("#imgUstResim").attr("src") != "/images/default.png") {
+    medyaPathListesi.push($("#imgUstResim").attr("src"))
+  }
+  if (medyaPathListesi.length > 0) {
+    console.log(medyaPathListesi);
+    wsPost("/dosya/coklusil", {pathListesi : medyaPathListesi}, function(hata, sonuc){
+      if(hata || !sonuc.state){
+        console.error("Form temizlenirken hata olustu !")
+        return
+      }
+      console.log("Form Basariyla Temizlendi !");
+    })
+  }
+}

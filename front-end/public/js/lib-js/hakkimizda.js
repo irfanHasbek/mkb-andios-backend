@@ -1,6 +1,10 @@
 $(document).ready(function(){
    
     $("#hakkimizdaForm").ajaxForm(function(data){
-        console.log("başarılı "+data);
+        if(data.state==false){
+            alertify.error("hata!!!");
+            return;
+        }
+        alertify.success("başarıyla güncellendi.");
     });
 });

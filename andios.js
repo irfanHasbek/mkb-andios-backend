@@ -125,7 +125,7 @@ mongoose.connect(config.dbpath, function(err){
     createCrudRouter(app, './back-end/Modeller/HizmetlerModeli', '/hizmetler');
     
     //iletisim formu operasyon
-    createCrudRouter(app, './back-end/Modeller/HizmetlerKategorileriModeli', '/hizmetlerkategorileri');
+    createCrudRouter(app, './back-end/Modeller/HizmetlerKategorileriModeli', '/hizmetkategorileri');
     
     //iletisim formu operasyon
     createCrudRouter(app, './back-end/Modeller/ProjelerModeli', '/projeler');
@@ -156,6 +156,15 @@ mongoose.connect(config.dbpath, function(err){
     
     //iletisim formu operasyon
     createCrudRouter(app, './back-end/Modeller/DuyurularModeli', '/duyurular');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/BelgeVeSertifikalarModeli', '/sertifikalar');
+    
+     //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/KurumsalVideoModeli', '/kurumsalvideo');
+    
+     //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/KurumsalFotoGaleriModeli', '/kurumsalfotogaleri');
 
     if (!module.parent) {
         app.listen(config.port);
