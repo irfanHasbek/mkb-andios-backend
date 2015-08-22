@@ -9,8 +9,8 @@
                         <div class="input-field col m12 no-padding">
                             <select class="browser-default" id="slctProjeler">
                               <option value="" disabled selected>Proje Durumu Seç</option>
-                              <option value="Devam eden">Devam eden projeler</option>
-                              <option value="Tamamlanan">Tamamlanan Projeler</option>
+                              <option value="Devam eden projeler">Devam eden projeler</option>
+                              <option value="Tamamlanan Projeler">Tamamlanan Projeler</option>
                             </select>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                              <%for(var i=0;i<projeler.length;i++){%>
                                <tr id="<%=projeler[i]._id%>">
                                 <td><%=i+1%></td>
-                                <td><%=projeler[i].kategori%></td>
+                                <td><%=projeler[i].projeDurumu%></td>
                                 <td>
                                     <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=projeler[i].ustResim%>" style="height:50px; width:50px;">
                                 </td>

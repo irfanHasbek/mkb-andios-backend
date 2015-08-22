@@ -1,14 +1,13 @@
 $(document).ready(function(){
-    var projeler={
+    var uretim={
         kullaniciKodu:"",
-        projeDurumu:"",
         ustResim:"",
         aciklama:"",
         galeri:[]
     };
     $("#formMedya").ajaxForm(function(sonuc){
         console.log(sonuc);
-        galeriyeEkle(projeler,sonuc);
+        galeriyeEkle(uretim,sonuc);
     });
     $("#btnFotoYukle").click(function(e){
         if (!$("#inpMedya").val()) {
@@ -18,16 +17,15 @@ $(document).ready(function(){
         }
     });
     $("#formUstResim").ajaxForm(function(sonuc){
-        ustResimEkle(projeler,sonuc);
+        ustResimEkle(uretim,sonuc);
     });
     ustResimSil();
-    resimSil(projeler);
+    resimSil(uretim);
     
     $("#btnEkle").click(function(){
-        projeler.projeDurumu=$("#slctProjeler option:selected").val();
-        projeler.aciklama=$("#txtAciklama").val();
-        projeler.kullaniciKodu=$("#inpKullaniciKodu").val();
-        wsPost("/projeler/ekle",projeler,function(err,res){
+        uretim.aciklama=$("#txtAciklama").val();
+        uretim.kullaniciKodu=$("#inpKullaniciKodu").val();
+        wsPost("/uretim/ekle",uretim,function(err,res){
             if(err){
                 console.error(err);
                 return;
@@ -36,23 +34,22 @@ $(document).ready(function(){
             location.reload();
         });
     });
-    removeFromTable("projelerTable","/projeler/sil",function(){});
+    removeFromTable("uretimTable","/uretim/sil",function(){});
     
-    $(".projelerTable").on("click",".guncelle",function(){
+    $(".uretimTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
         $("#btnEkle").attr("style","display:none");
-        wsPost("/projeler/getir",{_id:id},function(err,res){
+        wsPost("/uretim/getir",{_id:id},function(err,res){
             if(err){
                 console.error(err);
                 return;
             }
             var inp=$("<input id='inpId' style='display:none;'value="+res.data._id+">");
-            $(".projelerTable").append(inp);
-            $("#slctProjeler").find('option:contains('+res.data.projeDurumu+')').attr('selected', true);
+            $(".uretimTable").append(inp);
             $("#imgUstResim").attr("src",res.data.ustResim);
             $("#txtAciklama").val(res.data.aciklama);
-            projeler.galeri=res.data.galeri;
+            uretim.galeri=res.data.galeri;
             for(var i=0;i<res.data.galeri.length;i++){
                 $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
             }
@@ -61,14 +58,13 @@ $(document).ready(function(){
     });
     
     $("#btnGuncelle").click(function(){
-        projeler.projeDurumu=$("#slctProjeler option:selected").val();
-        projeler.aciklama=$("#txtAciklama").val();
-        projeler.kullaniciKodu=$("#inpKullaniciKodu").val();
+        uretim.aciklama=$("#txtAciklama").val();
+        uretim.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
-            projeler.ustResim=$("#imgUstResim").attr("src");
+            uretim.ustResim=$("#imgUstResim").attr("src");
         }
-        projeler._id=$("#inpId").val();
-        wsPost("/projeler/guncelle",projeler,function(err,res){
+        uretim._id=$("#inpId").val();
+        wsPost("/uretim/guncelle",uretim,function(err,res){
             if(err){
                 console.log(err);
                 return;

@@ -1,11 +1,6 @@
 $(document).ready(function(){
   var urun = urunOlustur()
-  
-  //Sayfayi refreshden onleme
-  window.onbeforeunload = function() {
-    //tumFormDatalariniSil()
-    return "Bu sayfa form icermektedir. Sayfadan cikarsaniz form verileriniz silinecektir !";
-  };
+
   //Ana kategori dropdown doldurma
   $("#btnAnaKategoriEkle").on("click", function(){
     var anaKategori = $("#inpAnaKategori").val()

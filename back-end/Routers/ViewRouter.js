@@ -9,7 +9,7 @@ var IletisimFormu=require("../Modeller/IletisimFormuModeli");
 var HizmetlerKategorileri=require("../Modeller/HizmetlerKategorileriModeli");
 var Hizmetler=require("../Modeller/HizmetlerModeli");
 var Projeler=require("../Modeller/ProjelerModeli");
-var UretimFormu=require("../Modeller/UretimModeli");
+var Uretim=require("../Modeller/UretimModeli");
 var IstekSikayet=require("../Modeller/IstekSikayetModeli");
 var SikSorulanSorular=require("../Modeller/SikSorulanSorularModeli");
 var BilgiBankasi=require("../Modeller/BilgiBankasiModeli");
@@ -17,6 +17,7 @@ var FiyatListesi=require("../Modeller/FiyatListesiModeli");
 var IkPolitikasi=require("../Modeller/IKPolitikasiModeli");
 var IsStaj=require("../Modeller/IsStajModeli");
 var Haberler=require("../Modeller/HaberlerModeli");
+var HaberKategorileri=require("../Modeller/HaberKategorileriModeli");
 var Etkinlikler=require("../Modeller/EtkinliklerModeli");
 var Duyurular=require("../Modeller/DuyurularModeli");
 var BelgeVeSertifikalar=require("../Modeller/BelgeVeSertifikalarModeli");
@@ -278,7 +279,14 @@ function ViewRouter(){
                 res.send({kod : 404, mesaj : "haberler listenemedi !"})
                 return
             }
-          res.render('haberler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,haberler:resHaberler});
+            HaberKategorileri.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errHaberKategorileri,resHaberKategorileri){
+                if(errHaberKategorileri || !resHaberKategorileri){
+                    console.log("haber kategorileri listenemedi");
+                    res.send({kod : 404, mesaj : "haber kategorileri listenemedi !"})
+                    return
+              }
+            res.render('haberler', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,haberler:resHaberler,haberKategorileri:resHaberKategorileri});
+            });
           });
         })
     });

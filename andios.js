@@ -128,6 +128,9 @@ mongoose.connect(config.dbpath, function(err){
     createCrudRouter(app, './back-end/Modeller/HizmetlerKategorileriModeli', '/hizmetkategorileri');
     
     //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/HaberKategorileriModeli', '/haberkategorileri');
+    
+    //iletisim formu operasyon
     createCrudRouter(app, './back-end/Modeller/ProjelerModeli', '/projeler');
     
     //iletisim formu operasyon

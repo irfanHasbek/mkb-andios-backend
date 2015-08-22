@@ -6,12 +6,13 @@
                 <div class="row">
                    <div class="col m11" style="padding:0">
                        <div class="row">
-                           <div class="input-field">
-                               <select class="browser-default">
+                          <input id="inpKullaniciKodu" style="display:none;" value="<%=session.kullanici.kullaniciKodu%>">
+                           <div class="input-field" >
+                               <select class="browser-default" id="slctHKategori">
                                   <option value="" disabled selected>Kategori Seç</option>
-                                  <option value="1">Option 1</option>
-                                  <option value="2">Option 2</option>
-                                  <option value="3">Option 3</option>
+                                  <%for(var i=0;i<haberKategorileri.length;i++){%>
+                                  <option data="<%=haberKategorileri[i]._id%>" value="<%=haberKategorileri[i].kategori%>"><%=haberKategorileri[i].kategori%></option>
+                                  <%}%>
                                 </select>
                            </div>
                        </div>
@@ -20,7 +21,7 @@
                        <div class="col m6 no-padding">
                           <div class="" style="">
                               <div class="input-field">
-                                  <a id=""  class="btn btn-floating red tooltipped "  data-position="top" data-delay="50" data-tooltip="Secili ogeyi sil"><i class="mdi-action-delete"></i></a>
+                                  <a id="btnHKSil" class="btn btn-floating red tooltipped "  data-position="top" data-delay="50" data-tooltip="Secili ogeyi sil"><i class="mdi-action-delete"></i></a>
                               </div>
                           </div>
 
@@ -38,10 +39,10 @@
                                 <div class="row">
                                   <div class="col m12">
                                       <div class="input-field col m10">
-                                        <input id="" type="text" class="validate" placeholder="kategori adı">
+                                        <input id="inpHKategoriAdi" type="text" class="validate" placeholder="kategori adı">
                                       </div>
                                       <div class="input-field col m2">
-                                          <a id="" class="waves-effect waves-light btn" style="width:100%">Ekle</a>
+                                          <a id="btnHKEkle" class="waves-effect waves-light btn" style="width:100%">Ekle</a>
                                       </div>
                                   </div>
                               </div>
@@ -57,112 +58,112 @@
                     </div>
                     <!--sdsdsd--->
                     <div class="row">
-                          <div class="col m6 no-padding">
-                              <div class="card-panel">
-                                  <div class="">
-                                      <table class="">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="center-align">
-                                                        <div class="" style="padding:0">
+                         <div class="col m6 no-padding">
+                                  <div class="card-panel">
+                                      <div class="">
+                                          <table class="">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="center-align">
                                                             <div class="" style="padding:0">
-                                                                <div class="card-image">
-                                                                    <img id="" width="100%" height="130px;" class="materialboxed" src="http://placehold.it/250x250">
-                                                                </div>
-                                                                <div class="card-action ">
-                                                                    <a href="Javascript:void(0)" class="" style="color:red">Sil</a>
+                                                                <div class="" style="padding:0">
+                                                                    <div class="card-image">
+                                                                        <img id="imgUstResim" width="100%" height="130px;" class="materialboxed" src="/images/default.png">
+                                                                    </div>
+                                                                    <div class="card-action ">
+                                                                        <a href="Javascript:void(0)" class="ustResimSil" style="color:red">Sil</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                  </div>
                               </div>
-                          </div>
-                          <div class="col m6 ">
-                              <div class="card-panel">
-                                  <div class="">
-                                      <table class="">
-                                            <tbody id="">
-                                                <tr>
-                                                    <td class="center-align">
-                                                      <div class="" style="padding:0">
-                                                          <div class="card-image">
-                                                              <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                          </div>
-                                                          <div class="card-action ">
-                                                              <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                          </div>
-                                                      </div>
-                                                    </td>
-                                                    <td class="center-align">
-                                                      <div class="" style="padding:0">
-                                                          <div class="card-image">
-                                                              <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                          </div>
-                                                          <div class="card-action ">
-                                                              <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                          </div>
-                                                      </div>
-                                                    </td>
-                                                    <td class="center-align">
-                                                      <div class="" style="padding:0">
-                                                          <div class="card-image">
-                                                              <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                          </div>
-                                                          <div class="card-action ">
-                                                              <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                          </div>
-                                                      </div>
-                                                    </td>
-                                                    <td class="center-align">
-                                                      <div class="" style="padding:0">
-                                                          <div class="card-image">
-                                                              <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                          </div>
-                                                          <div class="card-action ">
-                                                              <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                          </div>
-                                                      </div>
-                                                    </td>
-                                                </tr>
+              <div class="col m6 ">
+                  <div class="card-panel">
+                      <div class="">
+                          <table class="">
+                                <tbody id="tabloGaleri">
+                                    <tr>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim0" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil0" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim1" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil1" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim2" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil2" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim3" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil3" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                    </tr>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                              </div>
-                          </div>
+                                </tbody>
+                            </table>
+                        </div>
+                  </div>
+              </div>
                       </div>
                       <div class="row">
                           <div class="col m6 no-padding">
-                              <form id="" action="" enctype="" method="post">
-                                <div class="col s11">
-                                    <div class="file-field input-field">
-                                        <input placeholder="ürün ust resim sec" class="file-path validate" type="text"/>
-                                        <input id="" type="file" name=""/>
+                              <form id="formUstResim" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
+                                    <div class="col s11">
+                                        <div class="file-field input-field">
+                                            <input placeholder="ürün ust resim sec" class="file-path validate ustResim" type="text"/>
+                                            <input id="inpUstResim" type="file" name="medyaListesi"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col s1">
-                                    <div class="input-field">
-                                        <button type="submit" id="" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                    <div class="col s1">
+                                        <div class="input-field">
+                                            <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                              </form>
+                                  </form>
                           </div>
                           <div class="col m6">
-                              <form id="" action="" enctype="multipart/form-data" method="post">
+                              <form id="formMedya" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
                                 <div class="col s11">
                                     <div class="file-field input-field">
-                                        <input placeholder="ürün resimleri secin" class="file-path validate" type="text"/>
-                                        <input id="" type="file" name="" multiple/>
+                                        <input placeholder="ürün resimleri secin" class="file-path validate resim"  type="text"/>
+                                        <input id="inpMedya" type="file" name="medyaListesi" multiple/>
                                     </div>
                                 </div>
                                 <div class="col s1">
                                     <div class="input-field">
-                                        <button type="submit" id="" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                        <button type="submit" id="btnFotoYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
                                     </div>
                                 </div>
                               </form>
@@ -171,12 +172,13 @@
                     <!--sdsdsd--->
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea class="materialize-textarea" placeholder="Açıklama"></textarea>
+                            <textarea id="txtAciklama" class="materialize-textarea" placeholder="Açıklama"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="right-align">
-                            <a class="waves-effect waves-light btn">Ekle</a>
+                            <a id="btnEkle" class="waves-effect waves-light btn">Ekle</a>
+                            <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
                         </div>
                     </div>
                 </div>
@@ -188,7 +190,7 @@
         <div class="col s12">
             <div class="card-panel">
                 <div class="row">
-                    <table class="bordered">
+                    <table class="bordered haberlerTable">
                         <thead>
                           <tr>
                               <th data-field="id" style="width:50px;">#</th>
@@ -201,29 +203,29 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Ana Kategori 1</td>
+                           <%for(var i=0;i<haberler.length;i++){%>
+                               <tr id="<%=haberler[i]._id%>">
+                                <td><%=i+1%></td>
+                                <td><%=haberler[i].kategori%></td>
                                 <td>
-                                    <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                    <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=haberler[i].ustResim%>" style="height:50px; width:50px;">
                                 </td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit..</td>
+                                <td><%=haberler[i].aciklama%></td>
                                 <td>
                                     <div class="" style="padding:0">
-                                        <div class="col s6" style="padding:0">
-                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
+                                       <%for(var j=0;j<haberler[i].galeri.length;j++){%>
+                                           <div class="col s3" style="padding:0">
+                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=haberler[i].galeri[j].resimLinki%>" style="height:50px; width:50px;">
                                         </div>
-                                        <div class="col s6" style="padding:0">
-                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
-                                        </div>
-                                        
+                                       <%}%>
                                     </div>
                                 </td>
-                                <td>
-                                    <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                    <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                <td id="<%=haberler[i]._id%>">
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
                                 </td>
                             </tr>
+                           <%}%>
                         </tbody>
                     </table>
               </div>
@@ -233,3 +235,4 @@
     </div>
 </main>
 <% include ../js/lib-js/masterPageScripts.js %>
+<script src="../js/lib-js/haberler.js"></script>

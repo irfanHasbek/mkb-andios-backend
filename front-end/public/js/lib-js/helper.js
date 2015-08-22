@@ -263,17 +263,20 @@ function ustResimSil(){
       }
     })
 }
-function resimSil(){
+function resimSil(obj){
     $(".resimSil").on("click", function(){
       var sira = $(this).attr("id").replace("sil","")
       var resimLinki = $("#resim" + sira).attr("src")
-
+      console.log(resimLinki);
+      obj.galeri.splice(sira,1);
+      console.log(obj.galeri);
       if (resimLinki && resimLinki != "/images/default.png") {
         wsPost("/dosya/sil", { path : resimLinki}, function(hata, sonuc){
           if (hata || !sonuc.state) {
             alertify.error("Dosya silinirken hata olustu !")
             return
           }
+            
           alertify.success("Dosya basariyla silindi !")
           var resimLinki = $("#resim" + sira).attr("src", "/images/default.png")
         })
@@ -290,19 +293,34 @@ function galeriyeEkle(obj,sonuc){
       return
     }
     var galeri = sonuc.medyaListesi.medyaListesi
+    console.log(sonuc.medyaListesi.medyaListesi);
     if (galeri.length > 0) {
       for (var i = 0; i < galeri.length; i++) {
-        if (obj.galeri.length < 4) {
+        if (obj.galeri.length < 5) {
           obj.galeri.push({ resimLinki : resimLinkOlustur(galeri[i].path, sonuc.host)})
         }else {
           alertify.success("Max resim sayisina ulasildi !")
           return
         }
-        $("#resim" + i).attr("src", resimLinkOlustur(galeri[i].path, sonuc.host))
+        for(var j=0;j<4;j++){
+           if($("#resim" + j).attr("src")=="/images/default.png"){
+              $("#resim" + j).attr("src", resimLinkOlustur(galeri[i].path, sonuc.host))
+              break;
+            }
+         }
       }
     }else {
       obj.galeri.push({ resimLinki : resimLinkOlustur(galeri.path, sonuc.host)})
-      $("#resim0").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
+      if($("#resim0").attr("src")=="/images/default.png"){
+         $("#resim0").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
+      }else if($("#resim1").attr("src")=="/images/default.png"){
+        $("#resim1").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
+      }else if($("#resim2").attr("src")=="/images/default.png"){
+        $("#resim2").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
+      }else{
+        $("#resim3").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
+      }
+      
     }
     $("#inpMedya").val("")
     $(".resim").val("")
