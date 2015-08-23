@@ -120,6 +120,7 @@ $(document).ready(function(){
   $("#btnUstResimYukle").on("click", function(e){
     if (!$("#inpUstResim").val()) {
       e.preventDefault();
+        $("#inpUstResim").val("");
       alertify.error("Lutfen yuklemek istediginiz resmi seciniz !")
       return
     }
@@ -168,96 +169,79 @@ $(document).ready(function(){
   })
 
   $("#formUstResim").ajaxForm(function(sonuc){
-    if(!sonuc.state) {
-      alertify.error("Resim yuklenirken hata olustu !")
-      return
-    }
-    var ustResimUrl = resimLinkOlustur(sonuc.medyaListesi.medyaListesi.path, sonuc.host)
-    if (ustResimUrl) {
-      $("#imgUstResim").attr("src", ustResimUrl);
-      urun.ustResim = ustResimUrl
-      alertify.success("Resim basariyla yuklendi !")
-      $("#inpUstResim").val("")
-    }else {
-      alertify.error("Resim yuklenirken hata olustu !")
-      return
-    }
+    ustResimEkle(urun,sonuc);
   })
 
   $("#formMedya").ajaxForm(function(sonuc){
-    if(!sonuc.state) {
-      alertify.error("Resim yuklenirken hata olustu !")
-      return
-    }
-      console.log(sonuc);
-    var galeri = sonuc.medyaListesi.medyaListesi
-    if (galeri.length > 0) {
-      for (var i = 0; i < galeri.length; i++) {
-        if (urun.galeri.length < 4) {
-          urun.galeri.push({ resimLinki : resimLinkOlustur(galeri[i].path, sonuc.host)})
-        }else {
-          alertify.success("Max resim sayisina ulasildi !")
-          return
-        }
-        $("#resim" + i).attr("src", resimLinkOlustur(galeri[i].path, sonuc.host))
-      }
-    }else {
-      urun.galeri.push({ resimLinki : resimLinkOlustur(galeri.path, sonuc.host)})
-      $("#resim0").attr("src", resimLinkOlustur(galeri.path, sonuc.host))
-    }
-    $("#inpMedya").val("")
-    alertify.success("Resimler basariyla yuklendi !")
-  })
-
+    galeriyeEkle(urun,sonuc);
 })
 
-$(".resimSil").on("click", function(){
-  var sira = $(this).attr("id").replace("sil","")
-  var resimLinki = $("#resim" + sira).attr("src")
-
-  if (resimLinki && resimLinki != "/images/default.png") {
-    wsPost("/dosya/sil", { path : resimLinki}, function(hata, sonuc){
-      if (hata || !sonuc.state) {
-        alertify.error("Dosya silinirken hata olustu !")
-        return
-      }
-      alertify.success("Dosya basariyla silindi !")
-      var resimLinki = $("#resim" + sira).attr("src", "/images/default.png")
-    })
-  }else {
-    alertify.warning("Resim yuklemeden silme islemi gerceklestiremezsiniz !")
-  }
-})
-
-$(".ustResimSil").on("click", function(){
-  var resimLinki = $("#imgUstResim").attr("src")
-
-  if (resimLinki && resimLinki != "/images/default.png") {
-    wsPost("/dosya/sil", { path : resimLinki}, function(hata, sonuc){
-      if (hata || !sonuc.state) {
-        alertify.error("Dosya silinirken hata olustu !")
-        return
-      }
-      alertify.success("Dosya basariyla silindi !")
-      var resimLinki = $("#imgUstResim").attr("src", "/images/default.png")
-    })
-  }else {
-    alertify.warning("Resim yuklemeden silme islemi gerceklestiremezsiniz !")
-  }
-})
-
-//dropdown bosalt
+resimSil(urun);
+ustResimSil();
+    
+    removeFromTable("urunlerTable","/urunler/sil",function(){});
+    
+    $(".urunlerTable").on("click",".guncelle",function(){
+        var id=$(this).closest("tr").attr("id");
+        $("#btnGuncelle").removeAttr("style");
+        $("#btnUrunKaydet").attr("style","display:none");
+        wsPost("/urunler/getir",{_id:id},function(err,res){
+            if(err){
+                console.error(err);
+                return;
+            }
+            var inp=$("<input id='inpId' style='display:none;'value="+res.data._id+">");
+            $(".urunlerTable").append(inp);
+            $("#anaKategoriListesi").find('option:contains('+res.data.anaKategori+')').attr('selected', true);
+            var anaKategoriId= $("#anaKategoriListesi option:selected").attr("data");
+            console.log("kid : "+ anaKategoriId);
+            wsPost("/urunkategorileri/ara", { kullaniciKodu : $("#inpKullaniciKodu").val(), _id : anaKategoriId}, function(hata, kategori){
+                if (hata || !kategori || !kategori.state) {
+                  console.log("Hata : " + hata);
+                  alertify.error("Hata Olustu !")
+                  return
+                }
+                for(var i = 0; i < kategori.data[0].altKategori.length; i ++){
+                  var option = $("<option value='" + kategori.data[0].altKategori[i].kategoriAdi + "' data='" + kategori.data[0].altKategori[i]._id + "'>" + kategori.data[0].altKategori[i].kategoriAdi + "</option>");
+                  $("#altKategoriListesi").append(option)
+                }
+                $("#altKategoriListesi").find('option:contains('+res.data.altKategori+')').attr('selected', true);
+              })
+            $("#imgUstResim").attr("src",res.data.ustResim);
+            $("#txtAciklama").val(res.data.aciklama);
+            urun.galeri=res.data.galeri;
+            for(var i=0;i<res.data.galeri.length;i++){
+                $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
+            }
+            
+        });
+    });
+    
+    $("#btnGuncelle").click(function(){
+        urun.anaKategori = $("#anaKategoriListesi option:selected").val()
+        urun.altKategori = $("#altKategoriListesi option:selected").val()
+        urun.aciklama=$("#txtAciklama").val();
+        urun.kullaniciKodu=$("#inpKullaniciKodu").val();
+        if($("#imgUstResim").attr("src")!="/images/default.png"){
+            urun.ustResim=$("#imgUstResim").attr("src");
+          }
+        
+        urun._id=$("#inpId").val();
+        wsPost("/urunler/guncelle",urun,function(err,res){
+            if(err){
+                console.log(err);
+                return;
+            }
+            alertify.success("işleminiz başarı ile gerçekleştirildi.");
+            location.reload();
+        });
+    });
+});
 function selectBosalt(selectId){
   $(selectId).empty()
   var temp = $("<option value='' selected disabled>Alt kategori seciniz</option>");
   $(selectId).append(temp)
 }
-
-function resimLinkOlustur(link, sunucu){
-  var ustResimUrl = link.replace("front-end/public/",sunucu)
-  return ustResimUrl
-}
-
 function urunOlustur(){
   var urun = {
     kullaniciKodu : "",

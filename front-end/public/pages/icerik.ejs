@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>"><a class="active" href="#belge">Belge ve Sertifikalar</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>"><a class="" href="#video">Kurumsal Video</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>"><a href="#foto">Kurumsal Foto Galeri</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>"><a  class="active belge" href="#belge">Belge ve Sertifikalar</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>"><a class="kvideo" href="#video">Kurumsal Video</a></li>
+                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>"><a class="kfoto" href="#foto">Kurumsal Foto Galeri</a></li>
             </ul>
         </div>
     </div>
@@ -14,62 +14,60 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <form class="col s12">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate" placeholder="Belge adı" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>
+                                     <input id="inpKullaniciKodu" style="display:none;" value="<%=session.kullanici.kullaniciKodu%>">
+                                      <input id="inpBelgeAdi" type="text" class="validate" placeholder="Belge adı" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col m6 offset-m3 no-padding">
-                                    <div class="card-panel">
-                                          <div class="">
-                                              <table class="">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="center-align">
+                    <div class="row">
+                        <div class="col m6 offset-m3 no-padding">
+                            <div class="card-panel">
+                                      <div class="">
+                                          <table class="">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="center-align">
+                                                            <div class="" style="padding:0">
                                                                 <div class="" style="padding:0">
-                                                                    <div class="" style="padding:0">
-                                                                        <div class="card-image">
-                                                                            <img id="" width="100%" height="130px;" class="materialboxed" src="/images/default.png">
-                                                                        </div>
-                                                                        <div class="card-action ">
-                                                                            <a href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                                        </div>
+                                                                    <div class="card-image">
+                                                                        <img id="imgUstResim" width="100%" height="130px;" class="materialboxed" src="/images/default.png">
+                                                                    </div>
+                                                                    <div class="card-action ">
+                                                                        <a href="Javascript:void(0)" class="ustResimSil" style="color:red">Sil</a>
                                                                     </div>
                                                                 </div>
-                                                            </td>
-                                                        </tr>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                      </div>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                  </div>
+                        </div>
+                    </div>
+                    <div class="col m12 no-padding">
+                        <form id="formUstResim" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
+                            <div class="col s11">
+                                <div class="file-field input-field">
+                                    <input placeholder="ürün ust resim sec" class="file-path validate ustResim" type="text"/>
+                                    <input id="inpUstResim" type="file" name="medyaListesi"/>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col m12 no-padding">
-                                      <form id="" action="" enctype="multipart/form-data" method="post">
-                                        <div class="col s11">
-                                            <div class="file-field input-field">
-                                                <input placeholder="ürün ust resim sec" class="file-path validate" type="text"/>
-                                                <input id="" type="file" name=""/>
-                                            </div>
-                                        </div>
-                                        <div class="col s1">
-                                            <div class="input-field">
-                                                <button type="submit" id="" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
-                                            </div>
-                                        </div>
-                                      </form>
-                                  </div>
+                            <div class="col s1">
+                                <div class="input-field">
+                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                </div>
                             </div>
+                          </form>
+                    </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>Ekle</a>
+                                    <a id="btnEkle" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>Ekle</a>
+                                    <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>Güncelle</a>
                                 </div>
                             </div>
-                        </form>
                     </div>
 
                 </div>
@@ -79,7 +77,7 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <table class="bordered">
+                        <table class="bordered sertifikalarTable">
                             <thead>
                               <tr>
                                   <th data-field="id" style="width:50px;">#</th>
@@ -90,17 +88,19 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Belge 1</td>
-                                    <td>
-                                        <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                        <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
-                                    </td>
-                                </tr>
+                                <%for(var i=0;i<belgeVeSertifikalar.length;i++){%>
+                               <tr id="<%=belgeVeSertifikalar[i]._id%>">
+                                <td><%=i+1%></td>
+                                <td><%=belgeVeSertifikalar[i].belgeAdi%></td>
+                                <td>
+                                    <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=belgeVeSertifikalar[i].ustResim%>" style="height:50px; width:50px;">
+                                </td>
+                                <td id="<%=belgeVeSertifikalar[i]._id%>">
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                </td>
+                            </tr>
+                           <%}%>
                             </tbody>
                         </table>
                   </div>
@@ -114,23 +114,22 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <form class="col s12">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate" placeholder="Video adı" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
+                                      <input id="inpVideoAdi" type="text" class="validate" placeholder="Video adı" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate" placeholder="Youtube linki" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
+                                      <input id="inpVideoLinki" type="text" class="validate" placeholder="Youtube linki" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>Ekle</a>
+                                    <a id="btnKVEkle" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>Ekle</a>
+                                    <a id="btnKVGuncelle" style="display:none;" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>Güncelle</a>
                                 </div>
                             </div>
-                        </form>
                     </div>
 
                 </div>
@@ -140,7 +139,7 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <table class="bordered">
+                        <table class="bordered kurumsalVideoTable">
                             <thead>
                               <tr>
                                   <th data-field="id" style="width:50px;">#</th>
@@ -151,15 +150,17 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Video 1</td>
-                                    <td>https://www.youtube.com/watch?v=miJ783OlheE</td>
-                                    <td>
-                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                        <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                               <%for(var i=0;i<kurumsalVideo.length;i++){%>
+                                   <tr id="<%=kurumsalVideo[i]._id%>">
+                                    <td><%=i+1%></td>
+                                    <td><%=kurumsalVideo[i].videoAdi%></td>
+                                    <td><%=kurumsalVideo[i].videoLinki%></td>
+                                    <td id="<%=kurumsalVideo[i]._id%>">
+                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
                                     </td>
                                 </tr>
+                               <%}%>
                             </tbody>
                         </table>
                   </div>
@@ -173,90 +174,89 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <form class="col s12">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="" type="text" class="validate" placeholder="Foto adı" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>
+                                      <input id="inpGaleriAdi" type="text" class="validate" placeholder="Foto adı" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col m12 no-padding">
-                                    <div class="card-panel">
-                                          <div class="">
-                                              <table class="">
-                                                    <tbody id="">
-                                                        <tr>
-                                                            <td class="center-align">
-                                                              <div class="" style="padding:0">
-                                                                  <div class="card-image">
-                                                                      <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                                  </div>
-                                                                  <div class="card-action ">
-                                                                      <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                                  </div>
-                                                              </div>
-                                                            </td>
-                                                            <td class="center-align">
-                                                              <div class="" style="padding:0">
-                                                                  <div class="card-image">
-                                                                      <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                                  </div>
-                                                                  <div class="card-action ">
-                                                                      <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                                  </div>
-                                                              </div>
-                                                            </td>
-                                                            <td class="center-align">
-                                                              <div class="" style="padding:0">
-                                                                  <div class="card-image">
-                                                                      <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                                  </div>
-                                                                  <div class="card-action ">
-                                                                      <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                                  </div>
-                                                              </div>
-                                                            </td>
-                                                            <td class="center-align">
-                                                              <div class="" style="padding:0">
-                                                                  <div class="card-image">
-                                                                      <img id="" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="http://placehold.it/250x250" style="min-height:130px;max-height:130px; width:130px;">
-                                                                  </div>
-                                                                  <div class="card-action ">
-                                                                      <a id="" href="Javascript:void(0)" class="" style="color:red">Sil</a>
-                                                                  </div>
-                                                              </div>
-                                                            </td>
-                                                        </tr>
+                  <div class="card-panel">
+                      <div class="">
+                          <table class="">
+                                <tbody id="tabloGaleri">
+                                    <tr>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim0" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil0" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim1" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil1" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim2" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil2" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                        <td class="center-align">
+                                          <div class="" style="padding:0">
+                                              <div class="card-image">
+                                                  <img id="resim3" class="responsive-img materialboxed" width="130px" min-height="130px" max-height="130px" src="/images/default.png" style="min-height:130px;max-height:130px; width:130px;">
+                                              </div>
+                                              <div class="card-action ">
+                                                  <a id="sil3" href="Javascript:void(0)" class="resimSil" style="color:red">Sil</a>
+                                              </div>
+                                          </div>
+                                        </td>
+                                    </tr>
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                      </div>
+                                </tbody>
+                            </table>
+                        </div>
+                  </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col m12 no-padding">
-                                      <form id="" action="" enctype="multipart/form-data" method="post">
-                                        <div class="col s11">
-                                            <div class="file-field input-field">
-                                                <input placeholder="ürün fotolarını sec" class="file-path validate" type="text"/>
-                                                <input id="" type="file" name=""/>
-                                            </div>
+                                  <form id="formMedya" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
+                                    <div class="col s11">
+                                        <div class="file-field input-field">
+                                            <input placeholder="ürün resimleri secin" class="file-path validate resim"  type="text"/>
+                                            <input id="inpMedya" type="file" name="medyaListesi" multiple/>
                                         </div>
-                                        <div class="col s1">
-                                            <div class="input-field">
-                                                <button type="submit" id="" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
-                                            </div>
+                                    </div>
+                                    <div class="col s1">
+                                        <div class="input-field">
+                                            <button type="submit" id="btnFotoYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
                                         </div>
-                                      </form>
+                                    </div>
+                                  </form>
                                   </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>Ekle</a>
+                                    <a id="btnKFEkle" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>Ekle</a>
+                                    <a id="btnKFGuncelle" style="display:none;" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>Güncelle</a>
                                 </div>
                             </div>
-                        </form>
                     </div>
 
                 </div>
@@ -266,7 +266,7 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <table class="bordered">
+                        <table class="bordered kurumsalFotoGaleriTable">
                             <thead>
                               <tr>
                                   <th data-field="id" style="width:50px;">#</th>
@@ -277,17 +277,25 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Belge 1</td>
-                                    <td>
-                                        <img class="responsive-img materialboxed" width="50px" height="50px" src="http://placehold.it/250x250" style="height:50px; width:50px;">
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                        <button class="btn btn-floating green tooltipped"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
-                                    </td>
-                                </tr>
+                             <%for(var i=0;i<kurumsalFotoGaleri.length;i++){%>
+                               <tr id="<%=kurumsalFotoGaleri[i]._id%>">
+                                <td><%=i+1%></td>
+                                <td><%=kurumsalFotoGaleri[i].galeriAdi%></td>
+                                <td>
+                                    <div class="col s6" style="padding:0">
+                                       <%for(var j=0;j<kurumsalFotoGaleri[i].galeri.length;j++){%>
+                                           <div class="col s3" style="padding:0">
+                                            <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=kurumsalFotoGaleri[i].galeri[j].resimLinki%>" style="height:50px; width:50px;">
+                                        </div>
+                                       <%}%>
+                                    </div>
+                                </td>
+                                <td id="<%=kurumsalFotoGaleri[i]._id%>">
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                </td>
+                            </tr>
+                           <%}%>
                             </tbody>
                         </table>
                   </div>
@@ -298,3 +306,6 @@
     </div>
 </main>
 <% include ../js/lib-js/masterPageScripts.js %>
+<script src="../js/lib-js/belgeVeSertifikalar.js"></script>
+<script src="../js/lib-js/kurumsalVideo.js"></script>
+<script src="../js/lib-js/kurumsalFotoGaleri.js"></script>
