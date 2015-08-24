@@ -45,7 +45,7 @@ $(document).ready(function(){
                 return;
             }
             alertify.success("işleminiz başarı ile gerçekleştirildi.");
-            
+            location.reload();
         });
     });
 });

@@ -62,7 +62,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a id="btnGetir" class="waves-effect waves-light btn">Getir</a>
+                                    <a id="btnGetir" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>>Getir</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -107,7 +107,7 @@
                                        <td><%=iletisimFormlari[i].email%></td>
                                        <td><%=iletisimFormlari[i].konu%></td>
                                        <td><span class="truncate"><%=iletisimFormlari[i].detay%></span></td>
-                                       <td id="<%=iletisimFormlari[i]._id%>"><button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button></td>
+                                       <td id="<%=iletisimFormlari[i]._id%>"><button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.iletisim.iletisimFormu){%>disabled<%}%>><i class="mdi-action-delete"></i></button></td>
                                    </tr>
                                <%}%>
                             </tbody>

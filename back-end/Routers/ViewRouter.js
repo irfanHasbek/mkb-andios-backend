@@ -13,6 +13,7 @@ var Uretim=require("../Modeller/UretimModeli");
 var IstekSikayet=require("../Modeller/IstekSikayetModeli");
 var SikSorulanSorular=require("../Modeller/SikSorulanSorularModeli");
 var BilgiBankasi=require("../Modeller/BilgiBankasiModeli");
+var BilgiBankasiKategorileri=require("../Modeller/BilgiBankasiKategorileriModeli");
 var FiyatListesi=require("../Modeller/FiyatListesiModeli");
 var IkPolitikasi=require("../Modeller/IKPolitikasiModeli");
 var IsStaj=require("../Modeller/IsStajModeli");
@@ -217,7 +218,14 @@ function ViewRouter(){
                     res.send({kod : 404, mesaj : "bilgi bankası listenemedi !"})
                     return
                 }
-          res.render('musteri_hizmetleri', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,istekSikayet:resIstekSikayet,sikSorulanSorular:resSiksorulan,bilgiBankasi:resBilgiBankasi});
+                BilgiBankasiKategorileri.find({kullaniciKodu:req.session.kullanici.kullaniciKodu},function(errBilgiBankasiKat,resBilgiBankasiKat){
+                if(errBilgiBankasiKat || !resBilgiBankasiKat){
+                    console.log("bilgi bankası listenemedi");
+                    res.send({kod : 404, mesaj : "bilgi bankası listenemedi !"})
+                    return
+                }
+          res.render('musteri_hizmetleri', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,istekSikayet:resIstekSikayet,sikSorulanSorular:resSiksorulan,bilgiBankasi:resBilgiBankasi,bilgiBankasiKategorileri:resBilgiBankasiKat});
+                });
               });
             });
           });

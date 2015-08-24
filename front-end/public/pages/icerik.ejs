@@ -52,12 +52,12 @@
                             <div class="col s11">
                                 <div class="file-field input-field">
                                     <input placeholder="ürün ust resim sec" class="file-path validate ustResim" type="text"/>
-                                    <input id="inpUstResim" type="file" name="medyaListesi"/>
+                                    <input id="inpUstResim" type="file" name="medyaListesi" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>/>
                                 </div>
                             </div>
                             <div class="col s1">
                                 <div class="input-field">
-                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%> ><i class="mdi-file-cloud-upload"></i></button>
                                 </div>
                             </div>
                           </form>
@@ -96,8 +96,8 @@
                                     <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=belgeVeSertifikalar[i].ustResim%>" style="height:50px; width:50px;">
                                 </td>
                                 <td id="<%=belgeVeSertifikalar[i]._id%>">
-                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>><i class="mdi-av-replay"></i></button>
                                 </td>
                             </tr>
                            <%}%>
@@ -156,8 +156,8 @@
                                     <td><%=kurumsalVideo[i].videoAdi%></td>
                                     <td><%=kurumsalVideo[i].videoLinki%></td>
                                     <td id="<%=kurumsalVideo[i]._id%>">
-                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                        <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>><i class="mdi-av-replay"></i></button>
                                     </td>
                                 </tr>
                                <%}%>
@@ -240,12 +240,12 @@
                                     <div class="col s11">
                                         <div class="file-field input-field">
                                             <input placeholder="ürün resimleri secin" class="file-path validate resim"  type="text"/>
-                                            <input id="inpMedya" type="file" name="medyaListesi" multiple/>
+                                            <input id="inpMedya" type="file" name="medyaListesi" multiple <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>/>
                                         </div>
                                     </div>
                                     <div class="col s1">
                                         <div class="input-field">
-                                            <button type="submit" id="btnFotoYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                                            <button type="submit" id="btnFotoYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>><i class="mdi-file-cloud-upload"></i></button>
                                         </div>
                                     </div>
                                   </form>
@@ -291,8 +291,8 @@
                                     </div>
                                 </td>
                                 <td id="<%=kurumsalFotoGaleri[i]._id%>">
-                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
-                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>><i class="mdi-av-replay"></i></button>
                                 </td>
                             </tr>
                            <%}%>

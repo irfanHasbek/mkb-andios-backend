@@ -168,6 +168,13 @@ mongoose.connect(config.dbpath, function(err){
     
      //iletisim formu operasyon
     createCrudRouter(app, './back-end/Modeller/KurumsalFotoGaleriModeli', '/kurumsalfotogaleri');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/BilgiBankasiKategorileriModeli', '/bilgibankasikategorileri');
+    
+    //iletisim formu operasyon
+    createCrudRouter(app, './back-end/Modeller/BilgiBankasiModeli', '/bilgibankasi');
+    
 
     if (!module.parent) {
         app.listen(config.port);
