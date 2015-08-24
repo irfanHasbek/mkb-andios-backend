@@ -220,7 +220,7 @@ ustResimSil();
     $("#btnGuncelle").click(function(){
         urun.anaKategori = $("#anaKategoriListesi option:selected").val()
         urun.altKategori = $("#altKategoriListesi option:selected").val()
-        urun.aciklama=$("#txtAciklama").val();
+        urun.aciklama=$("#txtUrunAciklama").val();
         urun.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             urun.ustResim=$("#imgUstResim").attr("src");

@@ -14,7 +14,7 @@
             <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <table class="bordered">
+                        <table class="bordered istekSikayetTable">
                             <thead>
                               <tr>
                                   <th data-field="id" style="width:50px;">#</th>
@@ -29,18 +29,20 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Öneri</td>
-                                    <td>Konu 1</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit..</td>
-                                    <td>Sinan BORA</td>
-                                    <td>544 444 44 44</td>
-                                    <td>sinanbora@gmail.com</td>
-                                    <td>
-                                        <button class="btn btn-floating red tooltipped"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                               <%for(var i=0;i<istekSikayet.length;i++){%>
+                                   <tr id="<%=istekSikayet[i]._id%>">
+                                    <td><%=i+1%></td>
+                                    <td><%=istekSikayet[i].formTipi%></td>
+                                    <td><%=istekSikayet[i].konu%></td>
+                                    <td><%=istekSikayet[i].detay%></td>
+                                    <td><%=istekSikayet[i].adSoyad%></td>
+                                    <td><%=istekSikayet[i].gsm%></td>
+                                    <td><%=istekSikayet[i].email%></td>
+                                    <td id="<%=istekSikayet[i]._id%>">
+                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
                                     </td>
                                 </tr>
+                               <%}%>
                             </tbody>
                         </table>
                   </div>
