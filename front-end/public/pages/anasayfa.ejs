@@ -1,5 +1,44 @@
 <% include ../partial-pages/master.ejs %>
-  <main>
-    <!-- Icerik -->
-  </main>
+<style>
+    .shape{
+        border-style: solid;
+        border-width: 0 80px 80px 0;
+        float:right;
+        height: 0px;
+        width: 0px;
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+    .shape-text{
+        color:#fff;
+        font-size:18px;
+        font-weight:bold;
+        position:relative;
+        right:-40px;
+        top:1px;
+        white-space: nowrap;
+        -ms-transform:rotate(30deg); /* IE 9 */
+        -o-transform: rotate(360deg);  /* Opera 10.5 */
+        -webkit-transform:rotate(46deg); /* Safari and Chrome */
+        transform:rotate(46deg);
+    }
+    .shape{
+        border-color: rgba(255,255,255,0) #4bc1dd rgba(255,255,255,0) rgba(255,255,255,0);
+    }
+
+</style>
+<main>
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel" style="padding:0;">
+                <div class="shape">
+                    <div class="shape-text">Liste</div>
+                </div>
+                <div style="height:200px;"></div>
+            </div>
+        </div>
+    </div>
+</main>
 <% include ../js/lib-js/masterPageScripts.js %>
