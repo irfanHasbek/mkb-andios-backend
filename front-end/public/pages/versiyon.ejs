@@ -36,17 +36,33 @@
                 <div class="shape">
                     <div class="shape-text">Liste</div>
                 </div>
-                <div class="row" style="height:200px;">
-                  <div class="input-field col s3">
-                      <input disabled type="text" class="validate" name="tel1" value="<%=versiyon.mobilVersiyon%>">
-                  </div>
-                  <div class="input-field col s3">
-                      <%var yeniVersiyon = parseFloat(versiyon.mobilVersiyon) + 1%>
-                      <input disabled type="text" class="validate" name="tel1" value="<%=yeniVersiyon%>">
-                  </div>
-                  <div class="input-field col s3">
-                      <button id="btnGuncelle" type="submit" class="waves-effect waves-light btn">Güncelle</button>
-                  </div>
+                <div class="row" >
+                    <div class="row" style="height:50px;"></div>
+                    <div class="input-field col s5">
+                          <div class="row">
+                              <span style="font-size:16px;">Mobile Uygulama Versiyonu</span>
+                          </div>
+                          <div class="row">
+                              <input disabled type="text" class="validate" name="tel1" value="<%=versiyon.mobilVersiyon%>">
+                          </div>
+                    </div>
+                    <div class="input-field col s5">
+                          <div class="row">
+                              <span style="font-size:16px;">Yeni Version</span>
+                          </div>
+                          <div class="row">
+                              <%var yeniVersiyon = parseFloat(versiyon.mobilVersiyon) + 1%>
+                              <input disabled type="text" class="validate" name="tel1" value="<%=yeniVersiyon%>">
+                          </div>
+                    </div>
+                    <div class="input-field col s2">
+                         <div class="row" style="margin-top:20px;"></div>
+                         <div class="row">
+                             <button id="btnGuncelle" type="submit" class="waves-effect waves-light btn" style="width:100%;">Güncelle</button>
+                         </div>
+                          
+                    </div>
+                    <div class="row" style="margin-bottom:50px;"></div>
                 </div>
             </div>
         </div>
