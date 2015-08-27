@@ -24,6 +24,7 @@ var Duyurular=require("../Modeller/DuyurularModeli");
 var BelgeVeSertifikalar=require("../Modeller/BelgeVeSertifikalarModeli");
 var KurumsalVideo=require("../Modeller/KurumsalVideoModeli");
 var KurumsalFotoGaleri=require("../Modeller/KurumsalFotoGaleriModeli");
+var VersiyonModeli=require("../Modeller/VersiyonModeli");
 
 function ViewRouter(){
     var router = express.Router();
@@ -38,6 +39,27 @@ function ViewRouter(){
             return
           }
           res.render('anasayfa', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+        })
+    });
+
+    router.get('/versiyonguncelle', function(req, res){
+        req.session.guncelSayfa = '/sayfalar/versiyon';
+        req.session.sayfaEtiketi = 'Versiyon';
+        req.session.solMenuKategori = '';
+        kurumsalIzinler.findOne({}, function(kurumsalIzinlerHata, kurumsalIzinler){
+          if (kurumsalIzinlerHata || !kurumsalIzinler) {
+            console.log("Kurumsal Izinler Yuklenirken Hata Olustu !");
+            res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
+            return
+          }
+          VersiyonModeli.findOne({kullaniciKodu : req.session.kullanici.kullaniciKodu}, function (versiyonHata, versiyon) {
+            if (versiyonHata) {
+              console.log("Versiyon Yuklenirken Hata Olustu !");
+              res.send({kod : 404, mesaj : "Versiyon Yuklenirken Hata Olustu !"})
+              return
+            }
+            res.render('versiyon', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler, versiyon : versiyon});
+          })
         })
     });
 
@@ -360,11 +382,11 @@ function ViewRouter(){
                     res.send({kod:404,mesaj:"iletisim bilgileri getirilemedi"});
                     return;
                  }
-                
+
                 res.render('iletisim', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler,iletisim:iletisim,iletisimFormlari:iletisimFormlari});
             });
         });
-          
+
         });
     });
     router.get('/kariyer', function(req, res){
