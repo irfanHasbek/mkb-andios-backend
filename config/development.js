@@ -30,6 +30,7 @@ module.exports = {
     "/urunler/ara",
     "/projeler/ara",
     "/siksorular/ara",
-    "/bilgibankasi/ara"
+    "/bilgibankasi/ara",
+    "/kurumsalizinler/getir"
   ]
 };
