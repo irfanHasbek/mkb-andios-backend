@@ -5,34 +5,8 @@ Schema = mongoose.Schema;
 var SayfalarKurumsalUygulama = new Schema({
     kullaniciKodu : String,
     kurumsal : {
-        hakkimizda : {
-          vizyon : {
-            type    : Boolean,
-            default   : true
-          },
-          misyon : {
-            type    : Boolean,
-            default   : true
-          },
-          kalitePolitikasi : {
-            type    : Boolean,
-            default   : true
-          }
-        },
-        icerik : {
-          belgeVeSertifikalar : {
-            type    : Boolean,
-            default   : true
-          },
-          kurumsalVideo : {
-            type    : Boolean,
-            default   : true
-          },
-          kurumsalFotoGaleri : {
-            type    : Boolean,
-            default   : true
-          }
-        }
+      type : Boolean,
+      default : true
     },
 
     urunler : {
@@ -56,18 +30,8 @@ var SayfalarKurumsalUygulama = new Schema({
     },
 
     musteriHizmetleri : {
-      oneriIstekSikayet : {
-        type    : Boolean,
-        default   : true
-      },
-      sikSorulanSorular : {
-        type    : Boolean,
-        default   : true
-      },
-      bilgiBankasi : {
-        type    : Boolean,
-        default   : true
-      }
+      type : Boolean,
+      default : true
     },
 
     satisNoktalari : {
@@ -81,14 +45,8 @@ var SayfalarKurumsalUygulama = new Schema({
     },
 
     kariyer : {
-        ikPolitikasi : {
-          type    : Boolean,
-          default   : true
-        },
-        isVeStaj :{
-          type    : Boolean,
-          default   : true
-        }
+      type : Boolean,
+      default : true
     },
 
     haberler : {
@@ -107,19 +65,14 @@ var SayfalarKurumsalUygulama = new Schema({
     },
 
     iletisim : {
-      adresVeTelefonlar : {
-        type    : Boolean,
-        default   : true
-      },
-      kroki : {
-        type    : Boolean,
-        default   : true
-      },
-      iletisimFormu : {
-        type    : Boolean,
-        default   : true
-      }
-    }
+      type : Boolean,
+      default : true
+    },
+
+    pushbildirim : {
+      type    : Boolean,
+      default   : true
+    },
 });
 
 module.exports =  mongoose.model('kurumsalSayfaModeli', SayfalarKurumsalUygulama);

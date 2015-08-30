@@ -31,6 +31,8 @@ module.exports = {
     "/projeler/ara",
     "/siksorular/ara",
     "/bilgibankasi/ara",
-    "/kurumsalizinler/getir"
+    "/kurumsalizinler/getir",
+    "/sihirbaz/baslat",
+    "yuklemeler"
   ]
 };

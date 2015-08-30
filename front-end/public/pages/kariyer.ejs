@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s6 <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>"><a href="#ik">İK Politikası</a></li>
-                <li class="tab col s6 <%if(!kurumsalIzinler.kariyer.isVeStaj){%>disabled<%}%>"><a class="" href="#is_ve_staj">İş ve Staj </a></li>
+                <li class="tab col s6"><a href="#ik">İK Politikası</a></li>
+                <li class="tab col s6"><a class="" href="#is_ve_staj">İş ve Staj </a></li>
             </ul>
         </div>
     </div>
@@ -46,25 +46,25 @@
                             <div class="col s11">
                                 <div class="file-field input-field">
                                     <input placeholder="ürün ust resim sec" class="file-path validate ustResim" type="text"/>
-                                    <input id="inpUstResim" type="file" name="medyaListesi" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>/>
+                                    <input id="inpUstResim" type="file" name="medyaListesi"/>
                                 </div>
                             </div>
                             <div class="col s1">
                                 <div class="input-field">
-                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>><i class="mdi-file-cloud-upload"></i></button>
+                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
                                 </div>
                             </div>
                           </form>
                     </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="txtAciklama" class="materialize-textarea" placeholder="Açıklama" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>></textarea>
+                                <textarea id="txtAciklama" class="materialize-textarea" placeholder="Açıklama"></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="right-align">
-                                <a id="btnEkle" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>>Ekle</a>
-                                <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>>Güncelle</a>
+                                <a id="btnEkle" class="waves-effect waves-light btn">Ekle</a>
+                                <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
                             </div>
                         </div>
                     </div>
@@ -95,8 +95,8 @@
                                 </td>
                                 <td><%=ikPolitikasi[i].aciklama%></td>
                                 <td id="<%=ikPolitikasi[i]._id%>">
-                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
-                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>><i class="mdi-av-replay"></i></button>
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
                                 </td>
                             </tr>
                            <%}%>
@@ -138,7 +138,7 @@
                                     <td><%=isStaj[i].detay%></td>
                                     <td><%=isStaj[i].cv%></td>
                                     <td id="<%=isStaj[i]._id%>">
-                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kariyer.ikPolitikasi){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
                                     </td>
                                 </tr>
                                <%}%>

@@ -10,39 +10,12 @@
                               <input id="inpIcerikListeAdi" type="text" class="validate" placeholder="İçerik Listesi Adı">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col m6 offset-m3 no-padding">
-                            <div class="card-panel">
-                                      <div class="">
-                                          <table class="">
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="center-align">
-                                                            <div class="" style="padding:0">
-                                                                <div class="" style="padding:0">
-                                                                    <div class="card-image">
-                                                                        <img id="imgUstResim" width="100%" height="130px;" class="materialboxed" src="/images/default.png">
-                                                                    </div>
-                                                                    <div class="card-action ">
-                                                                        <a href="Javascript:void(0)" class="ustResimSil" style="color:red">Sil</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                  </div>
-                        </div>
-                    </div>
                     <div class="col m12 no-padding">
-                        <form id="formUstResim" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
+                        <form id="formDosya" action="/yukle/dosyayukle" enctype="multipart/form-data" method="post">
                             <div class="col s11">
                                 <div class="file-field input-field">
-                                    <input placeholder="ürün ust resim sec" class="file-path validate ustResim" type="text"/>
-                                    <input id="inpUstResim" type="file" name="medyaListesi"/>
+                                    <input placeholder="Ürün Fiyat Dosya Sec" class="file-path validate ustResim" type="text"/>
+                                    <input id="inpDosya" type="file" name="dosyaListesi"/>
                                 </div>
                             </div>
                             <div class="col s1">
@@ -76,14 +49,13 @@
                               <th data-field="operation" style="width:180px;">İşlemler</th>
                           </tr>
                         </thead>
-
                         <tbody>
                            <%for(var i=0;i<fiyatListesi.length;i++){%>
                                <tr id="<%=fiyatListesi[i]._id%>">
                                 <td><%=i+1%></td>
                                 <td><%=fiyatListesi[i].icerikListeAdi%></td>
                                 <td>
-                                    <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=fiyatListesi[i].ustResim%>" style="height:50px; width:50px;">
+                                    <a target="_blank" href="<%=fiyatListesi[i].dosya%>">Katalog Linki</a>
                                 </td>
                                 <td id="<%=fiyatListesi[i]._id%>">
                                     <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>

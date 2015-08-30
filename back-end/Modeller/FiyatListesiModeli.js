@@ -11,9 +11,9 @@ var FiyatListesi = new Schema({
     icerikListeAdi : {
         type    : String
     },
-    ustResim : {
+    dosya : {
         type    : String,
-        default : "/images/ust_resim.png"
+        default : ""
     }
 });
 

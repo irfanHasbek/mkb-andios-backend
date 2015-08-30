@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>"><a href="#vizyon">Vizyon</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>"><a class="" href="#misyon">Misyon</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>"><a href="#kalite">Kalite Politikası</a></li>
+                <li class="tab col s4"><a href="#vizyon">Vizyon</a></li>
+                <li class="tab col s4"><a class="" href="#misyon">Misyon</a></li>
+                <li class="tab col s4"><a href="#kalite">Kalite Politikası</a></li>
             </ul>
         </div>
     </div>
@@ -18,12 +18,12 @@
                            <input type="text" style="display:none;"  value="<%=hakkimizda._id%>" name="_id">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" name="vizyon" placeholder="Vizyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>><%=hakkimizda.vizyon%></textarea>
+                                    <textarea class="materialize-textarea" name="vizyon" placeholder="Vizyon"><%=hakkimizda.vizyon%></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>disabled<%}%>>Kaydet</button>
+                                    <button class="waves-effect waves-light btn" type="submit">Kaydet</button>
                                 </div>
                             </div>
                   </div>
@@ -39,12 +39,12 @@
                     <div class="row">
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea class="materialize-textarea" name="misyon" placeholder="misyon" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>><%=hakkimizda.misyon%></textarea>
+                                <textarea class="materialize-textarea" name="misyon" placeholder="misyon"><%=hakkimizda.misyon%></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="right-align">
-                                <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.misyon){%>disabled<%}%>>Kaydet</button>
+                                <button class="waves-effect waves-light btn" type="submit">Kaydet</button>
                             </div>
                         </div>
                   </div>
@@ -60,12 +60,12 @@
                     <div class="row">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea class="materialize-textarea" name="kalitePolitikasi" placeholder="Kalite politikası" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>><%=hakkimizda.kalitePolitikasi%></textarea>
+                                    <textarea class="materialize-textarea" name="kalitePolitikasi" placeholder="Kalite politikası"><%=hakkimizda.kalitePolitikasi%></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <button class="waves-effect waves-light btn" type="submit" <%if(!kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>disabled<%}%>>Kaydet</button>
+                                    <button class="waves-effect waves-light btn" type="submit">Kaydet</button>
                                 </div>
                             </div>
                         </form>

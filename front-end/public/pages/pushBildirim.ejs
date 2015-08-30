@@ -1,0 +1,25 @@
+<% include ../partial-pages/master.ejs %>
+<main>
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel" style="padding:0;">
+              <input id="bildirimUrl" style="display:none;" value="<%=session.kullanici.bildirimUrl%>">
+               <div class="row">
+                   <div class="input-field col s12">
+                       <textarea id="bildirim" class="materialize-textarea" placeholder="Bildirim Mesaji"></textarea>
+                   </div>
+               </div>
+               <div class="row" style="text-align:right">
+                 Kalan : <label id="kalanKarakter">100</label>
+               </div>
+               <div class="row">
+                   <div class="right-align">
+                       <button id="bildirimYap" class="waves-effect waves-light btn">Bildirim Yap</button>
+                   </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../js/lib-js/pushbildirim.js"></script>
+<% include ../js/lib-js/masterPageScripts.js %>

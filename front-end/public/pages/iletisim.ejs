@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s4 <%if(!kurumsalIzinler.iletisim.adresVeTelefonlar){%>disabled<%}%>"><a href="#adres">Adres ve Telefonlar</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>"><a class="" href="#google">Google Map Kroki</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.iletisim.iletisimFormu){%>disabled<%}%>"><a href="#form">İletişim Formu</a></li>
+                <li class="tab col s4"><a href="#adres">Adres ve Telefonlar</a></li>
+                <li class="tab col s4"><a class="" href="#google">Google Map Kroki</a></li>
+                <li class="tab col s4"><a href="#form">İletişim Formu</a></li>
             </ul>
         </div>
     </div>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <button type="submit" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.adresVeTelefonlar){%>disabled<%}%>>Kaydet</button>
+                                    <button type="submit" class="waves-effect waves-light btn">Kaydet</button>
                                 </div>
                             </div>
                   </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a id="btnGetir" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>>Getir</a>
+                                    <a id="btnGetir" class="waves-effect waves-light btn">Getir</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -70,7 +70,7 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <button type="submit" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.iletisim.kroki){%>disabled<%}%>>Ekle</button>
+                                    <button type="submit" class="waves-effect waves-light btn">Ekle</button>
                                 </div>
                             </div>
                         </form>
@@ -107,7 +107,7 @@
                                        <td><%=iletisimFormlari[i].email%></td>
                                        <td><%=iletisimFormlari[i].konu%></td>
                                        <td><span class="truncate"><%=iletisimFormlari[i].detay%></span></td>
-                                       <td id="<%=iletisimFormlari[i]._id%>"><button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.iletisim.iletisimFormu){%>disabled<%}%>><i class="mdi-action-delete"></i></button></td>
+                                       <td id="<%=iletisimFormlari[i]._id%>"><button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button></td>
                                    </tr>
                                <%}%>
                             </tbody>

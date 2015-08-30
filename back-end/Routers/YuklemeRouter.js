@@ -10,15 +10,6 @@ function Yukleme(){
         dest: './front-end/public/yuklemeler/',
         changeDest: function(dest, req, res) {
             var newDestination = dest + req.session.kullanici._id + "/dosyalar";
-            /*var stat = null;
-            try {
-                stat = fs.statSync(newDestination);
-            } catch (err) {
-                fs.mkdirSync(newDestination);
-            }
-            if (stat && !stat.isDirectory()) {
-                throw new Error('Directory cannot be created because an inode of a different type exists at "' + dest + '"');
-            }*/
             return newDestination
         },
         rename: function (fieldname, filename) {

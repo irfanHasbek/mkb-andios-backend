@@ -42,6 +42,20 @@ function ViewRouter(){
         })
     });
 
+    router.get('/pushbildirim', function(req, res){
+        req.session.guncelSayfa = '/sayfalar/pushbildirim';
+        req.session.sayfaEtiketi = 'Push-bildirim';
+        req.session.solMenuKategori = '';
+        kurumsalIzinler.findOne({}, function(kurumsalIzinlerHata, kurumsalIzinler){
+          if (kurumsalIzinlerHata || !kurumsalIzinler) {
+            console.log("Kurumsal Izinler Yuklenirken Hata Olustu !");
+            res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
+            return
+          }
+          res.render('pushbildirim', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler});
+        })
+    });
+
     router.get('/versiyonguncelle', function(req, res){
         req.session.guncelSayfa = '/sayfalar/versiyon';
         req.session.sayfaEtiketi = 'Versiyon';

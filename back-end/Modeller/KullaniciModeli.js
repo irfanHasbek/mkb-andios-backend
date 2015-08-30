@@ -48,6 +48,48 @@ var Kullanici = new Schema({
     son_giris : {
         type    : Date,
         default : Date.now
+    },
+
+    bildirimUrl : {
+      type : String,
+      default : "#"
+    },
+
+    facebookHesap : {
+      kullaniciAdi : {
+        type : String,
+        default : "#"
+      },
+      sifre : {
+        type : String,
+        default : "*"
+      },
+      girisKodu : {
+        type : String,
+        default : "*"
+      }
+    },
+
+    twitterHesap : {
+      kullaniciAdi : {
+        type : String,
+        default : "#"
+      },
+      sifre : {
+        type : String,
+        default : "*"
+      }
+    },
+
+    instagramHesap : {
+      kullaniciAdi : {
+        type : String,
+        default : "#"
+      },
+      sifre : {
+        type : String,
+        default : "*"
+      }
     }
 });
 

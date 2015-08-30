@@ -3,369 +3,407 @@
     <input id="kurumsalIzinlerId" style="display:none;" value="<%=kurumsalIzinler._id%>">
     <div class="row">
         <div class="col s12">
-            <div class="card-panel">
-                <h5>Kurumsal</h5>
-                <div class="row">
-                    <table class="bordered">
-                        <thead>
-                          <tr>
-                              <th class="center-align" data-field="id">Vizyon</th>
-                              <th class="center-align" data-field="id">Misyon</th>
-                              <th class="center-align" data-field="id">Kalite Politikası</th>
-                              <th class="center-align" data-field="id">Belge ve Sertifikalar</th>
-                              <th class="center-align" data-field="id">Kurumsal Video</th>
-                              <th class="center-align" data-field="id">Kurumsal Foto Galeri</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="vizyon" type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.vizyon){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="misyon" type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.misyon){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="kalitePolitikasi" type="checkbox" <%if(kurumsalIzinler.kurumsal.hakkimizda.kalitePolitikasi){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="belgeVeSertifikalar" type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="kurumsalVideo" type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="kurumsalFotoGaleri" type="checkbox" <%if(kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-              </div>
-
-            </div>
+            <ul class="tabs">
+                <li class="tab col s4"><a href="#KullaniciAyarlari">Kullanici Ayarlari</a></li>
+                <li class="tab col s4"><a class="" href="#SosyalMedya">Sosyal Medya</a></li>
+                <li class="tab col s4"><a class="" href="#Izinler">Sayfa Izinleri</a></li>
+            </ul>
         </div>
-
-        <!---Ürünler--->
-        <div class="col s12">
-            <div class="card-panel">
-                <h5>Ürünler, Hizmetler, Projeler, Üretim</h5>
-                <div class="row">
-                    <table class="bordered">
-                        <thead>
-                          <tr>
-                              <th class="center-align" data-field="id">Ürünler</th>
-                              <th class="center-align" data-field="id">Hizmetler</th>
-                              <th class="center-align" data-field="id">Projeler</th>
-                              <th class="center-align" data-field="id">Üretim</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="urunler" type="checkbox" <%if(kurumsalIzinler.urunler){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="hizmetler" type="checkbox" <%if(kurumsalIzinler.hizmetler){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="projeler" type="checkbox" <%if(kurumsalIzinler.projeler){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="uretim" type="checkbox" <%if(kurumsalIzinler.uretim){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
+    </div>
+    <div id="KullaniciAyarlari" class="col s12" style="padding:0;">
+      <div class="row">
+        <form id="kullaniciAyarlariForm" action="/kullanici/guncelle" method="post">
+          <div class="row">
+            <div class="col s6">
+              <div class="col s12" style="background-color:#444444;height:75px;">
+                  <div class="row" style="padding-top:4px;">
+                    <span style="color:white">Kullanici Id</span>
+                  </div>
+                  <div class="row">
+                    <span style="color:white"><%=session.kullanici._id%></span>
+                  </div>
+                  <div class="row">
+                    <input name="_id" style="display:none;" value="<%=session.kullanici._id%>">
+                  </div>
               </div>
-
-            </div>
-        </div>
-
-        <!---Müşteri Hizmetleri--->
-        <div class="col s12">
-            <div class="card-panel">
-                <h5>Müsteri Hizmetleri</h5>
-                <div class="row">
-                    <table class="bordered">
-                        <thead>
-                          <tr>
-                              <th class="center-align" data-field="id">Öneri İstek Şikayet</th>
-                              <th class="center-align" data-field="id">Sık Sorulan Sorular</th>
-                              <th class="center-align" data-field="id">Bilgi Bankası</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="oneriIstekSikayet" type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.oneriIstekSikayet){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="sikSorulanSorular" type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.sikSorulanSorular){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="bilgiBankasi" type="checkbox" <%if(kurumsalIzinler.musteriHizmetleri.bilgiBankasi){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;">
+                    <span>Kullanici Kodu</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input disabled name="kullaniciKodu" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.kullaniciKodu%>">
+                  </div>
               </div>
-
-            </div>
-        </div>
-
-        <!---Satış Noktaları, Fiyat Listesi, Haberler, Etkinlikler, Duyurular--->
-        <div class="col s12">
-            <div class="card-panel">
-                <h5>Satış Noktaları, Fiyat Listesi, Haberler, Etkinlikler, Duyurular</h5>
-                <div class="row">
-                    <table class="bordered">
-                        <thead>
-                          <tr>
-                              <th class="center-align" data-field="id">Satış Noktaları</th>
-                              <th class="center-align" data-field="id">Fiyat Listesi</th>
-                              <th class="center-align" data-field="id">Haberler</th>
-                              <th class="center-align" data-field="id">Etkinlikler</th>
-                              <th class="center-align" data-field="id">Duyurular</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="satisNoktalari" type="checkbox" <%if(kurumsalIzinler.satisNoktalari){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="fiyatListesi" type="checkbox" <%if(kurumsalIzinler.fiyatListesi){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="haberler" type="checkbox" <%if(kurumsalIzinler.haberler){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="etkinlikler" type="checkbox" <%if(kurumsalIzinler.etkinlikler){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="duyurular" type="checkbox" <%if(kurumsalIzinler.duyurular){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;">
+                    <span>Sifre</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="sifre" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.sifre%>">
+                  </div>
               </div>
-
-            </div>
-        </div>
-        <!---Kariyer--->
-        <div class="col s12">
-            <div class="card-panel">
-                <h5>Kariyer</h5>
-                <div class="row">
-                    <table class="bordered">
-                        <thead>
-                            <tr>
-                                  <th class="center-align" data-field="id">İnsan Kaynakları Politikası</th>
-                                  <th class="center-align" data-field="id">İş ve Staj</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="ikPolitikasi" type="checkbox" <%if(kurumsalIzinler.kariyer.ikPolitikasi){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="isVeStaj" type="checkbox" <%if(kurumsalIzinler.kariyer.isVeStaj){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-
-
-                            </tr>
-                        </tbody>
-                    </table>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;">
+                    <span>Email</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="email" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.email%>">
+                  </div>
               </div>
-
-            </div>
-        </div>
-        <!---İletişim--->
-        <div class="col s12">
-            <div class="card-panel">
-                <h5>İletişim</h5>
-                <div class="row">
-                    <table class="bordered">
-                        <thead>
-                            <tr>
-                                  <th class="center-align" data-field="id">Adres ve Telefonlar</th>
-                                  <th class="center-align" data-field="id">Google Map Kroki</th>
-                                  <th class="center-align" data-field="id">İletişim Formu</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="adresVeTelefonlar" type="checkbox" <%if(kurumsalIzinler.iletisim.adresVeTelefonlar){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="kroki" type="checkbox" <%if(kurumsalIzinler.iletisim.kroki){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-                                <td class="center-align">
-                                    <div class="switch">
-                                        <label>Gizle
-                                        <input id="iletisimFormu" type="checkbox" <%if(kurumsalIzinler.iletisim.iletisimFormu){%>checked<%}%>>
-                                        <span class="lever"></span>
-                                        Göster
-                                        </label>
-                                    </div>
-                                </td>
-
-
-                            </tr>
-                        </tbody>
-                    </table>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;">
+                    <span>Bildirim Url</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="bildirimUrl" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.bildirimUrl%>">
+                  </div>
               </div>
-              <div class="row">
-                  <div class="center-align">
-                      <a id="izinGuncelle" class="waves-effect waves-light btn">Güncelle</a>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;">
+                    <span>Telefon Numarasi</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="telefonNumarasi" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.telefonNumarasi%>">
+                  </div>
+              </div>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;">
+                    <span>Son Giris</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input disabled name="son_giris" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.son_giris%>">
+                  </div>
+              </div>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;">
+                    <span>Grup</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input disabled name="grupKodu" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.grupKodu%>">
                   </div>
               </div>
             </div>
+            <!-- 2. kolon-->
+            <div class="col s6">
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:center">
+                    <span>Firma Logosu</span>
+                  </div>
+                  <div class="row" style="text-align:center">
+                    <img src="<%=session.kullanici.profilResmi%>" alt="" />
+                  </div>
+                  <div class="row" style="text-align:center">
+                    <a id="" href="#modal_resim_yukle" class="waves-effect waves-light btn tooltipped modal-trigger"  data-position="top" data-delay="50" data-tooltip="Resim Yükle">Firma Logo Yükle</a>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input id="inpProfilResmi" style="display:none;" name="profilResmi" type="text" class="validate" placeholder="İçerik Listesi Adı" value="<%=session.kullanici.profilResmi%>">
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12" style="text-align:center">
+              <button type="submit" class="waves-effect waves-light btn">Güncelle</button>
+            </div>
+          </div>
+        </form>
+        <!--modal-->
+        <div id="modal_resim_yukle" class="modal bottom-sheet">
+          <div class="modal-content">
+              <h5 class="left-align">Firma Logo Yükle</h5>
+              <form id="formResim" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
+                <div class="col s11">
+                    <div class="file-field input-field">
+                        <input placeholder="Firma Logo Sec" class="file-path validate ustResim" type="text"/>
+                        <input id="inpResim" type="file" name="medyaListesi"/>
+                    </div>
+                </div>
+                <div class="col s1">
+                    <div class="input-field">
+                        <button type="submit" id="btnResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
+                    </div>
+                </div>
+              </form>
+
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Kapat</a>
+          </div>
         </div>
+      </div>
+    </div>
+    <div id="SosyalMedya" class="col s12" style="padding:0;">
+      <form id="formSosyalMedya" action="/kullanici/guncelle" method="post">
+        <input name="_id" style="display:none;" value="<%=session.kullanici._id%>">
+        <div class="row">
+          <div class="col s4" style="text-align:center">
+            <span>Facebook</span>
+            <div class="row">
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:left">
+                    <span>Kullanici Adi</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="facebookHesap.kullaniciAdi" type="text" class="validate" value="<%=session.kullanici.facebookHesap.kullaniciAdi%>">
+                  </div>
+              </div>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:left">
+                    <span>Sifre</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="facebookHesap.sifre" type="text" class="validate" value="<%=session.kullanici.facebookHesap.sifre%>">
+                  </div>
+              </div>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:left">
+                    <span>Giris Kodu</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="facebookHesap.girisKodu" type="text" class="validate" value="<%=session.kullanici.facebookHesap.girisKodu%>">
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s4" style="text-align:center">
+            <span>Twitter</span>
+            <div class="row">
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:left">
+                    <span>Kullanici Adi</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="twitterHesap.kullaniciAdi" type="text" class="validate" value="<%=session.kullanici.twitterHesap.kullaniciAdi%>">
+                  </div>
+              </div>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:left">
+                    <span>Sifre</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="twitterHesap.sifre" type="text" class="validate" value="<%=session.kullanici.twitterHesap.sifre%>">
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s4" style="text-align:center">
+            <span>Instagram</span>
+            <div class="row">
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:left">
+                    <span>Kullanici Adi</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="instagramHesap.kullaniciAdi" type="text" class="validate" value="<%=session.kullanici.instagramHesap.kullaniciAdi%>">
+                  </div>
+              </div>
+              <div class="input-field col s12">
+                  <div class="row" style="height:10px;text-align:left">
+                    <span>Sifre</span>
+                  </div>
+                  <div class="row" style="height:20px;">
+                    <input name="instagramHesap.sifre" type="text" class="validate" value="<%=session.kullanici.instagramHesap.sifre%>">
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12" style="text-align:center">
+            <button type="submit" class="waves-effect waves-light btn">Güncelle</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="Izinler" class="col s12" style="padding:0;">
+      <div class="row">
+          <div class="col s12">
+              <div class="card-panel">
+                  <h5>Kurumsal, Ürünler, Hizmetler, Projeler, Üretim</h5>
+                  <div class="row">
+                      <table class="bordered">
+                          <thead>
+                            <tr>
+                                <th class="center-align" data-field="id">Kurumsal</th>
+                                <th class="center-align" data-field="id">Ürünler</th>
+                                <th class="center-align" data-field="id">Hizmetler</th>
+                                <th class="center-align" data-field="id">Projeler</th>
+                                <th class="center-align" data-field="id">Üretim</th>
+                                <th class="center-align" data-field="id">Push Bildirim</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                              <tr>
+                                <td class="center-align">
+                                    <div class="switch">
+                                        <label>Gizle
+                                        <input id="kurumsal" type="checkbox" <%if(kurumsalIzinler.kurumsal){%>checked<%}%>>
+                                        <span class="lever"></span>
+                                        Göster
+                                        </label>
+                                    </div>
+                                </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="urunler" type="checkbox" <%if(kurumsalIzinler.urunler){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="hizmetler" type="checkbox" <%if(kurumsalIzinler.hizmetler){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="projeler" type="checkbox" <%if(kurumsalIzinler.projeler){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="uretim" type="checkbox" <%if(kurumsalIzinler.uretim){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="pushbildirim" type="checkbox" <%if(kurumsalIzinler.pushbildirim){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div>
+
+              </div>
+          </div>
+
+          <!---Müşteri Hizmetleri, Satış Noktaları, Fiyat Listesi, Haberler, Etkinlikler, Duyurular--->
+          <div class="col s12">
+              <div class="card-panel">
+                  <h5>Müşteri Hizmetleri, Satış Noktaları, Fiyat Listesi, Haberler, Etkinlikler, Duyurular</h5>
+                  <div class="row">
+                      <table class="bordered">
+                          <thead>
+                            <tr>
+                                <th class="center-align" data-field="id">Müşteri Hizmetleri</th>
+                                <th class="center-align" data-field="id">Satış Noktaları</th>
+                                <th class="center-align" data-field="id">Fiyat Listesi</th>
+                                <th class="center-align" data-field="id">Haberler</th>
+                                <th class="center-align" data-field="id">Etkinlikler</th>
+                                <th class="center-align" data-field="id">Duyurular</th>
+                                <th class="center-align" data-field="id">Kariyer</th>
+                                <th class="center-align" data-field="id">Iletisim</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                              <tr>
+                                <td class="center-align">
+                                    <div class="switch">
+                                        <label>Gizle
+                                        <input id="musteriHizmetleri" type="checkbox" <%if(kurumsalIzinler.satisNoktalari){%>checked<%}%>>
+                                        <span class="lever"></span>
+                                        Göster
+                                        </label>
+                                    </div>
+                                </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="satisNoktalari" type="checkbox" <%if(kurumsalIzinler.satisNoktalari){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="fiyatListesi" type="checkbox" <%if(kurumsalIzinler.fiyatListesi){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="haberler" type="checkbox" <%if(kurumsalIzinler.haberler){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="etkinlikler" type="checkbox" <%if(kurumsalIzinler.etkinlikler){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="duyurular" type="checkbox" <%if(kurumsalIzinler.duyurular){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="kariyer" type="checkbox" <%if(kurumsalIzinler.duyurular){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+                                  <td class="center-align">
+                                      <div class="switch">
+                                          <label>Gizle
+                                          <input id="iletisim" type="checkbox" <%if(kurumsalIzinler.duyurular){%>checked<%}%>>
+                                          <span class="lever"></span>
+                                          Göster
+                                          </label>
+                                      </div>
+                                  </td>
+
+                              </tr>
+                          </tbody>
+                      </table>
+                </div>
+
+              </div>
+          </div>
+          <div class="row">
+              <div class="center-align">
+                  <a id="izinGuncelle" class="waves-effect waves-light btn">Güncelle</a>
+              </div>
+          </div>
+      </div>
     </div>
 </main>
 <script src="../js/lib-js/ayarlar-js.js"></script>

@@ -1,8 +1,10 @@
 var express = require('express');
 var fs = require('fs')
-var KullaniciModeli = require('../Modeller/KullaniciModeli');
+var KullaniciModeli = require('../Modeller/KullaniciModeli')
 var VersionModeli = require('../Modeller/VersiyonModeli')
 var KurumsalIzinler = require('../Modeller/KurumsalIzinlerModeli')
+var HakkimizdaModeli = require('../Modeller/HakkimizdaModeli')
+var IletisimModeli = require('../Modeller/IletisimModeli')
 
 function HesapRouter(){
     var router = express.Router();
@@ -49,22 +51,36 @@ function HesapRouter(){
                   if (izinHata) {
                     hataVer(req, res)
                   }
-                  req.session.kullanici = kullanici;
-                  req.session.giris = true;
-                  req.session.mesaj = "Giris Basarili !";
-                  var dir = './front-end/public/yuklemeler/' + kullanici._id;
-                  if (!fs.existsSync(dir)){
-                      fs.mkdirSync(dir);
-                      var dirDosya = './front-end/public/yuklemeler/' + kullanici._id + "/dosyalar";
-                      var dirMedya = './front-end/public/yuklemeler/' + kullanici._id + "/medyalar";
-                      if (!fs.existsSync(dirDosya) && !fs.existsSync(dirMedya)) {
-                        fs.mkdirSync(dirDosya);
-                        fs.mkdirSync(dirMedya);
+                  var _hakkimizda = new HakkimizdaModeli({kullaniciKodu : kullanici.kullaniciKodu, vizyon : "", misyon : "", kalitePolitikasi : ""})
+                  _hakkimizda.save( function (hataHakkimizda, hakkimizda) {
+                    if (hataHakkimizda) {
+                      hataVer(req, res)
+                    }
+                    var _iletisim = new IletisimModeli({kullaniciKodu : kullanici.kullaniciKodu, adres :"", tel1 : "", tel2 : "", tel3 : "", latitude : "", longtitude : ""})
+                    _iletisim.save( function (hataIletisim, iletisim) {
+                      if (hataIletisim) {
+                        hataVer(req, res)
                       }
-                      res.redirect('/sayfalar/anasayfa');
-                  }else {
-                    hataVer(req, res)
-                  }
+                      req.session.kullanici = kullanici;
+                      req.session.giris = true;
+                      req.session.mesaj = "Giris Basarili !";
+                      var dir = './front-end/public/yuklemeler/' + kullanici._id;
+                      if (!fs.existsSync(dir)){
+                          fs.mkdirSync(dir);
+                          var dirDosya = './front-end/public/yuklemeler/' + kullanici._id + "/dosyalar";
+                          var dirMedya = './front-end/public/yuklemeler/' + kullanici._id + "/medyalar";
+                          var dirCertificate = './front-end/public/yuklemeler/' + kullanici._id + "/sertifikalar";
+                          if (!fs.existsSync(dirDosya) && !fs.existsSync(dirMedya)) {
+                            fs.mkdirSync(dirDosya);
+                            fs.mkdirSync(dirMedya);
+                            fs.mkdirSync(dirCertificate);
+                          }
+                          res.redirect('/sayfalar/anasayfa');
+                      }else {
+                        hataVer(req, res)
+                      }
+                    })
+                  })
                 })
               }else {
                 hataVer(req, res)

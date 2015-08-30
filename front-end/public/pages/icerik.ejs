@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>"><a  class="active belge" href="#belge">Belge ve Sertifikalar</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>"><a class="kvideo" href="#video">Kurumsal Video</a></li>
-                <li class="tab col s4 <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>"><a class="kfoto" href="#foto">Kurumsal Foto Galeri</a></li>
+                <li class="tab col s4"><a  class="active belge" href="#belge">Belge ve Sertifikalar</a></li>
+                <li class="tab col s4"><a class="kvideo" href="#video">Kurumsal Video</a></li>
+                <li class="tab col s4"><a class="kfoto" href="#foto">Kurumsal Foto Galeri</a></li>
             </ul>
         </div>
     </div>
@@ -17,7 +17,7 @@
                            <div class="row">
                                 <div class="input-field col s12">
                                      <input id="inpKullaniciKodu" style="display:none;" value="<%=session.kullanici.kullaniciKodu%>">
-                                      <input id="inpBelgeAdi" type="text" class="validate" placeholder="Belge adı" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>
+                                      <input id="inpBelgeAdi" type="text" class="validate" placeholder="Belge adı">
                                 </div>
                             </div>
                     <div class="row">
@@ -52,20 +52,20 @@
                             <div class="col s11">
                                 <div class="file-field input-field">
                                     <input placeholder="ürün ust resim sec" class="file-path validate ustResim" type="text"/>
-                                    <input id="inpUstResim" type="file" name="medyaListesi" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>/>
+                                    <input id="inpUstResim" type="file" name="medyaListesi"/>
                                 </div>
                             </div>
                             <div class="col s1">
                                 <div class="input-field">
-                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%> ><i class="mdi-file-cloud-upload"></i></button>
+                                    <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
                                 </div>
                             </div>
                           </form>
                     </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a id="btnEkle" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>Ekle</a>
-                                    <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>>Güncelle</a>
+                                    <a id="btnEkle" class="waves-effect waves-light btn">Ekle</a>
+                                    <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
                                 </div>
                             </div>
                     </div>
@@ -96,8 +96,8 @@
                                     <img class="responsive-img materialboxed" width="50px" height="50px" src="<%=belgeVeSertifikalar[i].ustResim%>" style="height:50px; width:50px;">
                                 </td>
                                 <td id="<%=belgeVeSertifikalar[i]._id%>">
-                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
-                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir" <%if(!kurumsalIzinler.kurumsal.icerik.belgeVeSertifikalar){%>disabled<%}%>><i class="mdi-av-replay"></i></button>
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
                                 </td>
                             </tr>
                            <%}%>
@@ -116,18 +116,18 @@
                     <div class="row">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="inpVideoAdi" type="text" class="validate" placeholder="Video adı" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
+                                      <input id="inpVideoAdi" type="text" class="validate" placeholder="Video adı">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="inpVideoLinki" type="text" class="validate" placeholder="Youtube linki" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>
+                                      <input id="inpVideoLinki" type="text" class="validate" placeholder="Youtube linki">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a id="btnKVEkle" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>Ekle</a>
-                                    <a id="btnKVGuncelle" style="display:none;" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>>Güncelle</a>
+                                    <a id="btnKVEkle" class="waves-effect waves-light btn">Ekle</a>
+                                    <a id="btnKVGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
                                 </div>
                             </div>
                     </div>
@@ -156,8 +156,8 @@
                                     <td><%=kurumsalVideo[i].videoAdi%></td>
                                     <td><%=kurumsalVideo[i].videoLinki%></td>
                                     <td id="<%=kurumsalVideo[i]._id%>">
-                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
-                                        <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalVideo){%>disabled<%}%>><i class="mdi-av-replay"></i></button>
+                                        <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                        <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
                                     </td>
                                 </tr>
                                <%}%>
@@ -176,7 +176,7 @@
                     <div class="row">
                            <div class="row">
                                 <div class="input-field col s12">
-                                      <input id="inpGaleriAdi" type="text" class="validate" placeholder="Foto adı" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>
+                                      <input id="inpGaleriAdi" type="text" class="validate" placeholder="Foto adı">
                                 </div>
                             </div>
                             <div class="row">
@@ -240,12 +240,12 @@
                                     <div class="col s11">
                                         <div class="file-field input-field">
                                             <input placeholder="ürün resimleri secin" class="file-path validate resim"  type="text"/>
-                                            <input id="inpMedya" type="file" name="medyaListesi" multiple <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>/>
+                                            <input id="inpMedya" type="file" name="medyaListesi" multiple/>
                                         </div>
                                     </div>
                                     <div class="col s1">
                                         <div class="input-field">
-                                            <button type="submit" id="btnFotoYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>><i class="mdi-file-cloud-upload"></i></button>
+                                            <button type="submit" id="btnFotoYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
                                         </div>
                                     </div>
                                   </form>
@@ -253,8 +253,8 @@
                             </div>
                             <div class="row">
                                 <div class="right-align">
-                                    <a id="btnKFEkle" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>Ekle</a>
-                                    <a id="btnKFGuncelle" style="display:none;" class="waves-effect waves-light btn" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>>Güncelle</a>
+                                    <a id="btnKFEkle" class="waves-effect waves-light btn">Ekle</a>
+                                    <a id="btnKFGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
                                 </div>
                             </div>
                     </div>
@@ -291,8 +291,8 @@
                                     </div>
                                 </td>
                                 <td id="<%=kurumsalFotoGaleri[i]._id%>">
-                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>><i class="mdi-action-delete"></i></button>
-                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir" <%if(!kurumsalIzinler.kurumsal.icerik.kurumsalFotoGaleri){%>disabled<%}%>><i class="mdi-av-replay"></i></button>
+                                    <button class="btn btn-floating red tooltipped sil"  data-position="top" data-delay="50" data-tooltip="Sil"><i class="mdi-action-delete"></i></button>
+                                    <button class="btn btn-floating green tooltipped guncelle"  data-position="top" data-delay="50" data-tooltip="Değiştir"><i class="mdi-av-replay"></i></button>
                                 </td>
                             </tr>
                            <%}%>
