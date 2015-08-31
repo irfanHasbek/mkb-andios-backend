@@ -22,7 +22,7 @@ module.exports = {
     "/uretim/ara",
     "/isteksikayet/ekle",
     "/fiyatlistesi/ara",
-    "/ikpolitikasi/getir",
+    "/ikpolitikasi/ara",
     "/isstaj/ekle",
     "/sertifikalar/ara",
     "/kurumsalvideo/ara",
