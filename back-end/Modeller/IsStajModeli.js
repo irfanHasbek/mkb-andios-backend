@@ -22,9 +22,11 @@ var IsStaj = new Schema({
     detay : {
         type    : String
     },
-    cv : {
-        type    : String,
-        default : "/images/ust_resim.png"
+    linkedn : {
+      type : String
+    },
+    xing : {
+      type : String
     }
 });
 

@@ -24,6 +24,7 @@ module.exports = {
     "/fiyatlistesi/ara",
     "/ikpolitikasi/ara",
     "/isstaj/ekle",
+    "/iletisimformu/ekle",
     "/sertifikalar/ara",
     "/kurumsalvideo/ara",
     "/kurumsalfotogaleri/ara",
