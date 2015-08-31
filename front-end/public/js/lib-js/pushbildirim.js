@@ -11,12 +11,12 @@ $(document).ready(function () {
           }
         },
         ios : {
-          badge: 0,
+          badge: 2,
           alert: $('#bildirim').val(),
           sound: "soundName"
         }
       }
-      //console.log("Bildirim : " + JSON.stringify(bildirim));
+      console.log("Bildirim : " + JSON.stringify(bildirim));
       $.ajax({
           url: bildirimUrl,
           type: 'POST',
