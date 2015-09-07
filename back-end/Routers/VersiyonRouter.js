@@ -1,5 +1,6 @@
 var express = require('express');
 var VersionModeli = require('../Modeller/VersiyonModeli');
+var KullaniciModeli = require('../Modeller/KullaniciModeli')
 
 function Versiyon(model){
     var router = express.Router();
@@ -14,17 +15,22 @@ function Versiyon(model){
                 res.send({state : false, data : dbHatasi});
                 return;
             }
-            else{
-                if (listelenen) {
+            if (listelenen) {
+              KullaniciModeli.findOne({kullaniciKodu : kullaniciKodu}, function (kullaniciHata, kullanici) {
+                if (kullaniciHata) {
+                  res.send({state : false, data : dbHatasi});
+                  return;
+                }
+                if (kullanici) {
                   if (listelenen.mobilVersiyon != mobilVersiyon) {
-                    res.send({state : true, data : { bilgi : listelenen, guncellemeVar : true}});
+                    res.send({state : true, data : { bilgi : listelenen, kullanici : kullanici, guncellemeVar : true}});
                     return;
                   }
-                  res.send({state : true, data : { bilgi : listelenen, guncellemeVar : false}});
-                }else {
-                  res.send({state : false, data : { bilgi : "Kullanici bulunamadi !", guncellemeVar : false}});
+                  res.send({state : true, data : { bilgi : listelenen, kullanici : kullanici, guncellemeVar : false}});
                 }
-
+              })
+            }else {
+              res.send({state : false, data : { bilgi : "Kullanici bulunamadi !", guncellemeVar : false}});
             }
         });
     });
