@@ -19,6 +19,10 @@
           $('ul .altMenu').each(function(){
             $(this).attr("style","display:none;")
           });
+
+          $('form').submit(function (e) {
+            tinyMCE.triggerSave();
+          })
       })
   </script>
   </body>
