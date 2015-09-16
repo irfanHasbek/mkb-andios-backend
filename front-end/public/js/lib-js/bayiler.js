@@ -4,13 +4,13 @@ $(document).ready(function(){
             console.error(res.data);
             return;
         }
-        
+
         if($("#frmBayiler").attr("action")=="/bayiler/ekle"){
             addRow(res);
             allClear();
-        
+
         }else{
-            
+
             $("#frmBayiler").attr("action","/bayiler/ekle");
             $("#btnEkle").text("ekle");
             var id=$("#inpId").val();
@@ -31,19 +31,19 @@ $(document).ready(function(){
                 allClear();
                 alertify.success("Bilgileriniz başarı ile güncellendi.");
             });
-            
+
         }
     });
     removeFromTable("bayilerTable","/bayiler/sil",function(id){
-        
+
     });
-    
+
     $(".bayilerTable").on("click",".guncelle",function(){
         $("#frmBayiler").attr("action","/bayiler/guncelle");
         $("#btnEkle").text("Güncelle");
         var _id=$(this).closest("tr").attr("id");
         wsPost("/bayiler/getir",{_id:_id},function(err,result){
-            
+
             if(err){
                 console.error("error : "+err);
                 return;
@@ -60,10 +60,10 @@ $(document).ready(function(){
             $("#inpFax").val(result.data.fax);
             $("#inpEmail").val(result.data.email);
             $("#inpWeb").val(result.data.web);
-            $("#txtAciklama").val(result.data.aciklama);
-            
+            tinyMCE.get('txtAciklama').setContent(result.data.aciklama);
+
         });
-        
+
     });
 });
 function allClear(){

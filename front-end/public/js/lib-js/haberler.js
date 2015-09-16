@@ -14,7 +14,7 @@ $(document).ready(function(){
             alertify.error("kategori silinemedi hata!!!");
             return;
         }
-        $("#slctHKategori option[value="+optVal+"]").remove(); 
+        $("#slctHKategori option[value="+optVal+"]").remove();
          alertify.success("işleminiz başarıyla gerçekleşti.");
        });
     });
@@ -49,10 +49,10 @@ $(document).ready(function(){
     });
     ustResimSil();
     resimSil(haberler);
-    
+
     $("#btnEkle").click(function(){
         haberler.kategori=$("#slctHKategori option:selected").val();
-        haberler.aciklama=$("#txtAciklama").val();
+        haberler.aciklama=tinyMCE.get('txtAciklama').getContent()
         haberler.kullaniciKodu=$("#inpKullaniciKodu").val();
         wsPost("/haberler/ekle",haberler,function(err,res){
             if(err){
@@ -64,7 +64,7 @@ $(document).ready(function(){
         });
     });
     removeFromTable("haberlerTable","/haberler/sil",function(){});
-    
+
     $(".haberlerTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
@@ -78,23 +78,23 @@ $(document).ready(function(){
             $(".haberlerTable").append(inp);
             $("#slctHKategori").find('option:contains('+res.data.kategori+')').attr('selected', true);
             $("#imgUstResim").attr("src",res.data.ustResim);
-            $("#txtAciklama").val(res.data.aciklama);
+            tinyMCE.get('txtAciklama').setContent(res.data.aciklama);
             haberler.galeri=res.data.galeri;
             for(var i=0;i<res.data.galeri.length;i++){
                 $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
             }
-            
+
         });
     });
-    
+
     $("#btnGuncelle").click(function(){
         haberler.kategori=$("#slctHKategori option:selected").val();
-        haberler.aciklama=$("#txtAciklama").val();
+        haberler.aciklama=tinyMCE.get('txtAciklama').getContent()
         haberler.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             haberler.ustResim=$("#imgUstResim").attr("src");
           }
-        
+
         haberler._id=$("#inpId").val();
         wsPost("/haberler/guncelle",haberler,function(err,res){
             if(err){

@@ -1,6 +1,10 @@
 $(document).ready(function(){
   var urun = urunOlustur()
 
+  /*
+  tinyMCE.get('content id').getContent()
+  tinyMCE.get('my_editor').setContent(data);
+  */
   //Ana kategori dropdown doldurma
   $("#btnAnaKategoriEkle").on("click", function(){
     var anaKategori = $("#inpAnaKategori").val()
@@ -137,7 +141,7 @@ $(document).ready(function(){
   $("#btnUrunKaydet").on("click", function(){
     var anaKategori = $("#anaKategoriListesi option:selected").val()
     var altKategori = $("#altKategoriListesi option:selected").val()
-    var aciklama = $("#txtUrunAciklama").val()
+    var aciklama = tinyMCE.get('txtUrunAciklama').getContent()
     if (anaKategori != "" && altKategori != "") {
       urun.anaKategori = anaKategori
       urun.altKategori = altKategori
@@ -178,9 +182,9 @@ $(document).ready(function(){
 
 resimSil(urun);
 ustResimSil();
-    
+
     removeFromTable("urunlerTable","/urunler/sil",function(){});
-    
+
     $(".urunlerTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
@@ -208,24 +212,25 @@ ustResimSil();
                 $("#altKategoriListesi").find('option:contains('+res.data.altKategori+')').attr('selected', true);
               })
             $("#imgUstResim").attr("src",res.data.ustResim);
-            $("#txtAciklama").val(res.data.aciklama);
+            //$("#txtAciklama").val(res.data.aciklama);
+            tinyMCE.get('txtUrunAciklama').setContent(res.data.aciklama);
             urun.galeri=res.data.galeri;
             for(var i=0;i<res.data.galeri.length;i++){
                 $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
             }
-            
+
         });
     });
-    
+
     $("#btnGuncelle").click(function(){
         urun.anaKategori = $("#anaKategoriListesi option:selected").val()
         urun.altKategori = $("#altKategoriListesi option:selected").val()
-        urun.aciklama=$("#txtUrunAciklama").val();
+        urun.aciklama = tinyMCE.get('txtUrunAciklama').getContent()
         urun.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             urun.ustResim=$("#imgUstResim").attr("src");
           }
-        
+
         urun._id=$("#inpId").val();
         wsPost("/urunler/guncelle",urun,function(err,res){
             if(err){

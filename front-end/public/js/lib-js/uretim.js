@@ -21,9 +21,9 @@ $(document).ready(function(){
     });
     ustResimSil();
     resimSil(uretim);
-    
+
     $("#btnEkle").click(function(){
-        uretim.aciklama=$("#txtAciklama").val();
+        uretim.aciklama=tinyMCE.get('txtAciklama').getContent()
         uretim.kullaniciKodu=$("#inpKullaniciKodu").val();
         wsPost("/uretim/ekle",uretim,function(err,res){
             if(err){
@@ -35,7 +35,7 @@ $(document).ready(function(){
         });
     });
     removeFromTable("uretimTable","/uretim/sil",function(){});
-    
+
     $(".uretimTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
@@ -48,17 +48,17 @@ $(document).ready(function(){
             var inp=$("<input id='inpId' style='display:none;'value="+res.data._id+">");
             $(".uretimTable").append(inp);
             $("#imgUstResim").attr("src",res.data.ustResim);
-            $("#txtAciklama").val(res.data.aciklama);
+            tinyMCE.get('txtAciklama').setContent(res.data.aciklama);
             uretim.galeri=res.data.galeri;
             for(var i=0;i<res.data.galeri.length;i++){
                 $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
             }
-            
+
         });
     });
-    
+
     $("#btnGuncelle").click(function(){
-        uretim.aciklama=$("#txtAciklama").val();
+        uretim.aciklama=tinyMCE.get('txtAciklama').getContent()
         uretim.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             uretim.ustResim=$("#imgUstResim").attr("src");

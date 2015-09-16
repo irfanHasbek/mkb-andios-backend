@@ -8,9 +8,9 @@ $(document).ready(function(){
         ustResimEkle(ikPolitikasi,sonuc);
     });
     ustResimSil();
-    
+
     $("#btnEkle").click(function(){
-        ikPolitikasi.aciklama=$("#txtAciklama").val();
+        ikPolitikasi.aciklama=tinyMCE.get('txtAciklama').getContent()
         ikPolitikasi.kullaniciKodu=$("#inpKullaniciKodu").val();
         wsPost("/ikpolitikasi/ekle",ikPolitikasi,function(err,res){
             if(err){
@@ -22,7 +22,7 @@ $(document).ready(function(){
         });
     });
     removeFromTable("ikPolitikasiTable","/ikpolitikasi/sil",function(){});
-    
+
     $(".ikPolitikasiTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
@@ -33,15 +33,15 @@ $(document).ready(function(){
                 return;
             }
             var inp=$("<input id='inpId' style='display:none;'value="+res.data._id+">");
-            $("#txtAciklama").val(res.data.aciklama);
+            tinyMCE.get('txtAciklama').setContent(res.data.aciklama);
             $(".ikPolitikasiTable").append(inp);
             $("#imgUstResim").attr("src",res.data.ustResim);
-            
+
         });
     });
-    
+
     $("#btnGuncelle").click(function(){
-        ikPolitikasi.aciklama=$("#txtAciklama").val();
+        ikPolitikasi.aciklama=tinyMCE.get('txtAciklama').getContent()
         ikPolitikasi.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             ikPolitikasi.ustResim=$("#imgUstResim").attr("src");

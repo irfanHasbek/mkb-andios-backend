@@ -7,7 +7,7 @@ $(document).ready(function(){
     $("#btnSEkle").click(function(){
         sikSorulanSorular.kullaniciKodu=$("#inpKullaniciKodu").val();
         sikSorulanSorular.soru=$("#inpSoru").val();
-        sikSorulanSorular.cevap=$("#txtCevap").val();
+        sikSorulanSorular.cevap=tinyMCE.get('txtCevap').getContent()
         wsPost("/siksorular/ekle",sikSorulanSorular,function(err,sikSorulanSorular){
             if(err){
                 alertify.error("hata!!! ");
@@ -28,7 +28,7 @@ $(document).ready(function(){
                 return;
             }
             $("#inpSoru").val(sikSorulanSorular.data.soru);
-            $("#txtCevap").val(sikSorulanSorular.data.cevap);
+            tinyMCE.get('txtCevap').setContent(sikSorulanSorular.data.cevap);
             var inp=$("<input id='inpId' style='display:none;'value="+sikSorulanSorular.data._id+">");
             $(".sikSorulanSorularTable").append(inp);
         });
@@ -36,7 +36,7 @@ $(document).ready(function(){
     $("#btnSGuncelle").click(function(){
         sikSorulanSorular.kullaniciKodu=$("#inpKullaniciKodu").val();
         sikSorulanSorular.soru=$("#inpSoru").val();
-        sikSorulanSorular.cevap=$("#txtCevap").val();
+        sikSorulanSorular.cevap=tinyMCE.get('txtCevap').getContent()
         sikSorulanSorular._id=$("#inpId").val();
         wsPost("/siksorular/guncelle",sikSorulanSorular,function(err,res){
             if(err){

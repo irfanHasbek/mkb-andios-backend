@@ -6,7 +6,7 @@ $(document).ready(function(){
         galeri:[]
     };
     $("#formMedya").ajaxForm(function(sonuc){
-        console.log(sonuc);
+        //console.log(sonuc);
         galeriyeEkle(duyurular,sonuc);
     });
     $("#btnFotoYukle").click(function(e){
@@ -21,9 +21,9 @@ $(document).ready(function(){
     });
     ustResimSil();
     resimSil(duyurular);
-    
+
     $("#btnEkle").click(function(){
-        duyurular.aciklama=$("#txtAciklama").val();
+        duyurular.aciklama=tinyMCE.get('txtAciklama').getContent()
         duyurular.kullaniciKodu=$("#inpKullaniciKodu").val();
         wsPost("/duyurular/ekle",duyurular,function(err,res){
             if(err){
@@ -35,7 +35,7 @@ $(document).ready(function(){
         });
     });
     removeFromTable("duyurularTable","/duyurular/sil",function(){});
-    
+
     $(".duyurularTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
@@ -48,17 +48,17 @@ $(document).ready(function(){
             var inp=$("<input id='inpId' style='display:none;'value="+res.data._id+">");
             $(".duyurularTable").append(inp);
             $("#imgUstResim").attr("src",res.data.ustResim);
-            $("#txtAciklama").val(res.data.aciklama);
+            tinyMCE.get('txtAciklama').setContent(res.data.aciklama);
             duyurular.galeri=res.data.galeri;
             for(var i=0;i<res.data.galeri.length;i++){
                 $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
             }
-            
+
         });
     });
-    
+
     $("#btnGuncelle").click(function(){
-        duyurular.aciklama=$("#txtAciklama").val();
+        duyurular.aciklama=tinyMCE.get('txtAciklama').getContent()
         duyurular.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             duyurular.ustResim=$("#imgUstResim").attr("src");

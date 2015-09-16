@@ -14,7 +14,7 @@ $(document).ready(function(){
             alertify.error("kategori silinemedi hata!!!");
             return;
         }
-        $("#slctHKategori option[value="+optVal+"]").remove(); 
+        $("#slctHKategori option[value="+optVal+"]").remove();
          alertify.success("işleminiz başarıyla gerçekleşti.");
        });
     });
@@ -49,10 +49,10 @@ $(document).ready(function(){
     });
     ustResimSil();
     resimSil(hizmetler);
-    
+
     $("#btnEkle").click(function(){
         hizmetler.kategori=$("#slctHKategori option:selected").val();
-        hizmetler.aciklama=$("#txtAciklama").val();
+        hizmetler.aciklama=tinyMCE.get('txtAciklama').getContent()
         hizmetler.kullaniciKodu=$("#inpKullaniciKodu").val();
         wsPost("/hizmetler/ekle",hizmetler,function(err,res){
             if(err){
@@ -64,7 +64,7 @@ $(document).ready(function(){
         });
     });
     removeFromTable("hizmetlerTable","/hizmetler/sil",function(){});
-    
+
     $(".hizmetlerTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
@@ -78,23 +78,23 @@ $(document).ready(function(){
             $(".hizmetlerTable").append(inp);
             $("#slctHKategori").find('option:contains('+res.data.kategori+')').attr('selected', true);
             $("#imgUstResim").attr("src",res.data.ustResim);
-            $("#txtAciklama").val(res.data.aciklama);
+            tinyMCE.get('txtAciklama').setContent(res.data.aciklama);
             hizmetler.galeri=res.data.galeri;
             for(var i=0;i<res.data.galeri.length;i++){
                 $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
             }
-            
+
         });
     });
-    
+
     $("#btnGuncelle").click(function(){
         hizmetler.kategori=$("#slctHKategori option:selected").val();
-        hizmetler.aciklama=$("#txtAciklama").val();
+        hizmetler.aciklama=tinyMCE.get('txtAciklama').getContent()
         hizmetler.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             hizmetler.ustResim=$("#imgUstResim").attr("src");
           }
-        
+
         hizmetler._id=$("#inpId").val();
         wsPost("/hizmetler/guncelle",hizmetler,function(err,res){
             if(err){

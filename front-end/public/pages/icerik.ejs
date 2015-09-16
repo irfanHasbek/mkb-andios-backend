@@ -51,7 +51,7 @@
                         <form id="formUstResim" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
                             <div class="col s11">
                                 <div class="file-field input-field">
-                                    <input placeholder="ürün ust resim sec" class="file-path validate ustResim" type="text"/>
+                                    <input placeholder="ürün ust resim sec (Maksimum yukseklik 300 piksel olmalidir !)" class="file-path validate ustResim" type="text"/>
                                     <input id="inpUstResim" type="file" name="medyaListesi"/>
                                 </div>
                             </div>
@@ -60,16 +60,15 @@
                                     <button type="submit" id="btnUstResimYukle" class="btn btn-floating blue tooltipped"  data-position="top" data-delay="50" data-tooltip="Secili ogeyi yukle"><i class="mdi-file-cloud-upload"></i></button>
                                 </div>
                             </div>
-                          </form>
-                    </div>
-                            <div class="row">
-                                <div class="right-align">
-                                    <a id="btnEkle" class="waves-effect waves-light btn">Ekle</a>
-                                    <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
-                                </div>
-                            </div>
-                    </div>
-
+                        </form>
+                        </div>
+                          <div class="row">
+                              <div class="right-align">
+                                  <a id="btnEkle" class="waves-effect waves-light btn">Ekle</a>
+                                  <a id="btnGuncelle" style="display:none;" class="waves-effect waves-light btn">Güncelle</a>
+                              </div>
+                          </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -239,7 +238,7 @@
                                   <form id="formMedya" action="/yukle/medyayukle" enctype="multipart/form-data" method="post">
                                     <div class="col s11">
                                         <div class="file-field input-field">
-                                            <input placeholder="ürün resimleri secin" class="file-path validate resim"  type="text"/>
+                                            <input placeholder="ürün resimleri secin (Maksimum yukseklik 300 piksel olmalidir !)" class="file-path validate resim"  type="text"/>
                                             <input id="inpMedya" type="file" name="medyaListesi" multiple/>
                                         </div>
                                     </div>

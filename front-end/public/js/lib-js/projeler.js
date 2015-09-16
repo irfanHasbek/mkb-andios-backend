@@ -22,10 +22,10 @@ $(document).ready(function(){
     });
     ustResimSil();
     resimSil(projeler);
-    
+
     $("#btnEkle").click(function(){
         projeler.projeDurumu=$("#slctProjeler option:selected").val();
-        projeler.aciklama=$("#txtAciklama").val();
+        projeler.aciklama=tinyMCE.get('txtAciklama').getContent()
         projeler.kullaniciKodu=$("#inpKullaniciKodu").val();
         wsPost("/projeler/ekle",projeler,function(err,res){
             if(err){
@@ -37,7 +37,7 @@ $(document).ready(function(){
         });
     });
     removeFromTable("projelerTable","/projeler/sil",function(){});
-    
+
     $(".projelerTable").on("click",".guncelle",function(){
         var id=$(this).closest("tr").attr("id");
         $("#btnGuncelle").removeAttr("style");
@@ -51,18 +51,18 @@ $(document).ready(function(){
             $(".projelerTable").append(inp);
             $("#slctProjeler").find('option:contains('+res.data.projeDurumu+')').attr('selected', true);
             $("#imgUstResim").attr("src",res.data.ustResim);
-            $("#txtAciklama").val(res.data.aciklama);
+            tinyMCE.get('txtAciklama').setContent(res.data.aciklama);
             projeler.galeri=res.data.galeri;
             for(var i=0;i<res.data.galeri.length;i++){
                 $("#resim"+i).attr("src",res.data.galeri[i].resimLinki);
             }
-            
+
         });
     });
-    
+
     $("#btnGuncelle").click(function(){
         projeler.projeDurumu=$("#slctProjeler option:selected").val();
-        projeler.aciklama=$("#txtAciklama").val();
+        projeler.aciklama=tinyMCE.get('txtAciklama').getContent()
         projeler.kullaniciKodu=$("#inpKullaniciKodu").val();
         if($("#imgUstResim").attr("src")!="/images/default.png"){
             projeler.ustResim=$("#imgUstResim").attr("src");
