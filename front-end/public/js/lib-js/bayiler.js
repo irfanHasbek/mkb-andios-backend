@@ -13,7 +13,7 @@ $(document).ready(function(){
 
     function ilceDoldur (ilceler){
       $("#slctIlce").empty()
-      var sabitSecenek = $("<option selected disabled> Ilce Seciniz</option>")
+      var sabitSecenek = $("<option selected disabled> İlçe Seçiniz</option>")
 
       $("#slctIlce").append(sabitSecenek)
 
