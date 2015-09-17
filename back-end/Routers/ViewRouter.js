@@ -25,6 +25,7 @@ var BelgeVeSertifikalar=require("../Modeller/BelgeVeSertifikalarModeli");
 var KurumsalVideo=require("../Modeller/KurumsalVideoModeli");
 var KurumsalFotoGaleri=require("../Modeller/KurumsalFotoGaleriModeli");
 var VersiyonModeli=require("../Modeller/VersiyonModeli");
+var SehirModeli=require("../Modeller/SehirModeli");
 
 function ViewRouter(){
     var router = express.Router();
@@ -283,7 +284,14 @@ function ViewRouter(){
                     res.send({kod:404,mesaj:"bayiler yüklenirken hata oluştu."});
                     return;
                 }
-              res.render('satis_noktalari', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler, bayiler:bayiler});
+                SehirModeli.find({}, "city", function (sehirHata, sehirler) {
+                  if (sehirHata) {
+                    console.log("sehirler yüklenirken hata oluştu.");
+                    res.send({kod:404,mesaj:"sehirler yüklenirken hata oluştu."});
+                    return;
+                  }
+                  res.render('satis_noktalari', {layout : false, session : req.session, kurumsalIzinler : kurumsalIzinler, bayiler:bayiler, sehirler : sehirler});
+                })
             });
         });
     });

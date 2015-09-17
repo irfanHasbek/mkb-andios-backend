@@ -1,4 +1,27 @@
 $(document).ready(function(){
+    $("#slctSehir").change(function (){
+      //console.log($(this).val());
+      var sehir = $(this).val()
+      wsPost("/sehir/ara", {city : sehir}, function (ilceHata, ilceler) {
+        if(ilceHata) {
+          console.error(ilceHata);
+          return
+        }
+        ilceDoldur(ilceler.data[0].towns)
+      })
+    })
+
+    function ilceDoldur (ilceler){
+      $("#slctIlce").empty()
+      var sabitSecenek = $("<option selected disabled> Ilce Seciniz</option>")
+
+      $("#slctIlce").append(sabitSecenek)
+
+      for (var i = 0; i < ilceler.length; i++) {
+        var ilce = $("<option value'" + ilceler[i].townName + "'> " + ilceler[i].townName + "</option>")
+        $("#slctIlce").append(ilce)
+      }
+    }
     $("#frmBayiler").ajaxForm(function(res){
         if(!res.state){
             console.error(res.data);
@@ -50,7 +73,7 @@ $(document).ready(function(){
             }
             $("#slctUlke").find('option:contains('+result.data.ulkeAdi+')').attr('selected', true);
             $("#slctSehir").find('option:contains('+result.data.ilAdi+')').attr('selected', true);
-            $("#slctİlce").find('option:contains('+result.data.ilceAdi+')').attr('selected', true);
+            $("#slctIlce").find('option:contains('+result.data.ilceAdi+')').attr('selected', true);
             $("#slctBayiTuru").find('option:contains('+result.data.bayiTuru+')').attr('selected', true);
             var input=$("<input value="+_id+" style='display:none;' type='text' name='_id' id='inpId'>");
             $("#divBayi").append(input);
