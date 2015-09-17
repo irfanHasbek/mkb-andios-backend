@@ -73,7 +73,15 @@ $(document).ready(function(){
             }
             $("#slctUlke").find('option:contains('+result.data.ulkeAdi+')').attr('selected', true);
             $("#slctSehir").find('option:contains('+result.data.ilAdi+')').attr('selected', true);
-            $("#slctIlce").find('option:contains('+result.data.ilceAdi+')').attr('selected', true);
+            wsPost("/sehir/ara", {city : result.data.ilAdi}, function (ilceHata, ilceler) {
+              if(ilceHata) {
+                console.error(ilceHata);
+                return
+              }
+              ilceDoldur(ilceler.data[0].towns)
+              $("#slctIlce").find('option:contains('+result.data.ilceAdi+')').attr('selected', true);
+            })
+
             $("#slctBayiTuru").find('option:contains('+result.data.bayiTuru+')').attr('selected', true);
             var input=$("<input value="+_id+" style='display:none;' type='text' name='_id' id='inpId'>");
             $("#divBayi").append(input);
