@@ -99,6 +99,8 @@ $(document).ready(function(){
             $("#inpFax").val(result.data.fax);
             $("#inpEmail").val(result.data.email);
             $("#inpWeb").val(result.data.web);
+            $("#inpLat").val(result.data.latitude);
+            $("#inpLong").val(result.data.longtitude);
             tinyMCE.get('txtAciklama').setContent(result.data.aciklama);
 
         });
