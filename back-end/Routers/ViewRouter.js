@@ -442,7 +442,7 @@ function ViewRouter(){
         req.session.guncelSayfa = '/sayfalar/ayarlar';
         req.session.sayfaEtiketi = 'Ayarlar';
         req.session.solMenuKategori = '';
-        kurumsalIzinler.findOne({}, function(kurumsalIzinlerHata, kurumsalIzinler){
+        kurumsalIzinler.findOne({kullaniciKodu : req.session.kullanici.kullaniciKodu}, function(kurumsalIzinlerHata, kurumsalIzinler){
           if (kurumsalIzinlerHata || !kurumsalIzinler) {
             console.log("Kurumsal Izinler Yuklenirken Hata Olustu !");
             res.send({kod : 404, mesaj : "Kurumsal Izinler Yuklenirken Hata Olustu !"})
