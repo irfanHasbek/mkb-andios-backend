@@ -61,6 +61,14 @@ $(document).ready(function(){
 
     });
 
+    $("#btnGetir").click(function(e){
+        e.preventDefault()
+        var lat=$("#inpLat").val();
+        var long=$("#inpLong").val();
+
+        $("#ifrmMap").attr("src","https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d"+long+"!3d"+lat+"!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804")
+    });
+
     $(".bayilerTable").on("click",".guncelle",function(){
         $("#frmBayiler").attr("action","/bayiler/guncelle");
         $("#btnEkle").text("Güncelle");

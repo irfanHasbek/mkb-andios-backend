@@ -38,6 +38,12 @@ var bayiler=new Schema({
     },
     aciklama:{
         type:String
+    },
+    latitude:{
+        type:String
+    },
+    longtitude:{
+        type:String
     }
 });
 
